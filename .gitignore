@@ -1,0 +1,42 @@
+bin
+
+*~
+.DS_Store
+ 
+# old skool
+.svn
+ 
+# Exclude the build directory
+build/*
+ 
+# Exclude temp nibs and swap files
+*~.nib
+*.swp
+ 
+ 
+# Exclude user-specific XCode 3 and 4 files
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.xcworkspace
+xcuserdata
+*.xcodeproj/ !*.xcodeproj/project.pbxproj
+ 
+  
+#    NB: also, whitelist the default ones, some projects need to use these
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+ 
+ 
+ 
+# osx noise
+.DS_Store
+*.swp
+*.lock
+profile
+

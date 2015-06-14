@@ -1,9 +1,9 @@
-class Connection<T> {
-	func read() -> T? {
+public class Connection<T, U> {
+	public func read() -> T? {
 		return nil
 	}
 
-	func write(data: T) -> Void {
+	public func write(data: U) -> Void {
 		
 	}
 }

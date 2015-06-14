@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E785BB51B2BEB6800BBC93F /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E785BB41B2BEB6800BBC93F /* GCDAsyncSocket.h */; };
+		1E785BB71B2BEB7100BBC93F /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E785BB61B2BEB7100BBC93F /* GCDAsyncSocket.m */; };
+		1E785BBA1B2BF2BD00BBC93F /* GCDAsyncSocketListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E785BB91B2BF2BD00BBC93F /* GCDAsyncSocketListener.swift */; };
 		1EFC5A5C1B2BA87000CC11E4 /* SwiftWebServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* SwiftWebServer.framework */; };
 		1EFC5A5E1B2BA87000CC11E4 /* SwiftWebServer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* SwiftWebServer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1EFC5A651B2BA88800CC11E4 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D51B2B5A2C00A602E5 /* Connection.swift */; };
 		1EFC5A661B2BA88800CC11E4 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D61B2B5A2C00A602E5 /* Server.swift */; };
 		1EFC5A671B2BA88800CC11E4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D91B2B5A2C00A602E5 /* Request.swift */; };
 		1EFC5A681B2BA88B00CC11E4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D01B2B5A2100A602E5 /* main.swift */; };
+		1EFC5A6A1B2BAF6B00CC11E4 /* SocketListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A691B2BAF6B00CC11E4 /* SocketListener.swift */; };
+		1EFC5A6C1B2BB03900CC11E4 /* DispatchSocketListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A6B1B2BB03900CC11E4 /* DispatchSocketListener.swift */; };
+		1EFC5A721B2BC7BB00CC11E4 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A711B2BC7BB00CC11E4 /* Types.swift */; };
+		1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */; };
+		1EFC5A791B2BD47F00CC11E4 /* SocketUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +52,19 @@
 		1E1607D51B2B5A2C00A602E5 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		1E1607D61B2B5A2C00A602E5 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		1E1607D91B2B5A2C00A602E5 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		1E785BB41B2BEB6800BBC93F /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		1E785BB61B2BEB7100BBC93F /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		1E785BB81B2BEC1000BBC93F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		1E785BB91B2BF2BD00BBC93F /* GCDAsyncSocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDAsyncSocketListener.swift; sourceTree = "<group>"; };
 		1EFC5A311B2BA82300CC11E4 /* TestServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EFC5A3E1B2BA82300CC11E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EFC5A471B2BA86F00CC11E4 /* SwiftWebServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftWebServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EFC5A4B1B2BA86F00CC11E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EFC5A691B2BAF6B00CC11E4 /* SocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketListener.swift; sourceTree = "<group>"; };
+		1EFC5A6B1B2BB03900CC11E4 /* DispatchSocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSocketListener.swift; sourceTree = "<group>"; };
+		1EFC5A711B2BC7BB00CC11E4 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SocketUtils.c; sourceTree = "<group>"; };
+		1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketUtils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +119,7 @@
 			children = (
 				1E1607D21B2B5A2C00A602E5 /* Network */,
 				1E1607D71B2B5A2C00A602E5 /* HTTP */,
+				1E785BB81B2BEC1000BBC93F /* Bridging-Header.h */,
 			);
 			name = Server;
 			path = ../../Server;
@@ -119,8 +137,16 @@
 		1E1607D21B2B5A2C00A602E5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				1E785BB41B2BEB6800BBC93F /* GCDAsyncSocket.h */,
+				1E785BB61B2BEB7100BBC93F /* GCDAsyncSocket.m */,
 				1E1607D51B2B5A2C00A602E5 /* Connection.swift */,
 				1E1607D61B2B5A2C00A602E5 /* Server.swift */,
+				1EFC5A691B2BAF6B00CC11E4 /* SocketListener.swift */,
+				1E785BB91B2BF2BD00BBC93F /* GCDAsyncSocketListener.swift */,
+				1EFC5A6B1B2BB03900CC11E4 /* DispatchSocketListener.swift */,
+				1EFC5A711B2BC7BB00CC11E4 /* Types.swift */,
+				1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */,
+				1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -156,6 +182,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EFC5A791B2BD47F00CC11E4 /* SocketUtils.h in Headers */,
+				1E785BB51B2BEB6800BBC93F /* GCDAsyncSocket.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,8 +294,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E785BB71B2BEB7100BBC93F /* GCDAsyncSocket.m in Sources */,
+				1E785BBA1B2BF2BD00BBC93F /* GCDAsyncSocketListener.swift in Sources */,
+				1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */,
+				1EFC5A6C1B2BB03900CC11E4 /* DispatchSocketListener.swift in Sources */,
 				1EFC5A661B2BA88800CC11E4 /* Server.swift in Sources */,
 				1EFC5A671B2BA88800CC11E4 /* Request.swift in Sources */,
+				1EFC5A721B2BC7BB00CC11E4 /* Types.swift in Sources */,
+				1EFC5A6A1B2BAF6B00CC11E4 /* SocketListener.swift in Sources */,
 				1EFC5A651B2BA88800CC11E4 /* Connection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +426,7 @@
 		1EFC5A601B2BA87000CC11E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -403,9 +438,12 @@
 				INFOPLIST_FILE = SwiftWebServer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D USE_LIBDISPATCH";
 				PRODUCT_BUNDLE_IDENTIFIER = co.lunarguard.SwiftWebServer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Server/Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -414,6 +452,7 @@
 		1EFC5A611B2BA87000CC11E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -425,9 +464,11 @@
 				INFOPLIST_FILE = SwiftWebServer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D USE_LIBDISPATCH";
 				PRODUCT_BUNDLE_IDENTIFIER = co.lunarguard.SwiftWebServer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Server/Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -452,6 +493,7 @@
 				1EFC5A411B2BA82300CC11E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1EFC5A5F1B2BA87000CC11E4 /* Build configuration list for PBXNativeTarget "SwiftWebServer" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +502,7 @@
 				1EFC5A611B2BA87000CC11E4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

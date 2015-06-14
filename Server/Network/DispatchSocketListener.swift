@@ -75,16 +75,6 @@ class DispatchSocketListener : SocketListener {
 		
 		let source = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(socketFD), 0, self.dispatchQueue)
 		dispatch_source_set_event_handler(source) {
-			print("EVENT")
-		}
-		dispatch_resume(source as dispatch_object_t)
-		
-		let listenRC = Darwin.listen(socketFD, Int32(50))
-		
-		print("Socket FD: \(socketFD), \(bindRC), \(listenRC)")
-		print("")
-		
-		while(true) {
 			var clientSockaddrIn = sockaddr_in()
 			var clientSockaddrLength: socklen_t = socklen_t(sizeofValue(clientSockaddrIn))
 			
@@ -94,7 +84,48 @@ class DispatchSocketListener : SocketListener {
 
 			if acceptFD > 0 {
 				print("Accept FD: \(acceptFD) - \(clientSockaddrIn)")
+				let acceptedSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(acceptFD), 0, self.dispatchQueue)
+
+				var on: Int32 = 1
+				let setsockoptRC = withUnsafePointer(&on) { ptr -> Int32 in
+					return setsockopt(acceptFD, SOL_SOCKET, SO_NOSIGPIPE, UnsafePointer<Void>(ptr), clientSockaddrLength)
+				}
+				print("setsockoptRC: \(setsockoptRC) \(acceptedSource) \(on)")
+				
+				dispatch_source_set_event_handler(acceptedSource) {
+					print("SOURS \(acceptedSource)")
+					let buffer = malloc(4096)
+					defer { free(buffer) }
+
+					let bytesRead = read(acceptFD, buffer, 4096)
+					if (bytesRead > 0) {
+						print("read \(bytesRead)")
+						write(acceptFD, buffer, bytesRead)
+					}
+				}
+				dispatch_resume(acceptedSource as dispatch_object_t)
 			}
 		}
+		dispatch_resume(source as dispatch_object_t)
+		
+		let listenRC = Darwin.listen(socketFD, Int32(50))
+		
+		print("Socket FD: \(socketFD), \(bindRC), \(listenRC)")
+		print("")
+		
+//		while(true) {
+//			var clientSockaddrIn = sockaddr_in()
+//			var clientSockaddrLength: socklen_t = socklen_t(sizeofValue(clientSockaddrIn))
+//			
+//			let acceptFD = withUnsafePointers(&clientSockaddrIn, &clientSockaddrLength) { clientSockaddrInPtr, clientSockaddrLengthPtr -> Int32 in
+//				return Darwin.accept(socketFD, UnsafeMutablePointer<sockaddr>(clientSockaddrInPtr), UnsafeMutablePointer<socklen_t>(clientSockaddrLengthPtr))
+//			}
+//
+//			if acceptFD > 0 {
+//				print("Accept FD: \(acceptFD) - \(clientSockaddrIn)")
+//			}
+//		}
+		
+		dispatch_main()
 	}
 }

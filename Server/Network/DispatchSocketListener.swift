@@ -56,7 +56,7 @@ class DispatchSocketListener : SocketListener {
 		}
 	}
 	
-	func listen(port: Server.Port, accept: (Connection<Server.Data, Server.Data>) -> Void) throws {
+	func listen(port: Port, accept: (Connection<SocketData, SocketData>) -> Void) throws {
 		let socketFD = socket(self.IPVersion, self.socketType, self.IPProtocol)
 		
 		let nonblockRC = SocketUtils_fcntl(socketFD, F_SETFL, O_NONBLOCK)

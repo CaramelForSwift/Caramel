@@ -6,8 +6,8 @@ class GCDAsyncSocketListener: NSObject, SocketListener, GCDAsyncSocketDelegate {
 		socket = GCDAsyncSocket(delegate: nil, delegateQueue: dispatchQueue, socketQueue: dispatchQueue)
 	}
 	
-	var connectionHandler: ((Connection<Server.Data, Server.Data>) -> Void)?
-	func listen(port: Server.Port, accept: (Connection<Server.Data, Server.Data>) -> Void) throws {
+	var connectionHandler: ((Connection<SocketData, SocketData>) -> Void)?
+	func listen(port: Port, accept: (Connection<SocketData, SocketData>) -> Void) throws {
 		do {
 			socket.delegate = self
 			try socket.acceptOnPort(port)

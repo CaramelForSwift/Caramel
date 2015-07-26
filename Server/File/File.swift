@@ -38,9 +38,9 @@ public struct File {
 	public var data: DataChunk? {
 		get {
 			if let reader = FileReader(file: self) {
-				let data = DataChunk()
-				while let readData = reader.readData() {
-					data.append(readData.bytes)
+				var data = DataChunk()
+				while reader.isAtEnd == false {
+					data.append(reader.readData().bytes)
 				}
 				return data
 			}

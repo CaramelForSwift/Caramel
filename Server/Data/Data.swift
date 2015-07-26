@@ -14,10 +14,10 @@ public enum Encoding {
 	case UTF8
 }
 
-public protocol Data: class, Hashable
+public protocol Data: Hashable
 {
 	var bytes: [Byte] { get }
-	func append(bytes: [Byte])
+	mutating func append(bytes: [Byte])
 }
 
 public func ==<T: Data>(lhs: T, rhs: T) -> Bool {
@@ -27,10 +27,11 @@ public func ==<T: Data>(lhs: T, rhs: T) -> Bool {
 extension Data {
 	public var unsafeVoidPointer: UnsafePointer<Void> {
 		get {
-			let buffer = UnsafeMutablePointer<UInt8>.alloc(self.bytes.count)
+			let buffer = UnsafeMutablePointer<UInt8>.alloc(self.bytes.count + 1)
 			for (i, byte) in bytes.enumerate() {
 				buffer[i] = byte
 			}
+			buffer[self.bytes.count] = 0
 			return UnsafePointer<Void>(buffer)
 		}
 	}
@@ -40,18 +41,18 @@ extension Data {
 		get {
 			var hash = bytes.reduce(0, combine: { (initial: Int, byte: Byte) -> Int in
 				var value = initial + Int(byte)
-				value += (value << 10)
+				value = value &+ (value << 10)
 				value ^= (value >> 6)
 				return value
 			})
-			hash += (hash << 3);
+			hash = hash &+ (hash << 3);
 			hash ^= (hash >> 11);
-			hash += (hash << 15);
+			hash = hash &+ (hash << 15);
 			return hash
 		}
 	}
 	
-	public func append(buffer: UnsafePointer<Void>, length: Int) {
+	public mutating func append(buffer: UnsafePointer<Void>, length: Int) {
 		var bytes = UnsafePointer<Byte>(buffer)
 		var byteArray: [Byte] = []
 		for i in stride(from: 0, to: length, by: 1) {

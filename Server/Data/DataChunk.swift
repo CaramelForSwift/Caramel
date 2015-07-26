@@ -8,9 +8,9 @@
 
 import Darwin
 
-public class DataChunk: Data {
+public struct DataChunk: Data {
 	public private(set) var bytes: [Byte] = []
-	public func append(bytes: [Byte]) {
+	public mutating func append(bytes: [Byte]) {
 		self.bytes += bytes
 	}
 	

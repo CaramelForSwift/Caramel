@@ -44,19 +44,18 @@ public class FileReader {
 		return statPointer
 	}
 	
-	public func readData(size: Int = 4 * 1024) -> DataChunk? {
+	public func readData(size: Int = 32 * 1024) -> DataChunk {
 		let buffer = UnsafeMutablePointer<Void>.alloc(size)
 		defer {
 			buffer.dealloc(size)
 		}
 		
 		let readBytes = fread(buffer, 1, size, self.filePointer)
-		if readBytes == 0 {
+		if readBytes < size {
 			isAtEnd = true
-			return nil
 		}
 		
-		let data = DataChunk()
+		var data = DataChunk()
 		data.append(buffer, length: readBytes)
 		return data
 	}

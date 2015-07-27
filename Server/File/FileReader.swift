@@ -1,6 +1,6 @@
 //
 //  FileReader.swift
-//  SwiftWebServer
+//  Jelly
 //
 //  Created by Steve Streza on 25.7.15.
 //  Copyright © 2015 Lunar Guard. All rights reserved.

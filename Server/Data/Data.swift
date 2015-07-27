@@ -1,6 +1,6 @@
 //
 //  Data.swift
-//  SwiftWebServer
+//  Jelly
 //
 //  Created by Steve Streza on 26.7.15.
 //  Copyright © 2015 Lunar Guard. All rights reserved.
@@ -14,7 +14,7 @@ public enum Encoding {
 	case UTF8
 }
 
-public protocol Data: Hashable
+public protocol Data: Hashable, Equatable
 {
 	var bytes: [Byte] { get }
 	mutating func append(bytes: [Byte])

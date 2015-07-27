@@ -1,4 +1,4 @@
-import SwiftWebServer
+import Jelly
 
 let file = File(path: "/etc/passwd")
 if let data = file.data, contents = data.stringWithEncoding(.UTF8) {

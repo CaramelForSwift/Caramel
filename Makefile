@@ -2,7 +2,7 @@
 #
 # usage: make [CONFIG=debug|release]
 
-LIB_MODULE_NAME = SwiftWebServer
+LIB_MODULE_NAME = Jelly
 TEST_MODULE_NAME = TestServer
 
 SDK         = macosx

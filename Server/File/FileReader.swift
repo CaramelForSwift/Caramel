@@ -20,7 +20,7 @@ public class FileReader {
 	
 	public init?(file: File) {
 		self.file = file
-		self.filePointer = fopen(self.file.source, "r")
+		self.filePointer = fopen(self.file.path, "r")
 		if self.filePointer == nil {
 			return nil
 		}
@@ -62,5 +62,42 @@ public class FileReader {
 	
 	deinit {
 		fclose(self.filePointer)
+	}
+}
+
+extension File {
+	public var data: DataChunk? {
+		get {
+			if let reader = FileReader(file: self) {
+				var data = DataChunk()
+				while reader.isAtEnd == false {
+					data.append(reader.readData().bytes)
+				}
+				return data
+			}
+			return nil
+		}
+	}
+
+	public var fileStat: stat? {
+		get {
+			guard let fileReader = FileReader(file: self) else {
+				return nil
+			}
+			
+			let fileStat: stat
+			do {
+				fileStat = try fileReader.statFile()
+				return fileStat
+			} catch {
+				return nil
+			}
+		}
+	}
+	
+	public var exists: Bool {
+		get {
+			return FileReader(file: self) != nil
+		}
 	}
 }

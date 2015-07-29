@@ -1,19 +1,20 @@
 import Darwin
 
-/**
-A `File` is an object that represents a location on a file system, and offers methods for 
-manipulating files and directories.
-
-The existence of a `File` object does not imply the existence of a file or directory within a file 
-system. `File` objects also don't manipulate directly, but instead use a `FileReader` or 
-`FileWriter` object to manipulate files.
-*/
+/// A `File` is an object that represents a location on a file system, and offers methods for 
+/// manipulating files and directories.
+///
+/// The existence of a `File` object does not imply the existence of a file or directory within a 
+/// file system. `File` objects also don't manipulate directly, but instead use a `FileReader` or 
+/// `FileWriter` object to manipulate files.
 
 public struct File: Hashable, Equatable {
 	public typealias Descriptor = Int32
 	
+	/// The path to the file on disk. This will be platform dependent. In general, you should not
+	/// manipulate the path directly, but use the methods on `File` to navigate the filesystem.
 	public let path: String
 	
+	/// Creates a `File` at the given path.
 	public init(path: String) {
 		self.path = path
 	}

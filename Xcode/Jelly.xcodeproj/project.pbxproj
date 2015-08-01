@@ -15,6 +15,7 @@
 		1E0281241B6C69E700B2C650 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0281231B6C69E700B2C650 /* Nimble.framework */; };
 		1E0281271B6C6C0D00B2C650 /* RuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281261B6C6C0D00B2C650 /* RuntimeTests.swift */; };
 		1E0281291B6C6D2800B2C650 /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281281B6C6D2800B2C650 /* FileTests.swift */; };
+		1E0281331B6CB53F00B2C650 /* SupportGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281321B6CB53F00B2C650 /* SupportGenerators.swift */; };
 		1E3F92001B649FED00235033 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F91FF1B649FED00235033 /* FileReader.swift */; };
 		1E3F92031B65469D00235033 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92021B65469D00235033 /* Data.swift */; };
 		1E3F92051B6547D300235033 /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92041B6547D300235033 /* DataChunk.swift */; };
@@ -79,6 +80,7 @@
 		1E0281231B6C69E700B2C650 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../External/Quick/Externals/Nimble/build/Debug/Nimble.framework; sourceTree = "<group>"; };
 		1E0281261B6C6C0D00B2C650 /* RuntimeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuntimeTests.swift; sourceTree = "<group>"; };
 		1E0281281B6C6D2800B2C650 /* FileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
+		1E0281321B6CB53F00B2C650 /* SupportGenerators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportGenerators.swift; sourceTree = "<group>"; };
 		1E1607D01B2B5A2100A602E5 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1E1607D51B2B5A2C00A602E5 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		1E1607D61B2B5A2C00A602E5 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 			name = Support;
 			sourceTree = "<group>";
 		};
+		1E0281311B6CB50600B2C650 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				1E0281321B6CB53F00B2C650 /* SupportGenerators.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		1E1607BB1B2B4CDD00A602E5 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +206,7 @@
 		1E1607CE1B2B4CE600A602E5 /* Server */ = {
 			isa = PBXGroup;
 			children = (
+				1E0281311B6CB50600B2C650 /* Support */,
 				1E0280E81B69DB4D00B2C650 /* Process */,
 				1E3F92011B65468300235033 /* Data */,
 				1E7E588B1B61955600F2F60C /* File */,
@@ -458,6 +469,7 @@
 				1E7E588D1B61957400F2F60C /* File.swift in Sources */,
 				1E3F92051B6547D300235033 /* DataChunk.swift in Sources */,
 				1EFC5A6A1B2BAF6B00CC11E4 /* SocketListener.swift in Sources */,
+				1E0281331B6CB53F00B2C650 /* SupportGenerators.swift in Sources */,
 				1E0280EA1B69DB4D00B2C650 /* Runtime.swift in Sources */,
 				1EFC5A651B2BA88800CC11E4 /* Connection.swift in Sources */,
 			);
@@ -668,6 +680,7 @@
 				1E02811F1B6C69AD00B2C650 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1E1607BF1B2B4CDD00A602E5 /* Build configuration list for PBXProject "Jelly" */ = {
 			isa = XCConfigurationList;

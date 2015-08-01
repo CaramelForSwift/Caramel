@@ -20,3 +20,32 @@ public struct DataChunk: Data {
 		}
 	}
 }
+
+public extension String.UTF8View {
+	public var data: Data {
+		get {
+			var data = DataChunk()
+			var bytes: [Byte] = []
+			for thing in self {
+				bytes.append(Byte(thing))
+			}
+			data.append(bytes)
+			return data
+		}
+	}
+}
+
+public extension String.UTF16View {
+	public var data: Data {
+		get {
+			var data = DataChunk()
+			var bytes: [Byte] = []
+			for thing in self {
+				bytes.append(Byte((thing & 0xFF00) >> 8))
+				bytes.append(Byte(thing & 0xFF))
+			}
+			data.append(bytes)
+			return data
+		}
+	}
+}

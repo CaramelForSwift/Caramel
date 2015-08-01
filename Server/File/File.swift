@@ -19,6 +19,8 @@ public struct File: Hashable, Equatable {
 		self.path = path
 	}
 	
+	/// Creates a `File` at a composed path created from supplied path components.
+	/// - Parameter pathComponents: An array of components to compose at a path, joined by `File.pathSeparator`.
 	public init(pathComponents: [String]) {
 		var components = pathComponents
 		if components.count == 0 {
@@ -37,6 +39,7 @@ public struct File: Hashable, Equatable {
 		self.init(path: path)
 	}
 	
+	/// An array of path components	that make up the path.
 	public var pathComponents: [String] {
 		get {
 			var components = split(self.path.characters) { (character: Character) -> Bool in
@@ -49,18 +52,26 @@ public struct File: Hashable, Equatable {
 		}
 	}
 	
+	/// The last piece of the path, if one exists. This is the file or directory name of the `File`.
 	public var lastPathComponent: String? {
 		get {
 			return self.pathComponents.last
 		}
 	}
 	
+	/// Returns a new `File` made by appending the `component` to the current path, as a child 
+	/// element.
+	/// - Returns: A new `File` made of `path` + `File.pathSeparator` + `component`. Note that this
+	///            does not guarantee the returned `File` exists.
 	public func fileByAppendingPathComponent(component: String) -> File {
 		var pathComponents = self.pathComponents
 		pathComponents.append(component)
 		return File(pathComponents: pathComponents)
 	}
 	
+	/// Returns a new `File` made by removing the last path component from the current path.
+	/// - Note: If this is equal to the `File.rootDirectory`, it will return an equivalent `File`.
+	/// - Returns: A new `File` made by deleting the last path component.
 	public var parentDirectory: File {
 		get {
 			var pathComponents = self.pathComponents
@@ -71,15 +82,20 @@ public struct File: Hashable, Equatable {
 		}
 	}
 	
+	/// The `String` representing the system's path separator. On UNIX systems this is a `/`.
 	public static var pathSeparator = "/"
+
+	/// The `String` representing the system's path extension separator. On UNIX systems this is `.`.
 	public static var pathExtensionSeparator = "."
 	
+	/// The root directory for the system. On UNIX systems this represents the directory at `/`.
 	public static var rootDirectory: File {
 		get {
 			return File(path: self.pathSeparator)
 		}
 	}
 	
+	/// The root directory for the current user's home directory.
 	public static var homeDirectory: File {
 		get {
 			let passwd = getpwuid(getuid())
@@ -94,6 +110,7 @@ public struct File: Hashable, Equatable {
 		}
 	}
 	
+	/// The hash value.
 	public var hashValue: Int {
 		get {
 			return self.path.hashValue
@@ -101,6 +118,8 @@ public struct File: Hashable, Equatable {
 	}
 }
 
+/// Determines if two `File` objects are equivalent.
+/// - Returns: `true` if two `File` objects have the same path, `false` otherwise
 public func ==(lhs: File, rhs: File) -> Bool {
 	return lhs.path == rhs.path
 }

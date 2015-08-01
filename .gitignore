@@ -39,4 +39,6 @@ xcuserdata
 *.swp
 *.lock
 profile
-
+Xcode/build
+Xcode/docs
+Xcode/test

@@ -35,6 +35,35 @@ public extension String.UTF8View {
 	}
 }
 
+public extension String {
+	public var UTF8Data: Data {
+		get {
+			return self.utf8.data
+		}
+	}
+	public var UTF16Data: Data {
+		get {
+			return self.utf16.data
+		}
+	}
+	public var UTF32Data: Data {
+		get {
+			var data = DataChunk()
+			var bytes: [Byte] = []
+			for scalar in self.unicodeScalars {
+				UTF32.encode(scalar) { (thing: UTF32.CodeUnit) -> () in
+					bytes.append(Byte((thing & 0xFF000000) >> 24))
+					bytes.append(Byte((thing & 0x00FF0000) >> 16))
+					bytes.append(Byte((thing & 0x0000FF00) >> 8))
+					bytes.append(Byte((thing & 0x000000FF)))
+				}
+			}
+			data.append(bytes)
+			return data
+		}
+	}
+}
+
 public extension String.UTF16View {
 	public var data: Data {
 		get {

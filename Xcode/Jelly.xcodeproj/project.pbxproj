@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280C21B65AFA200B2C650 /* PullStream.swift */; };
 		1E0280EA1B69DB4D00B2C650 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280E91B69DB4D00B2C650 /* Runtime.swift */; };
+		1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */; };
 		1E3F92001B649FED00235033 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F91FF1B649FED00235033 /* FileReader.swift */; };
 		1E3F92031B65469D00235033 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92021B65469D00235033 /* Data.swift */; };
 		1E3F92051B6547D300235033 /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92041B6547D300235033 /* DataChunk.swift */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		1E0280C21B65AFA200B2C650 /* PullStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullStream.swift; sourceTree = "<group>"; };
 		1E0280E91B69DB4D00B2C650 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
+		1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMetadata.swift; sourceTree = "<group>"; };
 		1E1607D01B2B5A2100A602E5 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1E1607D51B2B5A2C00A602E5 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		1E1607D61B2B5A2C00A602E5 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				1E7E588C1B61957400F2F60C /* File.swift */,
 				1E3F91FF1B649FED00235033 /* FileReader.swift */,
+				1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				1E785BB71B2BEB7100BBC93F /* GCDAsyncSocket.m in Sources */,
 				1E3F92031B65469D00235033 /* Data.swift in Sources */,
 				1E785BBA1B2BF2BD00BBC93F /* GCDAsyncSocketListener.swift in Sources */,
+				1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */,
 				1E3F92001B649FED00235033 /* FileReader.swift in Sources */,
 				1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */,
 				1E8EAD291B2E724F00365A68 /* PushStream.swift in Sources */,

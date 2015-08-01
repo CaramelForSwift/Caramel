@@ -79,7 +79,7 @@ extension File {
 		}
 	}
 
-	public var fileStat: stat? {
+	internal var fileStat: stat? {
 		get {
 			guard let fileReader = FileReader(file: self) else {
 				return nil
@@ -95,9 +95,31 @@ extension File {
 		}
 	}
 	
+	public var metadata: FileMetadata? {
+		get {
+			if let fileStat = self.fileStat {
+				return FileMetadata(fileStat: fileStat)
+			} else {
+				return nil
+			}
+		}
+	}
+	
 	public var exists: Bool {
 		get {
 			return FileReader(file: self) != nil
+		}
+	}
+	
+	public var isDirectory: Bool {
+		get {
+			return self.metadata?.isDirectory ?? false
+		}
+	}
+	
+	public var isFile: Bool {
+		get {
+			return self.metadata?.isFile ?? false
 		}
 	}
 }

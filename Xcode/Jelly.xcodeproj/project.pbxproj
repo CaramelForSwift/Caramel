@@ -198,12 +198,12 @@
 			isa = PBXGroup;
 			children = (
 				1E1607CF1B2B4CEA00A602E5 /* Test */,
-				1E1607CE1B2B4CE600A602E5 /* Server */,
+				1E1607CE1B2B4CE600A602E5 /* Module */,
 			);
 			path = Jelly;
 			sourceTree = "<group>";
 		};
-		1E1607CE1B2B4CE600A602E5 /* Server */ = {
+		1E1607CE1B2B4CE600A602E5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
 				1E0281311B6CB50600B2C650 /* Support */,
@@ -215,8 +215,8 @@
 				1E1607D71B2B5A2C00A602E5 /* HTTP */,
 				1E785BB81B2BEC1000BBC93F /* Bridging-Header.h */,
 			);
-			name = Server;
-			path = ../../Server;
+			name = Module;
+			path = ../../Module;
 			sourceTree = "<group>";
 		};
 		1E1607CF1B2B4CEA00A602E5 /* Test */ = {
@@ -638,7 +638,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevestreza.Jelly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Server/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Module/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -664,7 +664,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevestreza.Jelly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Server/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Module/Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

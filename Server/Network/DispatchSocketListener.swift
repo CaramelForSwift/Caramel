@@ -56,7 +56,7 @@ class DispatchSocketListener : SocketListener {
 		}
 	}
 	
-	func listen(port: Port, accept: (Connection<SocketData, SocketData>) -> Void) throws {
+	func listen(port: Port, accept: (Connection<Data, Data>) -> Void) throws {
 		let socketFD = socket(self.IPVersion, self.socketType, self.IPProtocol)
 		
 		let nonblockRC = SocketUtils_fcntl(socketFD, F_SETFL, O_NONBLOCK)
@@ -83,23 +83,19 @@ class DispatchSocketListener : SocketListener {
 			}
 
 			if acceptFD > 0 {
-				print("Accept FD: \(acceptFD) - \(clientSockaddrIn)")
 				let acceptedSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, UInt(acceptFD), 0, self.dispatchQueue)
 
 				var on: Int32 = 1
-				let setsockoptRC = withUnsafePointer(&on) { ptr -> Int32 in
+				let _ = withUnsafePointer(&on) { ptr -> Int32 in
 					return setsockopt(acceptFD, SOL_SOCKET, SO_NOSIGPIPE, UnsafePointer<Void>(ptr), clientSockaddrLength)
 				}
-				print("setsockoptRC: \(setsockoptRC) \(acceptedSource) \(on)")
 				
 				dispatch_source_set_event_handler(acceptedSource) {
-					print("SOURS \(acceptedSource)")
 					let buffer = malloc(4096)
 					defer { free(buffer) }
 
 					let bytesRead = read(acceptFD, buffer, 4096)
 					if (bytesRead > 0) {
-						print("read \(bytesRead)")
 						write(acceptFD, buffer, bytesRead)
 					}
 				}

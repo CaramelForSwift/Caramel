@@ -47,7 +47,6 @@ class FileSpec: QuickSpec {
 			
 			let passwdData = passwd.data
 			it("should be able to read /etc/passwd data") {
-				expect(passwdData) != nil
 				expect(passwdData!.bytes.count) > 0
 			}
 			

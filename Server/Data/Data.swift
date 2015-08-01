@@ -14,7 +14,7 @@ public enum Encoding {
 	case UTF8
 }
 
-public protocol Data: Hashable, Equatable
+public protocol Data
 {
 	var bytes: [Byte] { get }
 	mutating func append(bytes: [Byte])

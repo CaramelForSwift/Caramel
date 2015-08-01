@@ -1,4 +1,3 @@
-public typealias SocketData = UnsafeBufferPointer<UInt8>
 public typealias Port = UInt16
 
 public class SocketServer<T, U> {
@@ -30,7 +29,7 @@ public class SocketServer<T, U> {
 	public func listen(port: UInt16) {
 		print("Listening on port \(port)")
 		do {
-			try self.socketListener.listen(port) { (connection: Connection<SocketData, SocketData>) in
+			try self.socketListener.listen(port) { (connection: Connection<Data, Data>) in
 				print("SOCKET")
 			}
 		} catch {

@@ -68,15 +68,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1EFC5A461B2BA86F00CC11E4"
-            BuildableName = "Jelly.framework"
-            BlueprintName = "Jelly"
+            BlueprintIdentifier = "1EFC5A301B2BA82300CC11E4"
+            BuildableName = "TestServer.app"
+            BlueprintName = "TestServer"
             ReferencedContainer = "container:Jelly.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

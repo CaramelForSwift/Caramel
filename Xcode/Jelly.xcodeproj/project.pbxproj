@@ -10,6 +10,11 @@
 		1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280C21B65AFA200B2C650 /* PullStream.swift */; };
 		1E0280EA1B69DB4D00B2C650 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280E91B69DB4D00B2C650 /* Runtime.swift */; };
 		1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */; };
+		1E02811B1B6C69AD00B2C650 /* Jelly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */; };
+		1E0281221B6C69E100B2C650 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0281211B6C69E100B2C650 /* Quick.framework */; };
+		1E0281241B6C69E700B2C650 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0281231B6C69E700B2C650 /* Nimble.framework */; };
+		1E0281271B6C6C0D00B2C650 /* RuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281261B6C6C0D00B2C650 /* RuntimeTests.swift */; };
+		1E0281291B6C6D2800B2C650 /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281281B6C6D2800B2C650 /* FileTests.swift */; };
 		1E3F92001B649FED00235033 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F91FF1B649FED00235033 /* FileReader.swift */; };
 		1E3F92031B65469D00235033 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92021B65469D00235033 /* Data.swift */; };
 		1E3F92051B6547D300235033 /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92041B6547D300235033 /* DataChunk.swift */; };
@@ -34,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1E02811C1B6C69AD00B2C650 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1607BC1B2B4CDD00A602E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EFC5A461B2BA86F00CC11E4;
+			remoteInfo = Jelly;
+		};
 		1EFC5A5A1B2BA87000CC11E4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1E1607BC1B2B4CDD00A602E5 /* Project object */;
@@ -61,6 +73,12 @@
 		1E0280C21B65AFA200B2C650 /* PullStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullStream.swift; sourceTree = "<group>"; };
 		1E0280E91B69DB4D00B2C650 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMetadata.swift; sourceTree = "<group>"; };
+		1E0281161B6C69AD00B2C650 /* JellyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JellyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E02811A1B6C69AD00B2C650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E0281211B6C69E100B2C650 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../External/Quick/build/Debug/Quick.framework; sourceTree = "<group>"; };
+		1E0281231B6C69E700B2C650 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../External/Quick/Externals/Nimble/build/Debug/Nimble.framework; sourceTree = "<group>"; };
+		1E0281261B6C6C0D00B2C650 /* RuntimeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuntimeTests.swift; sourceTree = "<group>"; };
+		1E0281281B6C6D2800B2C650 /* FileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
 		1E1607D01B2B5A2100A602E5 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1E1607D51B2B5A2C00A602E5 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		1E1607D61B2B5A2C00A602E5 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
@@ -90,6 +108,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1E0281131B6C69AD00B2C650 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E0281241B6C69E700B2C650 /* Nimble.framework in Frameworks */,
+				1E0281221B6C69E100B2C650 /* Quick.framework in Frameworks */,
+				1E02811B1B6C69AD00B2C650 /* Jelly.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EFC5A2E1B2BA82300CC11E4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -112,8 +140,28 @@
 			isa = PBXGroup;
 			children = (
 				1E0280E91B69DB4D00B2C650 /* Runtime.swift */,
+				1E0281261B6C6C0D00B2C650 /* RuntimeTests.swift */,
 			);
 			path = Process;
+			sourceTree = "<group>";
+		};
+		1E0281171B6C69AD00B2C650 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1E0281251B6C6BC300B2C650 /* Support */,
+			);
+			name = Tests;
+			path = JellyTests;
+			sourceTree = "<group>";
+		};
+		1E0281251B6C6BC300B2C650 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				1E0281231B6C69E700B2C650 /* Nimble.framework */,
+				1E0281211B6C69E100B2C650 /* Quick.framework */,
+				1E02811A1B6C69AD00B2C650 /* Info.plist */,
+			);
+			name = Support;
 			sourceTree = "<group>";
 		};
 		1E1607BB1B2B4CDD00A602E5 = {
@@ -121,6 +169,7 @@
 			children = (
 				1E1607C61B2B4CDD00A602E5 /* Jelly */,
 				1EFC5A321B2BA82300CC11E4 /* TestServer */,
+				1E0281171B6C69AD00B2C650 /* Tests */,
 				1E1607C51B2B4CDD00A602E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +179,7 @@
 			children = (
 				1EFC5A311B2BA82300CC11E4 /* TestServer.app */,
 				1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */,
+				1E0281161B6C69AD00B2C650 /* JellyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,6 +261,7 @@
 				1E7E588C1B61957400F2F60C /* File.swift */,
 				1E3F91FF1B649FED00235033 /* FileReader.swift */,
 				1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */,
+				1E0281281B6C6D2800B2C650 /* FileTests.swift */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -248,6 +299,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1E0281151B6C69AD00B2C650 /* JellyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E0281201B6C69AD00B2C650 /* Build configuration list for PBXNativeTarget "JellyTests" */;
+			buildPhases = (
+				1E0281121B6C69AD00B2C650 /* Sources */,
+				1E0281131B6C69AD00B2C650 /* Frameworks */,
+				1E0281141B6C69AD00B2C650 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1E02811D1B6C69AD00B2C650 /* PBXTargetDependency */,
+			);
+			name = JellyTests;
+			productName = JellyTests;
+			productReference = 1E0281161B6C69AD00B2C650 /* JellyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		1EFC5A301B2BA82300CC11E4 /* TestServer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1EFC5A3F1B2BA82300CC11E4 /* Build configuration list for PBXNativeTarget "TestServer" */;
@@ -295,6 +364,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Lunar Guard";
 				TargetAttributes = {
+					1E0281151B6C69AD00B2C650 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					1EFC5A301B2BA82300CC11E4 = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -317,12 +389,20 @@
 			projectRoot = "";
 			targets = (
 				1EFC5A461B2BA86F00CC11E4 /* Jelly */,
+				1E0281151B6C69AD00B2C650 /* JellyTests */,
 				1EFC5A301B2BA82300CC11E4 /* TestServer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1E0281141B6C69AD00B2C650 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EFC5A2F1B2BA82300CC11E4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -340,6 +420,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1E0281121B6C69AD00B2C650 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E0281291B6C6D2800B2C650 /* FileTests.swift in Sources */,
+				1E0281271B6C6C0D00B2C650 /* RuntimeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EFC5A2D1B2BA82300CC11E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -377,6 +466,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1E02811D1B6C69AD00B2C650 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EFC5A461B2BA86F00CC11E4 /* Jelly */;
+			targetProxy = 1E02811C1B6C69AD00B2C650 /* PBXContainerItemProxy */;
+		};
 		1EFC5A5B1B2BA87000CC11E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1EFC5A461B2BA86F00CC11E4 /* Jelly */;
@@ -385,6 +479,28 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1E02811E1B6C69AD00B2C650 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = JellyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.lunarguard.JellyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1E02811F1B6C69AD00B2C650 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = JellyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.lunarguard.JellyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		1E1607C91B2B4CDD00A602E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -545,6 +661,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1E0281201B6C69AD00B2C650 /* Build configuration list for PBXNativeTarget "JellyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E02811E1B6C69AD00B2C650 /* Debug */,
+				1E02811F1B6C69AD00B2C650 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		1E1607BF1B2B4CDD00A602E5 /* Build configuration list for PBXProject "Jelly" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

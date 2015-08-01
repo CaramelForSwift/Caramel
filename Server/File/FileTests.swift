@@ -50,6 +50,12 @@ class FileSpec: QuickSpec {
 				expect(passwdData) != nil
 				expect(passwdData!.bytes.count) > 0
 			}
+			
+			let home = File.homeDirectory
+			it("should have created home directory") {
+				expect(home.pathComponents.first) == File.pathSeparator
+				expect(home.pathComponents.count) > 1
+			}
 		}
 	}
 }

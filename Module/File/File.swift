@@ -123,3 +123,7 @@ public struct File: Hashable, Equatable {
 public func ==(lhs: File, rhs: File) -> Bool {
 	return lhs.path == rhs.path
 }
+
+public func /(lhs: File, rhs: String) -> File {
+	return lhs.fileByAppendingPathComponent(rhs)
+}

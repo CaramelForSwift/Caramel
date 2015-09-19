@@ -35,14 +35,14 @@ public struct File: Hashable, Equatable {
 			basePath = ""
 		}
 		
-		let path = basePath + File.pathSeparator.join(components)
+		let path = basePath + components.joinWithSeparator(File.pathSeparator)
 		self.init(path: path)
 	}
 	
 	/// An array of path components	that make up the path.
 	public var pathComponents: [String] {
 		get {
-			var components = split(self.path.characters) { (character: Character) -> Bool in
+			var components = self.path.characters.split { (character: Character) -> Bool in
 				return String(character) == File.pathSeparator
 			}.map({String($0)})
 			if String(self.path.characters[self.path.characters.startIndex]) == File.pathSeparator {
@@ -100,7 +100,7 @@ public struct File: Hashable, Equatable {
 		get {
 			let passwd = getpwuid(getuid())
 			let dirPtr = passwd.memory.pw_dir
-			var data = DataChunk()
+			var data = Data()
 			data.append(UnsafePointer<Void>(dirPtr), length: Int(strlen(dirPtr)))
 			if let path = data.stringWithEncoding(.UTF8) {
 				return File(path: path)

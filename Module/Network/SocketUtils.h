@@ -1,3 +1,5 @@
+#include <sys/types.h>
+
 #ifndef SocketUtils_c
 #define SocketUtils_c
 

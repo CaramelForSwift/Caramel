@@ -8,15 +8,22 @@
 
 import Darwin
 
-public class FileReader {
-	enum StatError: ErrorType {
+public class FileReadPullStream: Pullable {
+	public typealias Sequence = Data
+	
+	public enum StatError: ErrorType {
 		case PermissionDenied
 		case UnknownError
 	}
-	let file: File
+	public let file: File
 	let filePointer: UnsafeMutablePointer<FILE>
 	
-	private(set) var isAtEnd: Bool = false
+	private(set) var _isAtEnd: Bool = false
+	public var isAtEnd: Bool {
+		get {
+			return _isAtEnd
+		}
+	}
 	
 	public init?(file: File) {
 		self.file = file
@@ -44,7 +51,11 @@ public class FileReader {
 		return statPointer
 	}
 	
-	public func readData(size: Int = 32 * 1024) -> DataChunk {
+	public func read() -> Data? {
+		return readData()
+	}
+	
+	public func readData(size: Int = 32 * 1024) -> Data {
 		let buffer = UnsafeMutablePointer<Void>.alloc(size)
 		defer {
 			buffer.dealloc(size)
@@ -52,10 +63,10 @@ public class FileReader {
 		
 		let readBytes = fread(buffer, 1, size, self.filePointer)
 		if readBytes < size {
-			isAtEnd = true
+			_isAtEnd = true
 		}
 		
-		var data = DataChunk()
+		var data = Data()
 		data.append(buffer, length: readBytes)
 		return data
 	}
@@ -65,11 +76,11 @@ public class FileReader {
 	}
 }
 
-extension File {
-	public var data: DataChunk? {
+public extension File {
+	public var data: Data? {
 		get {
-			if let reader = FileReader(file: self) {
-				var data = DataChunk()
+			if let reader = FileReadPullStream(file: self) {
+				var data = Data()
 				while reader.isAtEnd == false {
 					data.append(reader.readData().bytes)
 				}
@@ -81,7 +92,7 @@ extension File {
 
 	internal var fileStat: stat? {
 		get {
-			guard let fileReader = FileReader(file: self) else {
+			guard let fileReader = FileReadPullStream(file: self) else {
 				return nil
 			}
 			
@@ -107,7 +118,7 @@ extension File {
 	
 	public var exists: Bool {
 		get {
-			return FileReader(file: self) != nil
+			return FileReadPullStream(file: self) != nil
 		}
 	}
 	

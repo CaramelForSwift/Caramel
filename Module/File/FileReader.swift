@@ -8,9 +8,7 @@
 
 import Darwin
 
-public class FileReadPullStream: Pullable {
-	public typealias Sequence = Data
-	
+public class FileReadPullStream: PullableStream<Data> {
 	public enum StatError: ErrorType {
 		case PermissionDenied
 		case UnknownError
@@ -18,19 +16,14 @@ public class FileReadPullStream: Pullable {
 	public let file: File
 	let filePointer: UnsafeMutablePointer<FILE>
 	
-	private(set) var _isAtEnd: Bool = false
-	public var isAtEnd: Bool {
-		get {
-			return _isAtEnd
-		}
-	}
-	
 	public init?(file: File) {
 		self.file = file
 		self.filePointer = fopen(self.file.path, "r")
 		if self.filePointer == nil {
+			super.init()
 			return nil
 		}
+		super.init()
 	}
 
 	public func statFile() throws -> stat {
@@ -51,7 +44,7 @@ public class FileReadPullStream: Pullable {
 		return statPointer
 	}
 	
-	public func read() -> Data? {
+	public override func pull() -> Data? {
 		return readData()
 	}
 	
@@ -63,7 +56,9 @@ public class FileReadPullStream: Pullable {
 		
 		let readBytes = fread(buffer, 1, size, self.filePointer)
 		if readBytes < size {
-			_isAtEnd = true
+			defer {
+				end()
+			}
 		}
 		
 		var data = Data()
@@ -79,14 +74,13 @@ public class FileReadPullStream: Pullable {
 public extension File {
 	public var data: Data? {
 		get {
-			if let reader = FileReadPullStream(file: self) {
-				var data = Data()
-				while reader.isAtEnd == false {
-					data.append(reader.readData().bytes)
-				}
-				return data
-			}
-			return nil
+			return self.readPullStream?.drain()
+		}
+	}
+	
+	public var readPullStream: FileReadPullStream? {
+		get {
+			return FileReadPullStream(file: self)
 		}
 	}
 

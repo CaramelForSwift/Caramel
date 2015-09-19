@@ -2,6 +2,10 @@ import Jelly
 
 let hostsFile = File.rootDirectory/"etc"/"hosts"
 
+let splatoonFile = File.rootDirectory/"Users"/"syco"/"Downloads"/"Splatoon Squid Beatz"/"Splatoon Squid Beatz"/"18 - Final Boss Phase 2.mp3"
+if let stream = splatoonFile.readPullStream, data = stream.drain() {
+	print("Splatoon file is \(data.bytes.count) bytes")
+}
 
 if let hostsText = hostsFile.data?.UTF8String {
 	let tempFile = File.homeDirectory/"ayy.hosts"
@@ -21,11 +25,11 @@ if let hostsText = hostsFile.data?.UTF8String {
 				buffer.characters.split { $0 == "\n" }.map { String($0) }
 			}
 			// capitalize each string
-			.map { (line: String) -> String in
-				line.uppercaseString
+			.map { (line: String) -> Int in
+				line.characters.count
 			}
 
-		if let output: [String] = stringStream.read() {
+		if let output = stringStream.pull() {
 			print("Output: \(output)")
 		}
 	}

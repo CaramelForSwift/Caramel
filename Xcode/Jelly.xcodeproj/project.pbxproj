@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E01F5D51BAE199E002EA5E0 /* StreamBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E01F5D41BAE199E002EA5E0 /* StreamBuffer.swift */; settings = {ASSET_TAGS = (); }; };
 		1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280C21B65AFA200B2C650 /* PullStream.swift */; };
 		1E0280EA1B69DB4D00B2C650 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280E91B69DB4D00B2C650 /* Runtime.swift */; };
 		1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E01F5D41BAE199E002EA5E0 /* StreamBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamBuffer.swift; sourceTree = "<group>"; };
 		1E0280C21B65AFA200B2C650 /* PullStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullStream.swift; sourceTree = "<group>"; };
 		1E0280E91B69DB4D00B2C650 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMetadata.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				1E8EAD261B2E15EB00365A68 /* Stream.swift */,
 				1E8EAD281B2E724F00365A68 /* PushStream.swift */,
 				1E0280C21B65AFA200B2C650 /* PullStream.swift */,
+				1E01F5D41BAE199E002EA5E0 /* StreamBuffer.swift */,
 			);
 			path = Streams;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */,
 				1EFC5A661B2BA88800CC11E4 /* Server.swift in Sources */,
 				1EA3AB091B327360002B1964 /* SocketServer.swift in Sources */,
+				1E01F5D51BAE199E002EA5E0 /* StreamBuffer.swift in Sources */,
 				1E8EAD2D1B2E863A00365A68 /* SocketReadStream.swift in Sources */,
 				1E87BA9D1B85B79B006482CC /* DispatchSocketListener.swift in Sources */,
 				1E0281351B6D472200B2C650 /* FileWriter.swift in Sources */,

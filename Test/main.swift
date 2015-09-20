@@ -3,8 +3,8 @@ import Jelly
 let hostsFile = File.rootDirectory/"etc"/"hosts"
 
 let splatoonFile = File.rootDirectory/"Users"/"syco"/"Downloads"/"Splatoon Squid Beatz"/"Splatoon Squid Beatz"/"18 - Final Boss Phase 2.mp3"
-if let stream = splatoonFile.readPullStream, data = stream.drain() {
-	print("Splatoon file is \(data.bytes.count) bytes")
+if let stream = splatoonFile.readPullStream?.MD5Stream, data = stream.drain() {
+	print("Splatoon file MD5 is \(data.debugDescription.lowercaseString)")
 }
 
 if let hostsText = hostsFile.data?.UTF8String {
@@ -14,7 +14,7 @@ if let hostsText = hostsFile.data?.UTF8String {
 //		print("Hosts file:\n\(data)")
 //	}
 	
-	if let stream = FileReadPullStream(file: tempFile) {
+	if let stream = tempFile.readPullStream {
 		let stringStream = stream
 			// convert binary data from file to string
 			.transform { (data: Data) -> [String] in
@@ -24,13 +24,9 @@ if let hostsText = hostsFile.data?.UTF8String {
 			.flatMap { (buffer: String) -> [String] in
 				buffer.characters.split { $0 == "\n" }.map { String($0) }
 			}
-			// capitalize each string
-			.map { (line: String) -> Int in
-				line.characters.count
-			}
-
-		if let output = stringStream.pull() {
-			print("Output: \(output)")
+		
+		if let output = stream.drain() {
+			print("Output: \(output.debugDescription)")
 		}
 	}
 }

@@ -31,14 +31,14 @@ public struct Data {
 	}
 
 	public mutating func append(buffer: UnsafePointer<Void>, length: Int) {
-		var bytes = UnsafePointer<Byte>(buffer)
+		let bytes = UnsafePointer<Byte>(buffer)
 		var byteArray: [Byte] = []
 		for i in 0.stride(to: length, by: 1) {
 			byteArray.append(bytes[i])
 		}
 		self.append(byteArray)
 	}
-
+	
 	public var unsafeVoidPointer: UnsafePointer<Void> {
 		get {
 			let buffer = UnsafeMutablePointer<UInt8>.alloc(self.bytes.count + 1)
@@ -47,6 +47,45 @@ public struct Data {
 			}
 			buffer[self.bytes.count] = 0
 			return UnsafePointer<Void>(buffer)
+		}
+	}
+	
+	public var unsafeMutableVoidPointer: UnsafeMutablePointer<Void> {
+		get {
+			let buffer = UnsafeMutablePointer<UInt8>.alloc(self.bytes.count + 1)
+			for (i, byte) in bytes.enumerate() {
+				buffer[i] = byte
+			}
+			buffer[self.bytes.count] = 0
+			return UnsafeMutablePointer<Void>(buffer)
+		}
+	}
+}
+
+public extension UInt8 {
+	static let nibbleCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
+	var byteString: String {
+		get {
+			let value = self
+			let highNibble = ((value & 0xF0) >> 4) & 0x0F
+			let lowNibble = value & 0x0F
+			let highCharacter = UInt8.nibbleCharacters[Int(highNibble)]
+			let  lowCharacter = UInt8.nibbleCharacters[Int( lowNibble)]
+			let string = highCharacter + lowCharacter
+			return string
+
+		}
+	}
+}
+
+extension Data: CustomDebugStringConvertible {
+	public var debugDescription: String {
+		get {
+			var hexString = ""
+			for byte in self.bytes {
+				hexString += byte.byteString
+			}
+			return hexString
 		}
 	}
 }
@@ -275,6 +314,18 @@ extension Data: Indexable {
 	public subscript (position: Data.Index) -> Byte { 
 		get {
 			return self.bytes[position]
+		}
+	}
+}
+
+public protocol DataConvertible {
+	var data: Data { get }
+}
+
+extension Data: DataConvertible {
+	public var data: Data {
+		get {
+			return self
 		}
 	}
 }

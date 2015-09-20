@@ -9,3 +9,4 @@
 //#import "GCDAsyncSocket.h"
 #import "SocketUtils.h"
 #import <stdio.h>
+#import <CommonCrypto/CommonCrypto.h>

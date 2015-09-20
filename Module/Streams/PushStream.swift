@@ -21,7 +21,7 @@ public class PullableStream<T: StreamBuffer>: Pullable {
 	}
 	
 	func appendToBuffer(newElements: Sequence) {
-		fatalError("Unimplemented")		
+		self.buffer.append(newElements)
 	}
 
 	public func read() -> Sequence? {
@@ -37,6 +37,24 @@ public class PullableStream<T: StreamBuffer>: Pullable {
 	}
 	public func end() {
 		_isAtEnd = true
+	}
+}
+
+public class FulfilledPullableStream<T: StreamBuffer>: PullableStream<T> {
+	public typealias Sequence = T
+	
+	private var values: Sequence
+	
+	public override func pull() -> Sequence? {
+		defer {
+			end()
+		}
+		return values
+	}
+	
+	public required init(values: Sequence) {
+		self.values = values
+		super.init()
 	}
 }
 

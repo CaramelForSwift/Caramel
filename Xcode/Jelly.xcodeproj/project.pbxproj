@@ -19,6 +19,14 @@
 		1E0281291B6C6D2800B2C650 /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281281B6C6D2800B2C650 /* FileTests.swift */; };
 		1E0281331B6CB53F00B2C650 /* SupportGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281321B6CB53F00B2C650 /* SupportGenerators.swift */; };
 		1E0281351B6D472200B2C650 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281341B6D472200B2C650 /* FileWriter.swift */; };
+		1E22F8661BAE4DF600B4A047 /* Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8651BAE4DF600B4A047 /* Hasher.swift */; settings = {ASSET_TAGS = (); }; };
+		1E22F8681BAE4E5E00B4A047 /* MD5Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8671BAE4E5E00B4A047 /* MD5Hasher.swift */; settings = {ASSET_TAGS = (); }; };
+		1E22F86A1BAE4EC600B4A047 /* MD2Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8691BAE4EC600B4A047 /* MD2Hasher.swift */; settings = {ASSET_TAGS = (); }; };
+		1E22F86C1BAE4ED900B4A047 /* MD4Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F86B1BAE4ED900B4A047 /* MD4Hasher.swift */; settings = {ASSET_TAGS = (); }; };
+		1E22F86E1BAE50FD00B4A047 /* SHA1Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F86D1BAE50FD00B4A047 /* SHA1Hasher.swift */; settings = {ASSET_TAGS = (); }; };
+		1E22F8721BAE515300B4A047 /* SHA256Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8711BAE515300B4A047 /* SHA256Hasher.swift */; settings = {ASSET_TAGS = (); }; };
+		1E22F8741BAE517A00B4A047 /* SHA224Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8731BAE517A00B4A047 /* SHA224Hasher.swift */; settings = {ASSET_TAGS = (); }; };
+		1E22F8761BAF055F00B4A047 /* SHA512Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8751BAF055F00B4A047 /* SHA512Hasher.swift */; settings = {ASSET_TAGS = (); }; };
 		1E3F92001B649FED00235033 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F91FF1B649FED00235033 /* FileReader.swift */; };
 		1E3F92031B65469D00235033 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92021B65469D00235033 /* Data.swift */; };
 		1E3F92051B6547D300235033 /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92041B6547D300235033 /* DataChunk.swift */; };
@@ -90,6 +98,14 @@
 		1E1607D51B2B5A2C00A602E5 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		1E1607D61B2B5A2C00A602E5 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		1E1607D91B2B5A2C00A602E5 /* HTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
+		1E22F8651BAE4DF600B4A047 /* Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hasher.swift; sourceTree = "<group>"; };
+		1E22F8671BAE4E5E00B4A047 /* MD5Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5Hasher.swift; sourceTree = "<group>"; };
+		1E22F8691BAE4EC600B4A047 /* MD2Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD2Hasher.swift; sourceTree = "<group>"; };
+		1E22F86B1BAE4ED900B4A047 /* MD4Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD4Hasher.swift; sourceTree = "<group>"; };
+		1E22F86D1BAE50FD00B4A047 /* SHA1Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA1Hasher.swift; sourceTree = "<group>"; };
+		1E22F8711BAE515300B4A047 /* SHA256Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256Hasher.swift; sourceTree = "<group>"; };
+		1E22F8731BAE517A00B4A047 /* SHA224Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA224Hasher.swift; sourceTree = "<group>"; };
+		1E22F8751BAF055F00B4A047 /* SHA512Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA512Hasher.swift; sourceTree = "<group>"; };
 		1E3F91FF1B649FED00235033 /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 		1E3F92021B65469D00235033 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		1E3F92041B6547D300235033 /* DataChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataChunk.swift; sourceTree = "<group>"; };
@@ -146,6 +162,7 @@
 		1E01F5D61BAE1D75002EA5E0 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
+				1E22F8621BAE4DD000B4A047 /* Hashing */,
 				1E01F5D71BAE1DAD002EA5E0 /* HashStream.swift */,
 			);
 			path = Crypto;
@@ -269,6 +286,21 @@
 				1EA3AB0A1B32743E002B1964 /* HTTPResponse.swift */,
 			);
 			path = HTTP;
+			sourceTree = "<group>";
+		};
+		1E22F8621BAE4DD000B4A047 /* Hashing */ = {
+			isa = PBXGroup;
+			children = (
+				1E22F8651BAE4DF600B4A047 /* Hasher.swift */,
+				1E22F8691BAE4EC600B4A047 /* MD2Hasher.swift */,
+				1E22F86B1BAE4ED900B4A047 /* MD4Hasher.swift */,
+				1E22F8671BAE4E5E00B4A047 /* MD5Hasher.swift */,
+				1E22F86D1BAE50FD00B4A047 /* SHA1Hasher.swift */,
+				1E22F8731BAE517A00B4A047 /* SHA224Hasher.swift */,
+				1E22F8711BAE515300B4A047 /* SHA256Hasher.swift */,
+				1E22F8751BAF055F00B4A047 /* SHA512Hasher.swift */,
+			);
+			path = Hashing;
 			sourceTree = "<group>";
 		};
 		1E3F92011B65468300235033 /* Data */ = {
@@ -469,26 +501,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E785BB71B2BEB7100BBC93F /* GCDAsyncSocket.m in Sources */,
+				1E22F8661BAE4DF600B4A047 /* Hasher.swift in Sources */,
 				1E3F92031B65469D00235033 /* Data.swift in Sources */,
+				1E22F86E1BAE50FD00B4A047 /* SHA1Hasher.swift in Sources */,
+				1E22F8681BAE4E5E00B4A047 /* MD5Hasher.swift in Sources */,
 				1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */,
 				1E3F92001B649FED00235033 /* FileReader.swift in Sources */,
 				1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */,
 				1E8EAD291B2E724F00365A68 /* PushStream.swift in Sources */,
+				1E22F86A1BAE4EC600B4A047 /* MD2Hasher.swift in Sources */,
 				1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */,
 				1EFC5A661B2BA88800CC11E4 /* Server.swift in Sources */,
 				1EA3AB091B327360002B1964 /* SocketServer.swift in Sources */,
 				1E01F5D51BAE199E002EA5E0 /* StreamBuffer.swift in Sources */,
 				1E8EAD2D1B2E863A00365A68 /* SocketReadStream.swift in Sources */,
+				1E22F8741BAE517A00B4A047 /* SHA224Hasher.swift in Sources */,
 				1E87BA9D1B85B79B006482CC /* DispatchSocketListener.swift in Sources */,
 				1E0281351B6D472200B2C650 /* FileWriter.swift in Sources */,
 				1E8EAD271B2E15EB00365A68 /* Stream.swift in Sources */,
 				1EFC5A721B2BC7BB00CC11E4 /* Types.swift in Sources */,
 				1E01F5D81BAE1DAD002EA5E0 /* HashStream.swift in Sources */,
 				1E7E588D1B61957400F2F60C /* File.swift in Sources */,
+				1E22F86C1BAE4ED900B4A047 /* MD4Hasher.swift in Sources */,
 				1E3F92051B6547D300235033 /* DataChunk.swift in Sources */,
 				1EFC5A6A1B2BAF6B00CC11E4 /* SocketListener.swift in Sources */,
 				1E0281331B6CB53F00B2C650 /* SupportGenerators.swift in Sources */,
+				1E22F8721BAE515300B4A047 /* SHA256Hasher.swift in Sources */,
 				1E0280EA1B69DB4D00B2C650 /* Runtime.swift in Sources */,
+				1E22F8761BAF055F00B4A047 /* SHA512Hasher.swift in Sources */,
 				1EFC5A651B2BA88800CC11E4 /* Connection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,10 +34,10 @@ public extension Pullable where Self.Sequence: DataConvertible {
 	}
 }
 
-public extension Data {
+public extension DataConvertible {
 	var SHA512: Data? {
 		get {
-			return FulfilledPullableStream(values: self).SHA512Stream.drain()
+			return FulfilledPullableStream(values: self.data).SHA512Stream.drain()
 		}
 	}
 }

@@ -27,6 +27,7 @@
 		1E22F8721BAE515300B4A047 /* SHA256Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8711BAE515300B4A047 /* SHA256Hasher.swift */; settings = {ASSET_TAGS = (); }; };
 		1E22F8741BAE517A00B4A047 /* SHA224Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8731BAE517A00B4A047 /* SHA224Hasher.swift */; settings = {ASSET_TAGS = (); }; };
 		1E22F8761BAF055F00B4A047 /* SHA512Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8751BAF055F00B4A047 /* SHA512Hasher.swift */; settings = {ASSET_TAGS = (); }; };
+		1E22F8781BAF1F7900B4A047 /* HMACStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8771BAF1F7900B4A047 /* HMACStream.swift */; settings = {ASSET_TAGS = (); }; };
 		1E3F92001B649FED00235033 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F91FF1B649FED00235033 /* FileReader.swift */; };
 		1E3F92031B65469D00235033 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92021B65469D00235033 /* Data.swift */; };
 		1E3F92051B6547D300235033 /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92041B6547D300235033 /* DataChunk.swift */; };
@@ -106,6 +107,7 @@
 		1E22F8711BAE515300B4A047 /* SHA256Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA256Hasher.swift; sourceTree = "<group>"; };
 		1E22F8731BAE517A00B4A047 /* SHA224Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA224Hasher.swift; sourceTree = "<group>"; };
 		1E22F8751BAF055F00B4A047 /* SHA512Hasher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHA512Hasher.swift; sourceTree = "<group>"; };
+		1E22F8771BAF1F7900B4A047 /* HMACStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACStream.swift; sourceTree = "<group>"; };
 		1E3F91FF1B649FED00235033 /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 		1E3F92021B65469D00235033 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		1E3F92041B6547D300235033 /* DataChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataChunk.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				1E22F8621BAE4DD000B4A047 /* Hashing */,
 				1E01F5D71BAE1DAD002EA5E0 /* HashStream.swift */,
+				1E22F8771BAF1F7900B4A047 /* HMACStream.swift */,
 			);
 			path = Crypto;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				1E785BB71B2BEB7100BBC93F /* GCDAsyncSocket.m in Sources */,
 				1E22F8661BAE4DF600B4A047 /* Hasher.swift in Sources */,
 				1E3F92031B65469D00235033 /* Data.swift in Sources */,
+				1E22F8781BAF1F7900B4A047 /* HMACStream.swift in Sources */,
 				1E22F86E1BAE50FD00B4A047 /* SHA1Hasher.swift in Sources */,
 				1E22F8681BAE4E5E00B4A047 /* MD5Hasher.swift in Sources */,
 				1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */,

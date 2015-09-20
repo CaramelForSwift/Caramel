@@ -1,27 +1,11 @@
 import Jelly
 
-let splatoonFile = File.rootDirectory/"Users"/"syco"/"Downloads"/"Splatoon Squid Beatz"/"Splatoon Squid Beatz"/"18 - Final Boss Phase 2.mp3"
 //if let stream = splatoonFile.readPullStream?.MD5Stream, data = stream.drain() {
 //	print("Splatoon file MD5 is \(data.debugDescription.lowercaseString)")
 //}
 
-	let hostsFile = File.rootDirectory/"etc"/"hosts"
-
-	if let
-		data1 = hostsFile.readPullStream?.SHA512Stream.drain(),
-		data2 = hostsFile.data?.SHA512,
-		data3 = hostsFile.SHA512 
-	{
-		print("SHA512 values for hosts file:\n\(data1)\n\(data2)\n\(data3)")
-	}
-
-if let data = hostsFile.readPullStream?.SHA512Stream.drain() {
-	print("Hosts file SHA512 is \(data)")
-}
-
-if let data = hostsFile.data?.SHA512 {
-	print("Hosts file SHA512 is \(data)")	
-}
+let hostsFile = File.rootDirectory/"etc"/"hosts"
+let splatoonFile = File.rootDirectory/"Users"/"syco"/"Downloads"/"Splatoon Squid Beatz"/"Splatoon Squid Beatz"/"18 - Final Boss Phase 2.mp3"
 
 if let hostsText = hostsFile.data?.UTF8String {
 	let tempFile = File.homeDirectory/"ayy.hosts"

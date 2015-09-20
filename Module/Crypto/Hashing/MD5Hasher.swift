@@ -34,10 +34,10 @@ public extension Pullable where Self.Sequence: DataConvertible {
 	}
 }
 
-public extension Data {
+public extension DataConvertible {
 	var MD5: Data? {
 		get {
-			return FulfilledPullableStream(values: self).MD5Stream.drain()
+			return FulfilledPullableStream(values: self.data).MD5Stream.drain()
 		}
 	}
 }

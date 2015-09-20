@@ -34,10 +34,10 @@ public extension Pullable where Self.Sequence: DataConvertible {
 	}
 }
 
-public extension Data {
+public extension DataConvertible {
 	var MD4: Data? {
 		get {
-			return FulfilledPullableStream(values: self).MD4Stream.drain()
+			return FulfilledPullableStream(values: self.data).MD4Stream.drain()
 		}
 	}
 }

@@ -14,7 +14,7 @@ if let hostsText = hostsFile.data?.UTF8String {
 //		print("Hosts file:\n\(data)")
 //	}
 	
-	if let stream = tempFile.readPullStream {
+	if let stream = hostsFile.readPullStream {
 		let stringStream = stream
 			// convert binary data from file to string
 			.transform { (data: Data) -> [String] in
@@ -25,9 +25,7 @@ if let hostsText = hostsFile.data?.UTF8String {
 				buffer.characters.split { $0 == "\n" }.map { String($0) }
 			}
 		
-		if let output = stream.drain() {
-			print("Output: \(output.debugDescription)")
-		}
+		print("Output: \(stringStream.drain())")
 	}
 }
 

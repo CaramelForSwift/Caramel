@@ -59,7 +59,7 @@ public class FulfilledPullableStream<T: StreamBuffer>: PullableStream<T> {
 }
 
 public extension Pullable {
-	func drain() -> Self.Sequence? {
+	func drain() -> Self.Sequence {
 		var output = Self.Sequence()
 		while (self.isAtEnd == false) {
 			if let read = self.pull() {
@@ -120,5 +120,13 @@ public extension Pullable {
 	}
 	func flatMap<U>(transformer: (Self.Sequence.Generator.Element) -> [U]) -> TransformPullStream<Self, U> {
 		return TransformPullStream(stream: self, transformer: { $0.flatMap({ transformer($0) }) })
+	}
+}
+
+public extension DataConvertible {
+	public var stream: FulfilledPullableStream<Data> {
+		get {
+			return FulfilledPullableStream(values: self.data)
+		}
 	}
 }

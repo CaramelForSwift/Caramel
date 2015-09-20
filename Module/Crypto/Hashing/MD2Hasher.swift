@@ -37,7 +37,7 @@ public extension Pullable where Self.Sequence: DataConvertible {
 public extension DataConvertible {
 	var MD2: Data? {
 		get {
-			return FulfilledPullableStream(values: self.data).MD2Stream.drain()
+			return self.stream.MD2Stream.drain()
 		}
 	}
 }

@@ -89,7 +89,7 @@ public extension Pullable where Self.Sequence: DataConvertible {
 
 public extension DataConvertible {
 	func HMAC(algorithm: HMACAlgorithm, withKey key: Data) -> Data? {
-		return FulfilledPullableStream(values: self.data).HMACStream(algorithm, withKey: key).drain()
+		return self.stream.HMACStream(algorithm, withKey: key).drain()
 	}
 }
 

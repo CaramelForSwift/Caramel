@@ -138,14 +138,14 @@ public extension Pullable where Self.Sequence: DataConvertible {
 }
 
 public extension DataConvertible {
-	var base64EncodedData: Data? {
+	var base64EncodedData: Data {
 		get {
-			return FulfilledPullableStream(values: self.data).base64EncodeStream.drain()
+			return self.stream.base64EncodeStream.drain()
 		}
 	}
 	var base64EncodedString: String? {
 		get {
-			return FulfilledPullableStream(values: self.data).base64EncodeStream.drain()?.UTF8String
+			return self.stream.base64EncodeStream.drain().UTF8String
 		}
 	}
 }

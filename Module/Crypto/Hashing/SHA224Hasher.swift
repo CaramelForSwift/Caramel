@@ -37,7 +37,7 @@ public extension Pullable where Self.Sequence: DataConvertible {
 public extension DataConvertible {
 	var SHA224: Data? {
 		get {
-			return FulfilledPullableStream(values: self.data).SHA224Stream.drain()
+			return self.stream.SHA224Stream.drain()
 		}
 	}
 }

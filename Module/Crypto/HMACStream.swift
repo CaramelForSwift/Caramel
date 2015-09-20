@@ -82,19 +82,19 @@ public class CryptoHMACStream<T: Pullable where T.Sequence: DataConvertible>: Tr
 }
 
 public extension Pullable where Self.Sequence: DataConvertible {
-	func HMACStream(algorithm: HMACAlgorithm, withKey key: Data) -> CryptoHMACStream<Self> {
+	func HMAC(algorithm: HMACAlgorithm, withKey key: Data) -> CryptoHMACStream<Self> {
 		return CryptoHMACStream(stream: self, algorithm: algorithm, key: key)
 	}
 }
 
 public extension DataConvertible {
 	func HMAC(algorithm: HMACAlgorithm, withKey key: Data) -> Data? {
-		return self.stream.HMACStream(algorithm, withKey: key).drain()
+		return self.stream.HMAC(algorithm, withKey: key).drain()
 	}
 }
 
 public extension File {
 	func HMAC(algorithm: HMACAlgorithm, withKey key: Data) -> Data? {
-		return self.readPullStream?.HMACStream(algorithm, withKey: key).drain()
+		return self.readPullStream?.HMAC(algorithm, withKey: key).drain()
 	}
 }

@@ -27,7 +27,7 @@ public class MD2Hasher: Hasher {
 }
 
 public extension Pullable where Self.Sequence: DataConvertible {
-	var MD2Stream: CryptoDigestStream<Self, MD2Hasher> {
+	var MD2: CryptoDigestStream<Self, MD2Hasher> {
 		get {
 			return CryptoDigestStream(stream: self, hasher: MD2Hasher())
 		}
@@ -37,7 +37,7 @@ public extension Pullable where Self.Sequence: DataConvertible {
 public extension DataConvertible {
 	var MD2: Data? {
 		get {
-			return self.stream.MD2Stream.drain()
+			return self.stream.MD2.drain()
 		}
 	}
 }
@@ -45,7 +45,7 @@ public extension DataConvertible {
 public extension File {
 	var MD2: Data? {
 		get {
-			return self.readPullStream?.MD2Stream.drain()
+			return self.readPullStream?.MD2.drain()
 		}
 	}
 }

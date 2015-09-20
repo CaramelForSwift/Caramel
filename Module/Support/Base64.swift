@@ -130,7 +130,7 @@ public class Base64DecoderStream<T: Pullable where T.Sequence: DataConvertible>:
 }
 
 public extension Pullable where Self.Sequence: DataConvertible {
-	var base64EncodeStream: Base64EncoderStream<Self> {
+	var base64Encode: Base64EncoderStream<Self> {
 		get {
 			return Base64EncoderStream(stream: self)
 		}
@@ -140,12 +140,12 @@ public extension Pullable where Self.Sequence: DataConvertible {
 public extension DataConvertible {
 	var base64EncodedData: Data {
 		get {
-			return self.stream.base64EncodeStream.drain()
+			return self.stream.base64Encode.drain()
 		}
 	}
 	var base64EncodedString: String? {
 		get {
-			return self.stream.base64EncodeStream.drain().UTF8String
+			return self.base64EncodedData.UTF8String
 		}
 	}
 }

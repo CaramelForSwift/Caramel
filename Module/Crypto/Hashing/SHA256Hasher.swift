@@ -27,7 +27,7 @@ public class SHA256Hasher: Hasher {
 }
 
 public extension Pullable where Self.Sequence: DataConvertible {
-	var SHA256Stream: CryptoDigestStream<Self, SHA256Hasher> {
+	var SHA256: CryptoDigestStream<Self, SHA256Hasher> {
 		get {
 			return CryptoDigestStream(stream: self, hasher: SHA256Hasher())
 		}
@@ -37,7 +37,7 @@ public extension Pullable where Self.Sequence: DataConvertible {
 public extension DataConvertible {
 	var SHA256: Data? {
 		get {
-			return self.stream.SHA256Stream.drain()
+			return self.stream.SHA256.drain()
 		}
 	}
 }
@@ -45,7 +45,7 @@ public extension DataConvertible {
 public extension File {
 	var SHA256: Data? {
 		get {
-			return self.readPullStream?.SHA256Stream.drain()
+			return self.readPullStream?.SHA256.drain()
 		}
 	}
 }

@@ -106,7 +106,7 @@ public class TransformPullStream<T: Pullable, U>: TransformPullable {
 	}
 	public var isAtEnd: Bool {
 		get {
-			return true
+			return self.pullStream.isAtEnd
 		}
 	}
 }

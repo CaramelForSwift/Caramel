@@ -9,21 +9,22 @@
 import Darwin
 
 public class FileReadPullStream: PullableStream<Data> {
-	public enum StatError: ErrorType {
-		case PermissionDenied
-		case UnknownError
+	public enum FileError: ErrorType {
+        case FileNotFound(File)
+		case PermissionDenied(File)
+		case UnknownError(File)
 	}
 	public let file: File
 	let filePointer: UnsafeMutablePointer<FILE>
 	
-	public init?(file: File) {
+	public init(file: File) throws {
 		self.file = file
 		self.filePointer = fopen(self.file.path, "r")
-		if self.filePointer == nil {
-			super.init()
-			return nil
+        super.init()
+
+        guard self.filePointer != nil else {
+            throw FileError.FileNotFound(file)
 		}
-		super.init()
 	}
 
 	public func statFile() throws -> stat {
@@ -32,12 +33,12 @@ public class FileReadPullStream: PullableStream<Data> {
 			if let posixError = POSIXError(rawValue: errno) {
 				switch posixError {
 				case POSIXError.EACCES:
-					throw StatError.PermissionDenied
+					throw FileError.PermissionDenied(self.file)
 				default:
-					throw StatError.UnknownError
+					throw FileError.UnknownError(self.file)
 				}
 			} else {
-				throw StatError.UnknownError
+				throw FileError.UnknownError(self.file)
 			}
 		}
 		
@@ -72,59 +73,59 @@ public class FileReadPullStream: PullableStream<Data> {
 }
 
 public extension File {
-	public var data: Data? {
-		get {
-			return self.readPullStream?.drain()
-		}
+    public func data() throws -> Data {
+        return try self.readPullStream().drain()
 	}
 	
-	public var readPullStream: FileReadPullStream? {
-		get {
-			return FileReadPullStream(file: self)
-		}
+    public func readPullStream() throws -> FileReadPullStream {
+        return try FileReadPullStream(file: self)
 	}
 
-	internal var fileStat: stat? {
-		get {
-			guard let fileReader = FileReadPullStream(file: self) else {
-				return nil
-			}
-			
-			let fileStat: stat
-			do {
-				fileStat = try fileReader.statFile()
-				return fileStat
-			} catch {
-				return nil
-			}
-		}
+    internal func fileStat() throws -> stat {
+        do {
+            let fileReader = try FileReadPullStream(file: self)
+			let fileStat: stat = try fileReader.statFile()
+            return fileStat
+        } catch let error {
+            throw error
+        }
 	}
 	
-	public var metadata: FileMetadata? {
-		get {
-			if let fileStat = self.fileStat {
-				return FileMetadata(fileStat: fileStat)
-			} else {
-				return nil
-			}
-		}
+    public func metadata() throws -> FileMetadata {
+        do {
+            let fileStat = try self.fileStat()
+            return FileMetadata(fileStat: fileStat)
+        } catch let error {
+            throw error
+        }
 	}
 	
 	public var exists: Bool {
 		get {
-			return FileReadPullStream(file: self) != nil
+            do {
+                let _ = try FileReadPullStream(file: self)
+                return true
+            } catch {
+                return false
+            }
 		}
 	}
 	
-	public var isDirectory: Bool {
-		get {
-			return self.metadata?.isDirectory ?? false
-		}
+    public func isDirectory() throws -> Bool {
+        do {
+            let metadata = try self.metadata()
+            return metadata.isDirectory
+        } catch let error {
+            throw error
+        }
 	}
 	
-	public var isFile: Bool {
-		get {
-			return self.metadata?.isFile ?? false
-		}
+	public func isFile() throws -> Bool {
+        do {
+            let metadata = try self.metadata()
+            return metadata.isFile
+        } catch let error {
+            throw error
+        }
 	}
 }

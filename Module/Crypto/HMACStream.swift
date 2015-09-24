@@ -88,13 +88,13 @@ public extension Pullable where Self.Sequence: DataConvertible {
 }
 
 public extension DataConvertible {
-	func HMAC(algorithm: HMACAlgorithm, withKey key: Data) -> Data? {
+	func HMAC(algorithm: HMACAlgorithm, withKey key: Data) -> Data {
 		return self.stream.HMAC(algorithm, withKey: key).drain()
 	}
 }
 
 public extension File {
-	func HMAC(algorithm: HMACAlgorithm, withKey key: Data) -> Data? {
-		return self.readPullStream?.HMAC(algorithm, withKey: key).drain()
+	func HMAC(algorithm: HMACAlgorithm, withKey key: Data) throws -> Data {
+		return try self.readPullStream().HMAC(algorithm, withKey: key).drain()
 	}
 }

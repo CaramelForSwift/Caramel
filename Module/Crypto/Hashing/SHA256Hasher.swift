@@ -35,7 +35,7 @@ public extension Pullable where Self.Sequence: DataConvertible {
 }
 
 public extension DataConvertible {
-	var SHA256: Data? {
+	var SHA256: Data {
 		get {
 			return self.stream.SHA256.drain()
 		}
@@ -43,9 +43,7 @@ public extension DataConvertible {
 }
 
 public extension File {
-	var SHA256: Data? {
-		get {
-			return self.readPullStream?.SHA256.drain()
-		}
+    public func SHA256() throws -> Data {
+        return try self.readPullStream().SHA256.drain()
 	}
 }

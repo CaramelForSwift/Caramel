@@ -35,7 +35,7 @@ public extension Pullable where Self.Sequence: DataConvertible {
 }
 
 public extension DataConvertible {
-	var MD4: Data? {
+	var MD4: Data {
 		get {
 			return self.stream.MD4.drain()
 		}
@@ -43,9 +43,7 @@ public extension DataConvertible {
 }
 
 public extension File {
-	var MD4: Data? {
-		get {
-			return self.readPullStream?.MD4.drain()
-		}
+    public func MD4() throws -> Data {
+        return try self.readPullStream().MD4.drain()
 	}
 }

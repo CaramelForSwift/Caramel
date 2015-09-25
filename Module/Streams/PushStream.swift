@@ -1,132 +1,39 @@
-/*
-A `PushStream`
-*/
-
-public protocol Pullable {
-	typealias Sequence: StreamBuffer
-	
-	func pull() -> Sequence?
-	var isAtEnd: Bool { get }
-	
-	var buffer: Sequence { get set }
+public protocol Pushable: Buffered {
+    typealias PushHandler = (Container<Sequence> -> Void)
+    func wait(handler: PushHandler)
 }
 
-public class PullableStream<T: StreamBuffer>: Pullable {
-	public typealias Sequence = T
-	
-	public var buffer = Sequence()
-	
-	public func pull() -> Sequence? {
-		fatalError("Unimplemented")
-	}
-	
-	func appendToBuffer(newElements: Sequence) {
-		self.buffer.append(newElements)
-	}
+public class PushStream<T: StreamBuffer>: Pushable {
+    public typealias Sequence = T
+    
+    public var buffer = Sequence()
+    
+    func appendToBuffer(newElements: Sequence) {
+        self.buffer.append(newElements)
+    }
+    
+    private var _isAtEnd = false
+    public var isAtEnd: Bool {
+        get {
+            return _isAtEnd
+        }
+    }
+    public func end() {
+        _isAtEnd = true
+    }
 
-	public func read() -> Sequence? {
-		guard isAtEnd == false else { return nil }
-		return pull()
-	}
-	
-	private var _isAtEnd = false
-	public var isAtEnd: Bool {
-		get {
-			return _isAtEnd
-		}
-	}
-	public func end() {
-		_isAtEnd = true
-	}
-}
-
-public class FulfilledPullableStream<T: StreamBuffer>: PullableStream<T> {
-	public typealias Sequence = T
-	
-	private var values: Sequence
-	
-	public override func pull() -> Sequence? {
-		defer {
-			end()
-		}
-		return values
-	}
-	
-	public required init(values: Sequence) {
-		self.values = values
-		super.init()
-	}
-}
-
-public extension Pullable {
-	func drain() -> Self.Sequence {
-		var output = Self.Sequence()
-		while (self.isAtEnd == false) {
-			if let read = self.pull() {
-				output.append(read)
-			}
-		}
-		return output
-	}
-}
-
-public protocol TransformPullable: Pullable {
-	typealias InputStream: Pullable
-	var pullStream: InputStream { get }
-}
-
-public class TransformPullStream<T: Pullable, U>: TransformPullable {
-	public typealias InputStream = T
-	public typealias Sequence = [U]
-	
-	public typealias Transformer = (T.Sequence) -> [U]
-	
-	public var buffer = Array<U>()
-	
-	private(set) var _pullStream: InputStream
-	public var pullStream: InputStream {
-		get {
-			return _pullStream
-		}
-	}
-	
-	private let transform: Transformer
-
-	public init(stream: InputStream, transformer: Transformer) {
-		_pullStream = stream
-		transform = transformer
-	}
-	
-	public func pull() -> [U]? {
-		if let data = self.pullStream.pull() {
-			return self.transform(data)
-		} else {
-			return nil
-		}
-	}
-	public var isAtEnd: Bool {
-		get {
-			return self.pullStream.isAtEnd
-		}
-	}
-}
-
-public extension Pullable {
-	func transform<U>(transformer: (Self.Sequence) -> [U]) -> TransformPullStream<Self, U> {
-		return TransformPullStream(stream: self, transformer: transformer)
-	}
-	func map<U>(transformer: (Self.Sequence.Generator.Element) -> U) -> TransformPullStream<Self, U> {
-		return TransformPullStream(stream: self, transformer: { $0.map({ transformer($0) }) })
-	}
-	func flatMap<U>(transformer: (Self.Sequence.Generator.Element) -> [U]) -> TransformPullStream<Self, U> {
-		return TransformPullStream(stream: self, transformer: { $0.flatMap({ transformer($0) }) })
-	}
-}
-
-public extension DataConvertible {
-	public var stream: FulfilledPullableStream<Data> {
-		get {
-			return FulfilledPullableStream(values: self.data)
-		}
-	}
+    private var handlers: [PushStream.PushHandler] = []
+    public func wait(handler: PushStream.PushHandler) {
+        handlers.append(handler)
+    }
+    public func write(sequence: Sequence) {
+        let result = Container.Success(sequence)
+        for handler in handlers {
+            handler(result)
+        }
+    }
+    
+    public init() {
+        
+    }
 }

@@ -49,6 +49,7 @@
 		1EFC5A721B2BC7BB00CC11E4 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A711B2BC7BB00CC11E4 /* Types.swift */; };
 		1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */; };
 		1EFC5A791B2BD47F00CC11E4 /* SocketUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */; };
+		A755D4A51BB5BD8200CE3B08 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A755D4A41BB5BD8200CE3B08 /* Result.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		1EFC5A711B2BC7BB00CC11E4 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SocketUtils.c; sourceTree = "<group>"; };
 		1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketUtils.h; sourceTree = "<group>"; };
+		A755D4A41BB5BD8200CE3B08 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 		1E0281311B6CB50600B2C650 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				A755D4A41BB5BD8200CE3B08 /* Result.swift */,
 				1E0281321B6CB53F00B2C650 /* SupportGenerators.swift */,
 				1E22F8791BAF267500B4A047 /* Base64.swift */,
 			);
@@ -527,6 +530,7 @@
 				1E87BA9D1B85B79B006482CC /* DispatchSocketListener.swift in Sources */,
 				1E0281351B6D472200B2C650 /* FileWriter.swift in Sources */,
 				1E8EAD271B2E15EB00365A68 /* Stream.swift in Sources */,
+				A755D4A51BB5BD8200CE3B08 /* Result.swift in Sources */,
 				1EFC5A721B2BC7BB00CC11E4 /* Types.swift in Sources */,
 				1E01F5D81BAE1DAD002EA5E0 /* HashStream.swift in Sources */,
 				1E7E588D1B61957400F2F60C /* File.swift in Sources */,

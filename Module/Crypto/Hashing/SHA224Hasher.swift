@@ -16,7 +16,7 @@ public class SHA224Hasher: Hasher {
 	}
 	
 	public func update(data: Data) {
-		CC_SHA224_Update(context, data.unsafeVoidPointer, CC_LONG(data.bytes.count))
+		CC_SHA224_Update(context, data.bytes, CC_LONG(data.bytes.count))
 	}
 	
 	public func finish() -> Data {

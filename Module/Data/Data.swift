@@ -38,28 +38,6 @@ public struct Data {
 		}
 		self.append(byteArray)
 	}
-	
-	public var unsafeVoidPointer: UnsafePointer<Void> {
-		get {
-			let buffer = UnsafeMutablePointer<UInt8>.alloc(self.bytes.count + 1)
-			for (i, byte) in bytes.enumerate() {
-				buffer[i] = byte
-			}
-			buffer[self.bytes.count] = 0
-			return UnsafePointer<Void>(buffer)
-		}
-	}
-	
-	public var unsafeMutableVoidPointer: UnsafeMutablePointer<Void> {
-		get {
-			let buffer = UnsafeMutablePointer<UInt8>.alloc(self.bytes.count + 1)
-			for (i, byte) in bytes.enumerate() {
-				buffer[i] = byte
-			}
-			buffer[self.bytes.count] = 0
-			return UnsafeMutablePointer<Void>(buffer)
-		}
-	}
 }
 
 public extension UInt8 {

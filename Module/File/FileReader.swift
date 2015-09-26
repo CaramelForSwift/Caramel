@@ -50,20 +50,18 @@ public class FileReadPullStream: PullableStream<Data> {
 	}
 	
 	public func readData(size: Int = 32 * 1024) -> Data {
-		let buffer = UnsafeMutablePointer<Void>.alloc(size)
-		defer {
-			buffer.dealloc(size)
-		}
-		
-		let readBytes = fread(buffer, 1, size, self.filePointer)
+		var data = Data(numberOfZeroes: size)
+
+		let readBytes = fread(&data.bytes, 1, size, self.filePointer)
 		if readBytes < size {
+			let offset = data.bytes.startIndex.advancedBy(readBytes)
+			data.bytes.removeRange(Range<Array<Byte>.Index>(start: offset, end: data.bytes.endIndex))
+			assert(data.bytes.count == readBytes)
 			defer {
 				end()
 			}
 		}
 		
-		var data = Data()
-		data.append(buffer, length: readBytes)
 		return data
 	}
 	

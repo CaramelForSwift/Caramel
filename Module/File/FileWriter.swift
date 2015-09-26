@@ -24,7 +24,7 @@ public class FileWriter {
 	
 	public func writeData(data: Data) throws {
 		assert(__error().memory == errno)
-		let result = fwrite(data.unsafeVoidPointer, sizeof(UInt8), data.bytes.count, self.filePointer)
+		let result = fwrite(data.bytes, sizeof(UInt8), data.bytes.count, self.filePointer)
 		print("Wrote \(result) of \(data.bytes.count)")
 	}
 	

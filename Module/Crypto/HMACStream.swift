@@ -69,7 +69,7 @@ public class CryptoHMACStream<T: Pullable where T.Sequence: DataConvertible>: Tr
 	
 	public func pull() -> Data? {
 		if let data = self.pullStream.pull() {
-			CCHmacUpdate(self.context, data.data.unsafeVoidPointer, data.data.bytes.count)
+			CCHmacUpdate(self.context, data.data.bytes, data.data.bytes.count)
 			
 			if isAtEnd {
 				var digest = Array<UInt8>(count: self.hmacLength, repeatedValue:0)

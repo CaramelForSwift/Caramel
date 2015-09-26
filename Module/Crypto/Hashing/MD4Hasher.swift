@@ -16,7 +16,7 @@ public class MD4Hasher: Hasher {
 	}
 	
 	public func update(data: Data) {
-		CC_MD4_Update(context, data.unsafeVoidPointer, CC_LONG(data.bytes.count))
+		CC_MD4_Update(context, data.bytes, CC_LONG(data.bytes.count))
 	}
 	
 	public func finish() -> Data {

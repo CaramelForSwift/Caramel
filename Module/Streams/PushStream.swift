@@ -1,5 +1,5 @@
 public protocol Pushable: Buffered {
-    typealias PushHandler = (Container<Sequence> -> Void)
+    typealias PushHandler = (Result<Sequence> -> Void)
     func wait(handler: PushHandler)
 }
 
@@ -27,7 +27,7 @@ public class PushStream<T: StreamBuffer>: Pushable {
         handlers.append(handler)
     }
     public func write(sequence: Sequence) {
-        let result = Container.Success(sequence)
+        let result = Result.Success(sequence)
         for handler in handlers {
             handler(result)
         }

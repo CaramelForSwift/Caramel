@@ -178,7 +178,7 @@
 		1E0281211B6C69E100B2C650 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../External/Quick/build/Debug/Quick.framework; sourceTree = "<group>"; };
 		1E0281231B6C69E700B2C650 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../External/Quick/Externals/Nimble/build/Debug/Nimble.framework; sourceTree = "<group>"; };
 		1E0281261B6C6C0D00B2C650 /* RuntimeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuntimeTests.swift; sourceTree = "<group>"; };
-		1E0281281B6C6D2800B2C650 /* FileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; };
+		1E0281281B6C6D2800B2C650 /* FileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileTests.swift; sourceTree = "<group>"; usesTabs = 1; };
 		1E0281321B6CB53F00B2C650 /* SupportGenerators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportGenerators.swift; sourceTree = "<group>"; };
 		1E0281341B6D472200B2C650 /* FileWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
 		1E1607D01B2B5A2100A602E5 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };

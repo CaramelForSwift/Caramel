@@ -22,9 +22,7 @@ public class PullableStream<T: StreamBuffer>: Pullable {
     
     private var _isAtEnd = false
     public var isAtEnd: Bool {
-        get {
-            return _isAtEnd
-        }
+        return _isAtEnd
     }
     public func end() {
         _isAtEnd = true
@@ -76,9 +74,7 @@ public class TransformPullStream<T: Pullable, U>: TransformPullable {
     
     private(set) var _pullStream: InputStream
     public var pullStream: InputStream {
-        get {
-            return _pullStream
-        }
+        return _pullStream
     }
     
     private let transform: Transformer
@@ -96,9 +92,7 @@ public class TransformPullStream<T: Pullable, U>: TransformPullable {
         }
     }
     public var isAtEnd: Bool {
-        get {
-            return self.pullStream.isAtEnd
-        }
+        return self.pullStream.isAtEnd
     }
 }
 
@@ -116,8 +110,6 @@ public extension Pullable {
 
 public extension DataConvertible {
     public var stream: FulfilledPullableStream<Data> {
-        get {
-            return FulfilledPullableStream(values: self.data)
-        }
+        return FulfilledPullableStream(values: self.data)
     }
 }

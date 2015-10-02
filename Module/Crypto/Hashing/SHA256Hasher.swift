@@ -28,17 +28,13 @@ public class SHA256Hasher: Hasher {
 
 public extension Pullable where Self.Sequence: DataConvertible {
 	var SHA256: CryptoDigestStream<Self, SHA256Hasher> {
-		get {
-			return CryptoDigestStream(stream: self, hasher: SHA256Hasher())
-		}
+        return CryptoDigestStream(stream: self, hasher: SHA256Hasher())
 	}
 }
 
 public extension DataConvertible {
 	var SHA256: Data {
-		get {
-			return self.stream.SHA256.drain()
-		}
+        return self.stream.SHA256.drain()
 	}
 }
 

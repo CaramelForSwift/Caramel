@@ -6,8 +6,6 @@ public class HTTPServer<T>: SocketServer<T: HTTPRequestType, HTTPResponse> {
 
 public extension NetConnection where Self.RequestType : HTTPRequestType {
 	public var request: Self.RequestType {
-		get {
-			return self.read()
-		}
+        return self.read()
 	}
 }

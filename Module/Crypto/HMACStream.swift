@@ -28,35 +28,29 @@ public class CryptoHMACStream<T: Pullable where T.Sequence: DataConvertible>: Tr
 	private let context = UnsafeMutablePointer<CCHmacContext>.alloc(1)
 	
 	public var isAtEnd: Bool { 
-		get {
-			return pullStream.isAtEnd
-		}
+        return pullStream.isAtEnd
 	}
 	
 	private var ccAlgorithm: CCHmacAlgorithm {
-		get {
-			switch algorithm {
-			case .MD5: return CCHmacAlgorithm(kCCHmacAlgMD5)
-			case .SHA1: return CCHmacAlgorithm(kCCHmacAlgSHA1)
-			case .SHA224: return CCHmacAlgorithm(kCCHmacAlgSHA224)
-			case .SHA256: return CCHmacAlgorithm(kCCHmacAlgSHA256)
-			case .SHA384: return CCHmacAlgorithm(kCCHmacAlgSHA384)
-			case .SHA512: return CCHmacAlgorithm(kCCHmacAlgSHA512)
-			}
-		}
+        switch algorithm {
+        case .MD5: return CCHmacAlgorithm(kCCHmacAlgMD5)
+        case .SHA1: return CCHmacAlgorithm(kCCHmacAlgSHA1)
+        case .SHA224: return CCHmacAlgorithm(kCCHmacAlgSHA224)
+        case .SHA256: return CCHmacAlgorithm(kCCHmacAlgSHA256)
+        case .SHA384: return CCHmacAlgorithm(kCCHmacAlgSHA384)
+        case .SHA512: return CCHmacAlgorithm(kCCHmacAlgSHA512)
+        }
 	}
 	
 	private var hmacLength: Int {
-		get {
-			switch algorithm {
-			case .MD5: return Int(CC_MD5_DIGEST_LENGTH)
-			case .SHA1: return Int(CC_SHA1_DIGEST_LENGTH)
-			case .SHA224: return Int(CC_SHA224_DIGEST_LENGTH)
-			case .SHA256: return Int(CC_SHA256_DIGEST_LENGTH)
-			case .SHA384: return Int(CC_SHA384_DIGEST_LENGTH)
-			case .SHA512: return Int(CC_SHA512_DIGEST_LENGTH)
-			}
-		}
+        switch algorithm {
+        case .MD5: return Int(CC_MD5_DIGEST_LENGTH)
+        case .SHA1: return Int(CC_SHA1_DIGEST_LENGTH)
+        case .SHA224: return Int(CC_SHA224_DIGEST_LENGTH)
+        case .SHA256: return Int(CC_SHA256_DIGEST_LENGTH)
+        case .SHA384: return Int(CC_SHA384_DIGEST_LENGTH)
+        case .SHA512: return Int(CC_SHA512_DIGEST_LENGTH)
+        }
 	}
 	
 	public init(stream: InputStream, algorithm: HMACAlgorithm, key: Data) {

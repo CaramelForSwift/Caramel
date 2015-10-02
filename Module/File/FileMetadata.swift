@@ -34,14 +34,10 @@ public struct FileMetadata {
 	}
 	
 	public var isFile: Bool {
-		get {
-			return self.matchesFlag(Int(self.fileStat.st_mode), .S_IFREG)
-		}
+        return self.matchesFlag(Int(self.fileStat.st_mode), .S_IFREG)
 	}
 	
 	public var isDirectory: Bool {
-		get {
-			return self.matchesFlag(Int(self.fileStat.st_mode), .S_IFDIR)
-		}
+        return self.matchesFlag(Int(self.fileStat.st_mode), .S_IFDIR)
 	}
 }

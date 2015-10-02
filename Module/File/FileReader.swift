@@ -99,14 +99,12 @@ public extension File {
 	}
 	
 	public var exists: Bool {
-		get {
-            do {
-                let _ = try FileReadPullStream(file: self)
-                return true
-            } catch {
-                return false
-            }
-		}
+        do {
+            let _ = try FileReadPullStream(file: self)
+            return true
+        } catch {
+            return false
+        }
 	}
 	
     public func isDirectory() throws -> Bool {

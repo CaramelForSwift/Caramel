@@ -28,17 +28,13 @@ public class MD2Hasher: Hasher {
 
 public extension Pullable where Self.Sequence: DataConvertible {
 	var MD2: CryptoDigestStream<Self, MD2Hasher> {
-		get {
-			return CryptoDigestStream(stream: self, hasher: MD2Hasher())
-		}
+        return CryptoDigestStream(stream: self, hasher: MD2Hasher())
 	}
 }
 
 public extension DataConvertible {
 	var MD2: Data {
-		get {
-			return self.stream.MD2.drain()
-		}
+        return self.stream.MD2.drain()
 	}
 }
 

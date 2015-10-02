@@ -49,6 +49,23 @@
 		1EFC5A721B2BC7BB00CC11E4 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A711B2BC7BB00CC11E4 /* Types.swift */; };
 		1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */; };
 		1EFC5A791B2BD47F00CC11E4 /* SocketUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */; };
+		A74413031BBF464200908A62 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74413021BBF464200908A62 /* libuv.a */; settings = {ASSET_TAGS = (); }; };
+		A74413081BBF465B00908A62 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74413021BBF464200908A62 /* libuv.a */; };
+		A744131B1BBF477500908A62 /* android-ifaddrs.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130C1BBF477500908A62 /* android-ifaddrs.h */; settings = {ASSET_TAGS = (); }; };
+		A744131C1BBF477500908A62 /* pthread-fixes.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130D1BBF477500908A62 /* pthread-fixes.h */; settings = {ASSET_TAGS = (); }; };
+		A744131D1BBF477500908A62 /* stdint-msvc2008.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130E1BBF477500908A62 /* stdint-msvc2008.h */; settings = {ASSET_TAGS = (); }; };
+		A744131E1BBF477500908A62 /* tree.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130F1BBF477500908A62 /* tree.h */; settings = {ASSET_TAGS = (); }; };
+		A744131F1BBF477500908A62 /* uv-aix.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413101BBF477500908A62 /* uv-aix.h */; settings = {ASSET_TAGS = (); }; };
+		A74413201BBF477500908A62 /* uv-bsd.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413111BBF477500908A62 /* uv-bsd.h */; settings = {ASSET_TAGS = (); }; };
+		A74413211BBF477500908A62 /* uv-darwin.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413121BBF477500908A62 /* uv-darwin.h */; settings = {ASSET_TAGS = (); }; };
+		A74413221BBF477500908A62 /* uv-errno.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413131BBF477500908A62 /* uv-errno.h */; settings = {ASSET_TAGS = (); }; };
+		A74413231BBF477500908A62 /* uv-linux.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413141BBF477500908A62 /* uv-linux.h */; settings = {ASSET_TAGS = (); }; };
+		A74413241BBF477500908A62 /* uv-sunos.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413151BBF477500908A62 /* uv-sunos.h */; settings = {ASSET_TAGS = (); }; };
+		A74413251BBF477500908A62 /* uv-threadpool.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413161BBF477500908A62 /* uv-threadpool.h */; settings = {ASSET_TAGS = (); }; };
+		A74413261BBF477500908A62 /* uv-unix.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413171BBF477500908A62 /* uv-unix.h */; settings = {ASSET_TAGS = (); }; };
+		A74413271BBF477500908A62 /* uv-version.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413181BBF477500908A62 /* uv-version.h */; settings = {ASSET_TAGS = (); }; };
+		A74413281BBF477500908A62 /* uv-win.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413191BBF477500908A62 /* uv-win.h */; settings = {ASSET_TAGS = (); }; };
+		A74413291BBF477500908A62 /* uv.h in Headers */ = {isa = PBXBuildFile; fileRef = A744131A1BBF477500908A62 /* uv.h */; settings = {ASSET_TAGS = (); }; };
 		A755D4A51BB5BD8200CE3B08 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A755D4A41BB5BD8200CE3B08 /* Result.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -66,6 +83,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1EFC5A461B2BA86F00CC11E4;
 			remoteInfo = Jelly;
+		};
+		A74413061BBF465500908A62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A74412F21BBF448C00908A62 /* uv.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A74412EB1BBF446A00908A62;
+			remoteInfo = uv;
 		};
 		A7B52D271BBF148C009BA12F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -217,6 +241,23 @@
 		1EFC5A711B2BC7BB00CC11E4 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SocketUtils.c; sourceTree = "<group>"; };
 		1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketUtils.h; sourceTree = "<group>"; };
+		A74412F21BBF448C00908A62 /* uv.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = uv.xcodeproj; sourceTree = "<group>"; };
+		A74413021BBF464200908A62 /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = ../libuv/.libs/libuv.a; sourceTree = "<group>"; };
+		A744130C1BBF477500908A62 /* android-ifaddrs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "android-ifaddrs.h"; sourceTree = "<group>"; };
+		A744130D1BBF477500908A62 /* pthread-fixes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "pthread-fixes.h"; sourceTree = "<group>"; };
+		A744130E1BBF477500908A62 /* stdint-msvc2008.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "stdint-msvc2008.h"; sourceTree = "<group>"; };
+		A744130F1BBF477500908A62 /* tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tree.h; sourceTree = "<group>"; };
+		A74413101BBF477500908A62 /* uv-aix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-aix.h"; sourceTree = "<group>"; };
+		A74413111BBF477500908A62 /* uv-bsd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-bsd.h"; sourceTree = "<group>"; };
+		A74413121BBF477500908A62 /* uv-darwin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-darwin.h"; sourceTree = "<group>"; };
+		A74413131BBF477500908A62 /* uv-errno.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-errno.h"; sourceTree = "<group>"; };
+		A74413141BBF477500908A62 /* uv-linux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-linux.h"; sourceTree = "<group>"; };
+		A74413151BBF477500908A62 /* uv-sunos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-sunos.h"; sourceTree = "<group>"; };
+		A74413161BBF477500908A62 /* uv-threadpool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-threadpool.h"; sourceTree = "<group>"; };
+		A74413171BBF477500908A62 /* uv-unix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-unix.h"; sourceTree = "<group>"; };
+		A74413181BBF477500908A62 /* uv-version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-version.h"; sourceTree = "<group>"; };
+		A74413191BBF477500908A62 /* uv-win.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-win.h"; sourceTree = "<group>"; };
+		A744131A1BBF477500908A62 /* uv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uv.h; sourceTree = "<group>"; };
 		A755D4A41BB5BD8200CE3B08 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		A7B52D1E1BBF148C009BA12F /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = ../../External/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		A7B52D351BBF14AA009BA12F /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = ../../External/Quick/Externals/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
@@ -230,6 +271,7 @@
 				1E0281241B6C69E700B2C650 /* Nimble.framework in Frameworks */,
 				1E0281221B6C69E100B2C650 /* Quick.framework in Frameworks */,
 				1E02811B1B6C69AD00B2C650 /* Jelly.framework in Frameworks */,
+				A74413081BBF465B00908A62 /* libuv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +287,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A74413031BBF464200908A62 /* libuv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +347,7 @@
 		1E1607BB1B2B4CDD00A602E5 = {
 			isa = PBXGroup;
 			children = (
+				A74412F11BBF447B00908A62 /* uv */,
 				1E1607C61B2B4CDD00A602E5 /* Jelly */,
 				1EFC5A321B2BA82300CC11E4 /* TestServer */,
 				1E0281171B6C69AD00B2C650 /* Tests */,
@@ -448,6 +492,47 @@
 			name = Result;
 			sourceTree = "<group>";
 		};
+		A74412F11BBF447B00908A62 /* uv */ = {
+			isa = PBXGroup;
+			children = (
+				A744130B1BBF477500908A62 /* include */,
+				A74413021BBF464200908A62 /* libuv.a */,
+				A74412F21BBF448C00908A62 /* uv.xcodeproj */,
+			);
+			name = uv;
+			path = ../External/uv;
+			sourceTree = "<group>";
+		};
+		A74412F31BBF448C00908A62 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A744130B1BBF477500908A62 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				A744130C1BBF477500908A62 /* android-ifaddrs.h */,
+				A744130D1BBF477500908A62 /* pthread-fixes.h */,
+				A744130E1BBF477500908A62 /* stdint-msvc2008.h */,
+				A744130F1BBF477500908A62 /* tree.h */,
+				A74413101BBF477500908A62 /* uv-aix.h */,
+				A74413111BBF477500908A62 /* uv-bsd.h */,
+				A74413121BBF477500908A62 /* uv-darwin.h */,
+				A74413131BBF477500908A62 /* uv-errno.h */,
+				A74413141BBF477500908A62 /* uv-linux.h */,
+				A74413151BBF477500908A62 /* uv-sunos.h */,
+				A74413161BBF477500908A62 /* uv-threadpool.h */,
+				A74413171BBF477500908A62 /* uv-unix.h */,
+				A74413181BBF477500908A62 /* uv-version.h */,
+				A74413191BBF477500908A62 /* uv-win.h */,
+				A744131A1BBF477500908A62 /* uv.h */,
+			);
+			name = include;
+			path = ../libuv/include;
+			sourceTree = "<group>";
+		};
 		A7B52D1F1BBF148C009BA12F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,8 +564,23 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A74413291BBF477500908A62 /* uv.h in Headers */,
+				A74413241BBF477500908A62 /* uv-sunos.h in Headers */,
+				A744131B1BBF477500908A62 /* android-ifaddrs.h in Headers */,
+				A74413211BBF477500908A62 /* uv-darwin.h in Headers */,
+				A744131C1BBF477500908A62 /* pthread-fixes.h in Headers */,
+				A74413281BBF477500908A62 /* uv-win.h in Headers */,
+				A74413251BBF477500908A62 /* uv-threadpool.h in Headers */,
 				1EFC5A791B2BD47F00CC11E4 /* SocketUtils.h in Headers */,
+				A74413221BBF477500908A62 /* uv-errno.h in Headers */,
+				A74413271BBF477500908A62 /* uv-version.h in Headers */,
+				A744131D1BBF477500908A62 /* stdint-msvc2008.h in Headers */,
+				A744131F1BBF477500908A62 /* uv-aix.h in Headers */,
+				A744131E1BBF477500908A62 /* tree.h in Headers */,
 				1E785BB51B2BEB6800BBC93F /* GCDAsyncSocket.h in Headers */,
+				A74413231BBF477500908A62 /* uv-linux.h in Headers */,
+				A74413201BBF477500908A62 /* uv-bsd.h in Headers */,
+				A74413261BBF477500908A62 /* uv-unix.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +598,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A74413071BBF465500908A62 /* PBXTargetDependency */,
 				A7B52D451BBF14AE009BA12F /* PBXTargetDependency */,
 				A7B52D341BBF149C009BA12F /* PBXTargetDependency */,
 				1E02811D1B6C69AD00B2C650 /* PBXTargetDependency */,
@@ -584,6 +685,10 @@
 				{
 					ProductGroup = A7B52D1F1BBF148C009BA12F /* Products */;
 					ProjectRef = A7B52D1E1BBF148C009BA12F /* Quick.xcodeproj */;
+				},
+				{
+					ProductGroup = A74412F31BBF448C00908A62 /* Products */;
+					ProjectRef = A74412F21BBF448C00908A62 /* uv.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -763,6 +868,11 @@
 			target = 1EFC5A461B2BA86F00CC11E4 /* Jelly */;
 			targetProxy = 1EFC5A5A1B2BA87000CC11E4 /* PBXContainerItemProxy */;
 		};
+		A74413071BBF465500908A62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = uv;
+			targetProxy = A74413061BBF465500908A62 /* PBXContainerItemProxy */;
+		};
 		A7B52D341BBF149C009BA12F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Quick-OSX";
@@ -917,9 +1027,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../External/libuv/include";
 				INFOPLIST_FILE = Jelly/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "${SRCROOT}/../External/libuv/.libs";
 				OTHER_SWIFT_FLAGS = "-D USE_LIBDISPATCH";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevestreza.Jelly;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -944,9 +1056,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
+				HEADER_SEARCH_PATHS = "${SRCROOT}/../External/libuv/include";
 				INFOPLIST_FILE = Jelly/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "${SRCROOT}/../External/libuv/.libs";
 				OTHER_SWIFT_FLAGS = "-D USE_LIBDISPATCH";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stevestreza.Jelly;
 				PRODUCT_NAME = "$(TARGET_NAME)";

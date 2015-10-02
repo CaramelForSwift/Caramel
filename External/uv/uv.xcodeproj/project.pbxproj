@@ -1,0 +1,312 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		A74412FE1BBF45A300908A62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A74412E71BBF446A00908A62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A74412FA1BBF453C00908A62;
+			remoteInfo = configure;
+		};
+		A74413001BBF45A600908A62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A74412E71BBF446A00908A62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A74412F61BBF452500908A62;
+			remoteInfo = autogen;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXGroup section */
+		A74412E61BBF446A00908A62 = {
+			isa = PBXGroup;
+			children = (
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		A74412EB1BBF446A00908A62 /* uv */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = A74412EE1BBF446A00908A62 /* Build configuration list for PBXLegacyTarget "uv" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Volumes/Luna/Jelly/External/libuv;
+			dependencies = (
+				A74412FF1BBF45A300908A62 /* PBXTargetDependency */,
+			);
+			name = uv;
+			passBuildSettingsInEnvironment = 1;
+			productName = uv;
+		};
+		A74412F61BBF452500908A62 /* autogen */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = autogen.sh;
+			buildConfigurationList = A74412F71BBF452500908A62 /* Build configuration list for PBXLegacyTarget "autogen" */;
+			buildPhases = (
+			);
+			buildToolPath = /bin/sh;
+			buildWorkingDirectory = /Volumes/Luna/Jelly/External/libuv;
+			dependencies = (
+			);
+			name = autogen;
+			passBuildSettingsInEnvironment = 1;
+			productName = autogen;
+		};
+		A74412FA1BBF453C00908A62 /* configure */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = configure;
+			buildConfigurationList = A74412FB1BBF453C00908A62 /* Build configuration list for PBXLegacyTarget "configure" */;
+			buildPhases = (
+			);
+			buildToolPath = /bin/sh;
+			buildWorkingDirectory = /Volumes/Luna/Jelly/External/libuv;
+			dependencies = (
+				A74413011BBF45A600908A62 /* PBXTargetDependency */,
+			);
+			name = configure;
+			passBuildSettingsInEnvironment = 1;
+			productName = autogen;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		A74412E71BBF446A00908A62 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = Jelly;
+				TargetAttributes = {
+					A74412EB1BBF446A00908A62 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					A74412F61BBF452500908A62 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = A74412EA1BBF446A00908A62 /* Build configuration list for PBXProject "uv" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A74412E61BBF446A00908A62;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A74412F61BBF452500908A62 /* autogen */,
+				A74412FA1BBF453C00908A62 /* configure */,
+				A74412EB1BBF446A00908A62 /* uv */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXTargetDependency section */
+		A74412FF1BBF45A300908A62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A74412FA1BBF453C00908A62 /* configure */;
+			targetProxy = A74412FE1BBF45A300908A62 /* PBXContainerItemProxy */;
+		};
+		A74413011BBF45A600908A62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A74412F61BBF452500908A62 /* autogen */;
+			targetProxy = A74413001BBF45A600908A62 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A74412EC1BBF446A00908A62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		A74412ED1BBF446A00908A62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		A74412EF1BBF446A00908A62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A74412F01BBF446A00908A62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A74412F81BBF452500908A62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A74412F91BBF452500908A62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A74412FC1BBF453C00908A62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A74412FD1BBF453C00908A62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A74412EA1BBF446A00908A62 /* Build configuration list for PBXProject "uv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A74412EC1BBF446A00908A62 /* Debug */,
+				A74412ED1BBF446A00908A62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A74412EE1BBF446A00908A62 /* Build configuration list for PBXLegacyTarget "uv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A74412EF1BBF446A00908A62 /* Debug */,
+				A74412F01BBF446A00908A62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A74412F71BBF452500908A62 /* Build configuration list for PBXLegacyTarget "autogen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A74412F81BBF452500908A62 /* Debug */,
+				A74412F91BBF452500908A62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A74412FB1BBF453C00908A62 /* Build configuration list for PBXLegacyTarget "configure" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A74412FC1BBF453C00908A62 /* Debug */,
+				A74412FD1BBF453C00908A62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A74412E71BBF446A00908A62 /* Project object */;
+}

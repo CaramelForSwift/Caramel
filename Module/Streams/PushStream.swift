@@ -18,6 +18,13 @@ public class PushStream<T: StreamBuffer>: Pushable {
     }
     public func end() {
         _isAtEnd = true
+		
+		let result = Result.Success(Sequence())
+		for handler in handlers {
+			handler(result)
+		}
+		
+		retained = nil
     }
 
     private var handlers: [PushStream.PushHandler] = []
@@ -31,7 +38,30 @@ public class PushStream<T: StreamBuffer>: Pushable {
         }
     }
     
+	private var retained: PushStream? = nil
     public init() {
-        
+        retained = self
     }
+}
+
+public extension PushStream {
+	public func drain(handler: (Result<Sequence>) -> Void) {
+		var buffer = Sequence()
+		var ended = false
+		self.wait { (result: Result<Sequence>) in 
+			guard ended == false else { return }
+
+			do {
+				let data = try result.result()
+				buffer.append(data)
+				if self.isAtEnd {
+					ended = true
+					handler(Result.Success(buffer))
+				}
+			} catch {
+				ended = true
+				handler(result)
+			}
+		}
+	}
 }

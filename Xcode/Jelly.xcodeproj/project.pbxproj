@@ -40,6 +40,7 @@
 		1E8EAD291B2E724F00365A68 /* PushStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EAD281B2E724F00365A68 /* PushStream.swift */; };
 		1E8EAD2D1B2E863A00365A68 /* SocketReadStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EAD2C1B2E863A00365A68 /* SocketReadStream.swift */; };
 		1EA3AB091B327360002B1964 /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA3AB081B327360002B1964 /* SocketServer.swift */; };
+		1EB26C4B1BC10F85004136E9 /* FileReadPushStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C4A1BC10F85004136E9 /* FileReadPushStream.swift */; settings = {ASSET_TAGS = (); }; };
 		1EB26C571BC10F92004136E9 /* EventLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C561BC10F91004136E9 /* EventLoop.swift */; settings = {ASSET_TAGS = (); }; };
 		1EFC5A5C1B2BA87000CC11E4 /* Jelly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */; };
 		1EFC5A5E1B2BA87000CC11E4 /* Jelly.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -234,6 +235,7 @@
 		1EA3AB061B32721E002B1964 /* HTTPServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPServer.swift; sourceTree = "<group>"; };
 		1EA3AB081B327360002B1964 /* SocketServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketServer.swift; sourceTree = "<group>"; };
 		1EA3AB0A1B32743E002B1964 /* HTTPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
+		1EB26C4A1BC10F85004136E9 /* FileReadPushStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReadPushStream.swift; sourceTree = "<group>"; };
 		1EB26C561BC10F91004136E9 /* EventLoop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLoop.swift; sourceTree = "<group>"; };
 		1EFC5A311B2BA82300CC11E4 /* TestServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EFC5A3E1B2BA82300CC11E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 		1E7E588B1B61955600F2F60C /* File */ = {
 			isa = PBXGroup;
 			children = (
+				1EB26C4A1BC10F85004136E9 /* FileReadPushStream.swift */,
 				1E7E588C1B61957400F2F60C /* File.swift */,
 				1E3F91FF1B649FED00235033 /* FileReader.swift */,
 				1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */,
@@ -840,6 +843,7 @@
 				1EA3AB091B327360002B1964 /* SocketServer.swift in Sources */,
 				1E01F5D51BAE199E002EA5E0 /* StreamBuffer.swift in Sources */,
 				1E8EAD2D1B2E863A00365A68 /* SocketReadStream.swift in Sources */,
+				1EB26C4B1BC10F85004136E9 /* FileReadPushStream.swift in Sources */,
 				1E22F8741BAE517A00B4A047 /* SHA224Hasher.swift in Sources */,
 				1E87BA9D1B85B79B006482CC /* DispatchSocketListener.swift in Sources */,
 				1E0281351B6D472200B2C650 /* FileWriter.swift in Sources */,

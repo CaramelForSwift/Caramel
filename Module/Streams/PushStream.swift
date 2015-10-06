@@ -65,3 +65,8 @@ public extension PushStream {
 		}
 	}
 }
+
+public protocol TransformPushable: Pushable {
+	typealias InputStream: Pushable
+	var pushStream: InputStream { get }
+}

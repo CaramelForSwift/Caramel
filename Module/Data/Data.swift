@@ -43,102 +43,83 @@ public struct Data {
 public extension UInt8 {
 	static let nibbleCharacters = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
 	var byteString: String {
-		get {
-			let value = self
-			let highNibble = ((value & 0xF0) >> 4) & 0x0F
-			let lowNibble = value & 0x0F
-			let highCharacter = UInt8.nibbleCharacters[Int(highNibble)]
-			let  lowCharacter = UInt8.nibbleCharacters[Int( lowNibble)]
-			let string = highCharacter + lowCharacter
-			return string
-
-		}
+        let value = self
+        let highNibble = ((value & 0xF0) >> 4) & 0x0F
+        let lowNibble = value & 0x0F
+        let highCharacter = UInt8.nibbleCharacters[Int(highNibble)]
+        let  lowCharacter = UInt8.nibbleCharacters[Int( lowNibble)]
+        let string = highCharacter + lowCharacter
+        return string
 	}
 }
 
 extension Data: CustomDebugStringConvertible {
 	public var debugDescription: String {
-		get {
-			var hexString = ""
-			for byte in self.bytes {
-				hexString += byte.byteString
-			}
-			return hexString
-		}
+        var hexString = ""
+        for byte in self.bytes {
+            hexString += byte.byteString
+        }
+        return hexString
 	}
 }
 
 // MARK: String to Data
 public extension String.UTF8View {
 	public var data: Data {
-		get {
-			var data = Data()
-			var bytes: [Byte] = []
-			for thing in self {
-				bytes.append(Byte(thing))
-			}
-			data.append(bytes)
-			return data
-		}
+        var data = Data()
+        var bytes: [Byte] = []
+        for thing in self {
+            bytes.append(Byte(thing))
+        }
+        data.append(bytes)
+        return data
 	}
 }
 
 public extension String.UTF16View {
 	public var data: Data {
-		get {
-			var data = Data()
-			var bytes: [Byte] = []
-			for thing in self {
-				bytes.append(Byte((thing & 0xFF00) >> 8))
-				bytes.append(Byte(thing & 0xFF))
-			}
-			data.append(bytes)
-			return data
-		}
+        var data = Data()
+        var bytes: [Byte] = []
+        for thing in self {
+            bytes.append(Byte((thing & 0xFF00) >> 8))
+            bytes.append(Byte(thing & 0xFF))
+        }
+        data.append(bytes)
+        return data
 	}
 }
 
 public extension String {
 	public var UTF8Data: Data {
-		get {
-			return self.utf8.data
-		}
+        return self.utf8.data
 	}
 	public var UTF16Data: Data {
-		get {
-			return self.utf16.data
-		}
+        return self.utf16.data
 	}
 	public var UTF32Data: Data {
-		get {
-			var data = Data()
-			var bytes: [Byte] = []
-			for scalar in self.unicodeScalars {
-				UTF32.encode(scalar) { (thing: UTF32.CodeUnit) -> () in
-					bytes.append(Byte((thing & 0xFF000000) >> 24))
-					bytes.append(Byte((thing & 0x00FF0000) >> 16))
-					bytes.append(Byte((thing & 0x0000FF00) >> 8))
-					bytes.append(Byte((thing & 0x000000FF)))
-				}
-			}
-			data.append(bytes)
-			return data
-		}
+        var data = Data()
+        var bytes: [Byte] = []
+        for scalar in self.unicodeScalars {
+            UTF32.encode(scalar) { (thing: UTF32.CodeUnit) -> () in
+                bytes.append(Byte((thing & 0xFF000000) >> 24))
+                bytes.append(Byte((thing & 0x00FF0000) >> 16))
+                bytes.append(Byte((thing & 0x0000FF00) >> 8))
+                bytes.append(Byte((thing & 0x000000FF)))
+            }
+        }
+        data.append(bytes)
+        return data
 	}
 }
 
 // Data to String
 public extension Data {
 	public var UTF8String: String? {
-		get {
-			return stringWithEncoding(.UTF8)
-		}
+        return stringWithEncoding(.UTF8)
 	}
 	
 	public var UTF16String: String? {
-		get {
-			return stringWithEncoding(.UTF16)
-		}
+        return stringWithEncoding(.UTF16)
 	}
 	
 	public func stringWithEncoding(encoding: Encoding) -> String? {
@@ -204,25 +185,21 @@ public func ==(lhs: Data, rhs: Data) -> Bool {
 // MARK: Hashable
 extension Data: Hashable {
 	public var hashValue: Int {
-		get {
-			return self.jenkinsHash
-		}
+        return self.jenkinsHash
 	}
 
 	// https://en.wikipedia.org/wiki/Jenkins_hash_function
 	public var jenkinsHash: Int {
-		get {
-			var hash = bytes.reduce(0, combine: { (initial: Int, byte: Byte) -> Int in
-				var value = initial + Int(byte)
-				value = value &+ (value << 10)
-				value ^= (value >> 6)
-				return value
-			})
-			hash = hash &+ (hash << 3);
-			hash ^= (hash >> 11);
-			hash = hash &+ (hash << 15);
-			return hash
-		}
+        var hash = bytes.reduce(0, combine: { (initial: Int, byte: Byte) -> Int in
+            var value = initial + Int(byte)
+            value = value &+ (value << 10)
+            value ^= (value >> 6)
+            return value
+        })
+        hash = hash &+ (hash << 3);
+        hash ^= (hash >> 11);
+        hash = hash &+ (hash << 15);
+        return hash
 	}
 }
 
@@ -278,21 +255,15 @@ extension Data: Indexable {
     public typealias Index = Int
 
 	public var startIndex: Data.Index { 
-		get {
-			return self.bytes.startIndex
-		}
+        return self.bytes.startIndex
 	}
 	
 	public var endIndex: Data.Index { 
-		get {
-			return self.bytes.endIndex
-		} 
+        return self.bytes.endIndex
 	}
 
 	public subscript (position: Data.Index) -> Byte { 
-		get {
-			return self.bytes[position]
-		}
+        return self.bytes[position]
 	}
 }
 
@@ -302,8 +273,6 @@ public protocol DataConvertible: StreamBuffer {
 
 extension Data: DataConvertible {
 	public var data: Data {
-		get {
-			return self
-		}
+        return self
 	}
 }

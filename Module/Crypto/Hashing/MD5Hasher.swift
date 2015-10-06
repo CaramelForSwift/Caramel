@@ -28,17 +28,13 @@ public class MD5Hasher: Hasher {
 
 public extension Pullable where Self.Sequence: DataConvertible {
 	var MD5: CryptoDigestStream<Self, MD5Hasher> {
-		get {
-			return CryptoDigestStream(stream: self, hasher: MD5Hasher())
-		}
+        return CryptoDigestStream(stream: self, hasher: MD5Hasher())
 	}
 }
 
 public extension DataConvertible {
 	var MD5: Data {
-		get {
-			return self.stream.MD5.drain()
-		}
+        return self.stream.MD5.drain()
 	}
 }
 

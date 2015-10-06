@@ -24,36 +24,30 @@ class DispatchSocketListener : SocketListener {
 	}
 	
 	private var IPProtocol: Int32 {
-		get {
-			switch controlProtocol {
-			case .UDP:
-				return IPPROTO_UDP
-			case .TCP:
-				return IPPROTO_TCP
-			}
-		}
+        switch controlProtocol {
+        case .UDP:
+            return IPPROTO_UDP
+        case .TCP:
+            return IPPROTO_TCP
+        }
 	}
 	
 	private var IPVersion: Int32 {
-		get {
-			switch version {
-			case .IPv4:
-				return PF_INET
-			case .IPv6:
-				return PF_INET6
-			}
-		}
+        switch version {
+        case .IPv4:
+            return PF_INET
+        case .IPv6:
+            return PF_INET6
+        }
 	}
 	
 	private var socketType: Int32 {
-		get {
-			switch controlProtocol {
-			case .UDP:
-				return SOCK_DGRAM
-			case .TCP:
-				return SOCK_STREAM
-			}
-		}
+        switch controlProtocol {
+        case .UDP:
+            return SOCK_DGRAM
+        case .TCP:
+            return SOCK_STREAM
+        }
 	}
 	
 	func listen(port: Port, accept: (Connection<Data, Data>) -> Void) throws {

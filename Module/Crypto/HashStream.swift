@@ -16,9 +16,7 @@ public class CryptoDigestStream<T: Pullable, U: Hasher where T.Sequence: DataCon
 	public let hasher: Hasher
 	
 	public var isAtEnd: Bool { 
-		get {
-			return pullStream.isAtEnd
-		}
+        return pullStream.isAtEnd
 	}
 	
 	private let context = UnsafeMutablePointer<CC_MD5_CTX>.alloc(1)

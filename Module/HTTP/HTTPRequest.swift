@@ -9,8 +9,6 @@ public struct HTTPRequest<T>: HTTPRequestType {
 	
 	private var _body: Body?
 	public var body: Body? {
-		get {
-			return _body
-		}
+        return _body
 	}
 }

@@ -14,9 +14,7 @@ public class PushStream<T: StreamBuffer>: Pushable {
     
     private var _isAtEnd = false
     public var isAtEnd: Bool {
-        get {
-            return _isAtEnd
-        }
+        return _isAtEnd
     }
     public func end() {
         _isAtEnd = true

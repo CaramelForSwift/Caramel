@@ -115,9 +115,7 @@ public class Base64EncoderStream<T: Pullable where T.Sequence: DataConvertible>:
 	public var buffer = Data()
 	
 	public var isAtEnd: Bool { 
-		get {
-			return pullStream.isAtEnd
-		}
+        return pullStream.isAtEnd
 	}
 	
 	public init(stream: InputStream) {
@@ -131,21 +129,16 @@ public class Base64DecoderStream<T: Pullable where T.Sequence: DataConvertible>:
 
 public extension Pullable where Self.Sequence: DataConvertible {
 	var base64Encode: TransformingPullStream<Self, Data> {
-		let foo = TransformingPullStream(inputStream: self, transformer: Base64Transformer())
-		return foo
+		return TransformingPullStream(inputStream: self, transformer: Base64Transformer())
 	}
 }
 
 public extension DataConvertible {
 	var base64EncodedData: Data {
-		get {
-			return self.stream.base64Encode.drain()
-		}
+        return self.stream.base64Encode.drain()
 	}
 	var base64EncodedString: String? {
-		get {
-			return self.base64EncodedData.UTF8String
-		}
+        return self.base64EncodedData.UTF8String
 	}
 }
 

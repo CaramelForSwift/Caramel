@@ -41,22 +41,18 @@ public struct File: Hashable, Equatable {
 	
 	/// An array of path components	that make up the path.
 	public var pathComponents: [String] {
-		get {
-			var components = self.path.characters.split { (character: Character) -> Bool in
-				return String(character) == File.pathSeparator
-			}.map({String($0)})
-			if String(self.path.characters[self.path.characters.startIndex]) == File.pathSeparator {
-				components.insert(File.pathSeparator, atIndex: 0)
-			}
-			return components
-		}
+        var components = self.path.characters.split { (character: Character) -> Bool in
+            return String(character) == File.pathSeparator
+        }.map({String($0)})
+        if String(self.path.characters[self.path.characters.startIndex]) == File.pathSeparator {
+            components.insert(File.pathSeparator, atIndex: 0)
+        }
+        return components
 	}
 	
 	/// The last piece of the path, if one exists. This is the file or directory name of the `File`.
 	public var lastPathComponent: String? {
-		get {
-			return self.pathComponents.last
-		}
+        return self.pathComponents.last
 	}
 	
 	/// Returns a new `File` made by appending the `component` to the current path, as a child 
@@ -73,13 +69,11 @@ public struct File: Hashable, Equatable {
 	/// - Note: If this is equal to the `File.rootDirectory`, it will return an equivalent `File`.
 	/// - Returns: A new `File` made by deleting the last path component.
 	public var parentDirectory: File {
-		get {
-			var pathComponents = self.pathComponents
-			if pathComponents.count > 1 {
-				pathComponents.removeLast()
-			}
-			return File(pathComponents: pathComponents)
-		}
+        var pathComponents = self.pathComponents
+        if pathComponents.count > 1 {
+            pathComponents.removeLast()
+        }
+        return File(pathComponents: pathComponents)
 	}
 	
 	/// The `String` representing the system's path separator. On UNIX systems this is a `/`.
@@ -90,31 +84,25 @@ public struct File: Hashable, Equatable {
 	
 	/// The root directory for the system. On UNIX systems this represents the directory at `/`.
 	public static var rootDirectory: File {
-		get {
-			return File(path: self.pathSeparator)
-		}
+        return File(path: self.pathSeparator)
 	}
 	
 	/// The root directory for the current user's home directory.
 	public static var homeDirectory: File {
-		get {
-			let passwd = getpwuid(getuid())
-			let dirPtr = passwd.memory.pw_dir
-			var data = Data()
-			data.append(UnsafePointer<Void>(dirPtr), length: Int(strlen(dirPtr)))
-			if let path = data.stringWithEncoding(.UTF8) {
-				return File(path: path)
-			} else {
-				fatalError()
-			}
-		}
+        let passwd = getpwuid(getuid())
+        let dirPtr = passwd.memory.pw_dir
+        var data = Data()
+        data.append(UnsafePointer<Void>(dirPtr), length: Int(strlen(dirPtr)))
+        if let path = data.stringWithEncoding(.UTF8) {
+            return File(path: path)
+        } else {
+            fatalError()
+        }
 	}
 	
 	/// The hash value.
 	public var hashValue: Int {
-		get {
-			return self.path.hashValue
-		}
+        return self.path.hashValue
 	}
 }
 

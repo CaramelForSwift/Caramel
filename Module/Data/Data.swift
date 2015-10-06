@@ -296,7 +296,7 @@ extension Data: Indexable {
 	}
 }
 
-public protocol DataConvertible {
+public protocol DataConvertible: StreamBuffer {
 	var data: Data { get }
 }
 

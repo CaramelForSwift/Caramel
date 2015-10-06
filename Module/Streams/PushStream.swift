@@ -37,3 +37,30 @@ public class PushStream<T: StreamBuffer>: Pushable {
         
     }
 }
+
+public extension PushStream {
+	public func drain(handler: (Result<Sequence>) -> Void) {
+		var buffer = Sequence()
+		var ended = false
+		self.wait { (result: Result<Sequence>) in 
+			guard ended == false else { return }
+
+			do {
+				let data = try result.result()
+				buffer.append(data)
+				if self.isAtEnd {
+					ended = true
+					handler(Result.Success(buffer))
+				}
+			} catch {
+				ended = true
+				handler(result)
+			}
+		}
+	}
+}
+
+public protocol TransformPushable: Pushable {
+	typealias InputStream: Pushable
+	var pushStream: InputStream { get }
+}

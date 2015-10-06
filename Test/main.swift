@@ -7,6 +7,17 @@ let splatoonFile = File.rootDirectory/"Users"/"syco"/"Downloads"/"Splatoon Squid
 //	print("Splatoon file MD5 is \(data.debugDescription.lowercaseString)")
 //}
 
+hostsFile.readPushStream.base64Encode.drain { (result: Result<Data>) -> Void in
+	do {
+		let data = try result.result()
+		if let string = data.UTF8String {
+			print("yay: \(string)")
+		}
+	} catch let error {
+		print("Fail: \(error)")
+	}
+}
+
 do {
     let hostsStream = try hostsFile.readPullStream()
     
@@ -36,3 +47,5 @@ do {
 //	}
 //}
 //
+
+EventLoop.defaultLoop.run()

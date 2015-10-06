@@ -31,13 +31,21 @@ public class PushStream<T: StreamBuffer>: Pushable {
     public func wait(handler: PushStream.PushHandler) {
         handlers.append(handler)
     }
-    public func write(sequence: Sequence) {
+
+	public func write(sequence: Sequence) {
         let result = Result.Success(sequence)
         for handler in handlers {
             handler(result)
         }
     }
-    
+
+	public func writeError(error: ErrorType) {
+		let result = Result<Sequence>.Error(error)
+		for handler in handlers {
+			handler(result)
+		}
+	}
+
 	private var retained: PushStream? = nil
     public init() {
         retained = self

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E01F5D51BAE199E002EA5E0 /* StreamBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E01F5D41BAE199E002EA5E0 /* StreamBuffer.swift */; settings = {ASSET_TAGS = (); }; };
-		1E01F5D81BAE1DAD002EA5E0 /* HashStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E01F5D71BAE1DAD002EA5E0 /* HashStream.swift */; settings = {ASSET_TAGS = (); }; };
+		1E01F5D51BAE199E002EA5E0 /* StreamBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E01F5D41BAE199E002EA5E0 /* StreamBuffer.swift */; };
+		1E01F5D81BAE1DAD002EA5E0 /* HashStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E01F5D71BAE1DAD002EA5E0 /* HashStream.swift */; };
 		1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280C21B65AFA200B2C650 /* PullStream.swift */; };
 		1E0280EA1B69DB4D00B2C650 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280E91B69DB4D00B2C650 /* Runtime.swift */; };
 		1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */; };
@@ -19,20 +19,22 @@
 		1E0281291B6C6D2800B2C650 /* FileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281281B6C6D2800B2C650 /* FileTests.swift */; };
 		1E0281331B6CB53F00B2C650 /* SupportGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281321B6CB53F00B2C650 /* SupportGenerators.swift */; };
 		1E0281351B6D472200B2C650 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281341B6D472200B2C650 /* FileWriter.swift */; };
-		1E22F8661BAE4DF600B4A047 /* Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8651BAE4DF600B4A047 /* Hasher.swift */; settings = {ASSET_TAGS = (); }; };
-		1E22F8681BAE4E5E00B4A047 /* MD5Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8671BAE4E5E00B4A047 /* MD5Hasher.swift */; settings = {ASSET_TAGS = (); }; };
-		1E22F86A1BAE4EC600B4A047 /* MD2Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8691BAE4EC600B4A047 /* MD2Hasher.swift */; settings = {ASSET_TAGS = (); }; };
-		1E22F86C1BAE4ED900B4A047 /* MD4Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F86B1BAE4ED900B4A047 /* MD4Hasher.swift */; settings = {ASSET_TAGS = (); }; };
-		1E22F86E1BAE50FD00B4A047 /* SHA1Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F86D1BAE50FD00B4A047 /* SHA1Hasher.swift */; settings = {ASSET_TAGS = (); }; };
-		1E22F8721BAE515300B4A047 /* SHA256Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8711BAE515300B4A047 /* SHA256Hasher.swift */; settings = {ASSET_TAGS = (); }; };
-		1E22F8741BAE517A00B4A047 /* SHA224Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8731BAE517A00B4A047 /* SHA224Hasher.swift */; settings = {ASSET_TAGS = (); }; };
-		1E22F8761BAF055F00B4A047 /* SHA512Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8751BAF055F00B4A047 /* SHA512Hasher.swift */; settings = {ASSET_TAGS = (); }; };
-		1E22F8781BAF1F7900B4A047 /* HMACStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8771BAF1F7900B4A047 /* HMACStream.swift */; settings = {ASSET_TAGS = (); }; };
-		1E22F87A1BAF267500B4A047 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8791BAF267500B4A047 /* Base64.swift */; settings = {ASSET_TAGS = (); }; };
+		1E22F8661BAE4DF600B4A047 /* Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8651BAE4DF600B4A047 /* Hasher.swift */; };
+		1E22F8681BAE4E5E00B4A047 /* MD5Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8671BAE4E5E00B4A047 /* MD5Hasher.swift */; };
+		1E22F86A1BAE4EC600B4A047 /* MD2Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8691BAE4EC600B4A047 /* MD2Hasher.swift */; };
+		1E22F86C1BAE4ED900B4A047 /* MD4Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F86B1BAE4ED900B4A047 /* MD4Hasher.swift */; };
+		1E22F86E1BAE50FD00B4A047 /* SHA1Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F86D1BAE50FD00B4A047 /* SHA1Hasher.swift */; };
+		1E22F8721BAE515300B4A047 /* SHA256Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8711BAE515300B4A047 /* SHA256Hasher.swift */; };
+		1E22F8741BAE517A00B4A047 /* SHA224Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8731BAE517A00B4A047 /* SHA224Hasher.swift */; };
+		1E22F8761BAF055F00B4A047 /* SHA512Hasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8751BAF055F00B4A047 /* SHA512Hasher.swift */; };
+		1E22F8781BAF1F7900B4A047 /* HMACStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8771BAF1F7900B4A047 /* HMACStream.swift */; };
+		1E22F87A1BAF267500B4A047 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8791BAF267500B4A047 /* Base64.swift */; };
 		1E3F92001B649FED00235033 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F91FF1B649FED00235033 /* FileReader.swift */; };
 		1E3F92031B65469D00235033 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92021B65469D00235033 /* Data.swift */; };
 		1E3F92051B6547D300235033 /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92041B6547D300235033 /* DataChunk.swift */; };
-		1E731E961BC37991002D5D63 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E731E951BC37991002D5D63 /* Result.swift */; settings = {ASSET_TAGS = (); }; };
+		1E68D8721BC39A8B00C45466 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A755D4A41BB5BD8200CE3B08 /* Result.swift */; };
+		1E68D8731BC39AE700C45466 /* EventLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C561BC10F91004136E9 /* EventLoop.swift */; };
+		1E68D8741BC39B7E00C45466 /* FileReadPushStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C4A1BC10F85004136E9 /* FileReadPushStream.swift */; };
 		1E785BB51B2BEB6800BBC93F /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E785BB41B2BEB6800BBC93F /* GCDAsyncSocket.h */; };
 		1E785BB71B2BEB7100BBC93F /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E785BB61B2BEB7100BBC93F /* GCDAsyncSocket.m */; };
 		1E7E588D1B61957400F2F60C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7E588C1B61957400F2F60C /* File.swift */; };
@@ -41,7 +43,7 @@
 		1E8EAD291B2E724F00365A68 /* PushStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EAD281B2E724F00365A68 /* PushStream.swift */; };
 		1E8EAD2D1B2E863A00365A68 /* SocketReadStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EAD2C1B2E863A00365A68 /* SocketReadStream.swift */; };
 		1EA3AB091B327360002B1964 /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA3AB081B327360002B1964 /* SocketServer.swift */; };
-		1EB26C591BC1BBDB004136E9 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C581BC1BBDB004136E9 /* Transformer.swift */; settings = {ASSET_TAGS = (); }; };
+		1EB26C591BC1BBDB004136E9 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C581BC1BBDB004136E9 /* Transformer.swift */; };
 		1EFC5A5C1B2BA87000CC11E4 /* Caramel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; };
 		1EFC5A5E1B2BA87000CC11E4 /* Caramel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1EFC5A651B2BA88800CC11E4 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D51B2B5A2C00A602E5 /* Connection.swift */; };
@@ -51,24 +53,22 @@
 		1EFC5A721B2BC7BB00CC11E4 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A711B2BC7BB00CC11E4 /* Types.swift */; };
 		1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */; };
 		1EFC5A791B2BD47F00CC11E4 /* SocketUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */; };
-		A74413031BBF464200908A62 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74413021BBF464200908A62 /* libuv.a */; settings = {ASSET_TAGS = (); }; };
-		A74413081BBF465B00908A62 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74413021BBF464200908A62 /* libuv.a */; };
-		A744131B1BBF477500908A62 /* android-ifaddrs.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130C1BBF477500908A62 /* android-ifaddrs.h */; settings = {ASSET_TAGS = (); }; };
-		A744131C1BBF477500908A62 /* pthread-fixes.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130D1BBF477500908A62 /* pthread-fixes.h */; settings = {ASSET_TAGS = (); }; };
-		A744131D1BBF477500908A62 /* stdint-msvc2008.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130E1BBF477500908A62 /* stdint-msvc2008.h */; settings = {ASSET_TAGS = (); }; };
-		A744131E1BBF477500908A62 /* tree.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130F1BBF477500908A62 /* tree.h */; settings = {ASSET_TAGS = (); }; };
-		A744131F1BBF477500908A62 /* uv-aix.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413101BBF477500908A62 /* uv-aix.h */; settings = {ASSET_TAGS = (); }; };
-		A74413201BBF477500908A62 /* uv-bsd.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413111BBF477500908A62 /* uv-bsd.h */; settings = {ASSET_TAGS = (); }; };
-		A74413211BBF477500908A62 /* uv-darwin.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413121BBF477500908A62 /* uv-darwin.h */; settings = {ASSET_TAGS = (); }; };
-		A74413221BBF477500908A62 /* uv-errno.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413131BBF477500908A62 /* uv-errno.h */; settings = {ASSET_TAGS = (); }; };
-		A74413231BBF477500908A62 /* uv-linux.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413141BBF477500908A62 /* uv-linux.h */; settings = {ASSET_TAGS = (); }; };
-		A74413241BBF477500908A62 /* uv-sunos.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413151BBF477500908A62 /* uv-sunos.h */; settings = {ASSET_TAGS = (); }; };
-		A74413251BBF477500908A62 /* uv-threadpool.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413161BBF477500908A62 /* uv-threadpool.h */; settings = {ASSET_TAGS = (); }; };
-		A74413261BBF477500908A62 /* uv-unix.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413171BBF477500908A62 /* uv-unix.h */; settings = {ASSET_TAGS = (); }; };
-		A74413271BBF477500908A62 /* uv-version.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413181BBF477500908A62 /* uv-version.h */; settings = {ASSET_TAGS = (); }; };
-		A74413281BBF477500908A62 /* uv-win.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413191BBF477500908A62 /* uv-win.h */; settings = {ASSET_TAGS = (); }; };
-		A74413291BBF477500908A62 /* uv.h in Headers */ = {isa = PBXBuildFile; fileRef = A744131A1BBF477500908A62 /* uv.h */; settings = {ASSET_TAGS = (); }; };
-		A755D4A51BB5BD8200CE3B08 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A755D4A41BB5BD8200CE3B08 /* Result.swift */; settings = {ASSET_TAGS = (); }; };
+		A74413031BBF464200908A62 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74413021BBF464200908A62 /* libuv.a */; };
+		A744131B1BBF477500908A62 /* android-ifaddrs.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130C1BBF477500908A62 /* android-ifaddrs.h */; };
+		A744131C1BBF477500908A62 /* pthread-fixes.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130D1BBF477500908A62 /* pthread-fixes.h */; };
+		A744131D1BBF477500908A62 /* stdint-msvc2008.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130E1BBF477500908A62 /* stdint-msvc2008.h */; };
+		A744131E1BBF477500908A62 /* tree.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130F1BBF477500908A62 /* tree.h */; };
+		A744131F1BBF477500908A62 /* uv-aix.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413101BBF477500908A62 /* uv-aix.h */; };
+		A74413201BBF477500908A62 /* uv-bsd.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413111BBF477500908A62 /* uv-bsd.h */; };
+		A74413211BBF477500908A62 /* uv-darwin.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413121BBF477500908A62 /* uv-darwin.h */; };
+		A74413221BBF477500908A62 /* uv-errno.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413131BBF477500908A62 /* uv-errno.h */; };
+		A74413231BBF477500908A62 /* uv-linux.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413141BBF477500908A62 /* uv-linux.h */; };
+		A74413241BBF477500908A62 /* uv-sunos.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413151BBF477500908A62 /* uv-sunos.h */; };
+		A74413251BBF477500908A62 /* uv-threadpool.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413161BBF477500908A62 /* uv-threadpool.h */; };
+		A74413261BBF477500908A62 /* uv-unix.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413171BBF477500908A62 /* uv-unix.h */; };
+		A74413271BBF477500908A62 /* uv-version.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413181BBF477500908A62 /* uv-version.h */; };
+		A74413281BBF477500908A62 /* uv-win.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413191BBF477500908A62 /* uv-win.h */; };
+		A74413291BBF477500908A62 /* uv.h in Headers */ = {isa = PBXBuildFile; fileRef = A744131A1BBF477500908A62 /* uv.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,7 +231,6 @@
 		1E3F91FF1B649FED00235033 /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 		1E3F92021B65469D00235033 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		1E3F92041B6547D300235033 /* DataChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataChunk.swift; sourceTree = "<group>"; };
-		1E731E951BC37991002D5D63 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		1E785BB41B2BEB6800BBC93F /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		1E785BB61B2BEB7100BBC93F /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		1E785BB81B2BEC1000BBC93F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -841,21 +840,21 @@
 				1E3F92031B65469D00235033 /* Data.swift in Sources */,
 				1E22F8781BAF1F7900B4A047 /* HMACStream.swift in Sources */,
 				1E22F86E1BAE50FD00B4A047 /* SHA1Hasher.swift in Sources */,
-				1EB26C571BC10F92004136E9 /* EventLoop.swift in Sources */,
+				1E68D8731BC39AE700C45466 /* EventLoop.swift in Sources */,
 				1E22F8681BAE4E5E00B4A047 /* MD5Hasher.swift in Sources */,
 				1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */,
+				1E68D8721BC39A8B00C45466 /* Result.swift in Sources */,
 				1E3F92001B649FED00235033 /* FileReader.swift in Sources */,
 				1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */,
 				1E8EAD291B2E724F00365A68 /* PushStream.swift in Sources */,
 				1E22F86A1BAE4EC600B4A047 /* MD2Hasher.swift in Sources */,
 				1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */,
 				1E22F87A1BAF267500B4A047 /* Base64.swift in Sources */,
+				1E68D8741BC39B7E00C45466 /* FileReadPushStream.swift in Sources */,
 				1EFC5A661B2BA88800CC11E4 /* Server.swift in Sources */,
-				1E731E961BC37991002D5D63 /* Result.swift in Sources */,
 				1EA3AB091B327360002B1964 /* SocketServer.swift in Sources */,
 				1E01F5D51BAE199E002EA5E0 /* StreamBuffer.swift in Sources */,
 				1E8EAD2D1B2E863A00365A68 /* SocketReadStream.swift in Sources */,
-				1EB26C4B1BC10F85004136E9 /* FileReadPushStream.swift in Sources */,
 				1EB26C591BC1BBDB004136E9 /* Transformer.swift in Sources */,
 				1E22F8741BAE517A00B4A047 /* SHA224Hasher.swift in Sources */,
 				1E87BA9D1B85B79B006482CC /* DispatchSocketListener.swift in Sources */,

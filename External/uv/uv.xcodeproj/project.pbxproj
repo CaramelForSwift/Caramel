@@ -40,7 +40,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = /Volumes/Luna/Jelly/External/libuv;
+			buildWorkingDirectory = "${SRCROOT}/../libuv";
 			dependencies = (
 				A74412FF1BBF45A300908A62 /* PBXTargetDependency */,
 			);
@@ -55,7 +55,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /bin/sh;
-			buildWorkingDirectory = /Volumes/Luna/Jelly/External/libuv;
+			buildWorkingDirectory = "${SRCROOT}/../libuv";
 			dependencies = (
 			);
 			name = autogen;
@@ -69,7 +69,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /bin/sh;
-			buildWorkingDirectory = /Volumes/Luna/Jelly/External/libuv;
+			buildWorkingDirectory = "${SRCROOT}/../libuv";
 			dependencies = (
 				A74413011BBF45A600908A62 /* PBXTargetDependency */,
 			);
@@ -296,6 +296,7 @@
 				A74412F91BBF452500908A62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A74412FB1BBF453C00908A62 /* Build configuration list for PBXLegacyTarget "configure" */ = {
 			isa = XCConfigurationList;

@@ -77,16 +77,20 @@ public class TransformingPushStream<T, U where T: Pushable, U: StreamBuffer>: Pu
 	public var inputBuffer: InputStream.Sequence
 	
 	public init(inputStream: InputStream, transformer: Transformer<InputStream.Sequence, Sequence>) {
-		fatalError("THIS IS NOT READY YET")
-		
 		self.pushStream = inputStream
 		self.inputBuffer = InputStream.Sequence()
 		self.transformer = transformer
 		super.init()
 
-//		self.pushStream.wait { (result: Result<InputStream.Sequence>) in
-//			// TODO
-//		}
+		self.pushStream.wait(({ (result: Result<InputStream.Sequence>) -> Void in
+			do {
+				let inValue = try result.result()
+				let outValue = try self.transformer.transform(inValue)
+				self.write(outValue)
+			} catch let error {
+				self.writeError(error)
+			}
+		}) as! InputStream.PushHandler)
 	}
 	
 	public override var isAtEnd: Bool {

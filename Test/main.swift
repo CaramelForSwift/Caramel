@@ -1,4 +1,4 @@
-import Jelly
+import Caramel
 
 let hostsFile = File.rootDirectory/"etc"/"hosts"
 let splatoonFile = File.rootDirectory/"Users"/"syco"/"Downloads"/"Splatoon Squid Beatz"/"Splatoon Squid Beatz"/"18 - Final Boss Phase 2.mp3"

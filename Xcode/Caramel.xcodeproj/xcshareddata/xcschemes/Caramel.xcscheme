@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1EFC5A461B2BA86F00CC11E4"
-               BuildableName = "Jelly.framework"
-               BlueprintName = "Jelly"
-               ReferencedContainer = "container:Jelly.xcodeproj">
+               BuildableName = "Caramel.framework"
+               BlueprintName = "Caramel"
+               ReferencedContainer = "container:Caramel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1E0281151B6C69AD00B2C650"
-               BuildableName = "JellyTests.xctest"
-               BlueprintName = "JellyTests"
-               ReferencedContainer = "container:Jelly.xcodeproj">
+               BuildableName = "CaramelTests.xctest"
+               BlueprintName = "CaramelTests"
+               ReferencedContainer = "container:Caramel.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1EFC5A461B2BA86F00CC11E4"
-            BuildableName = "Jelly.framework"
-            BlueprintName = "Jelly"
-            ReferencedContainer = "container:Jelly.xcodeproj">
+            BuildableName = "Caramel.framework"
+            BlueprintName = "Caramel"
+            ReferencedContainer = "container:Caramel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <EnvironmentVariables>
@@ -75,7 +75,7 @@
             BlueprintIdentifier = "1EFC5A301B2BA82300CC11E4"
             BuildableName = "TestServer.app"
             BlueprintName = "TestServer"
-            ReferencedContainer = "container:Jelly.xcodeproj">
+            ReferencedContainer = "container:Caramel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -91,9 +91,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1EFC5A461B2BA86F00CC11E4"
-            BuildableName = "Jelly.framework"
-            BlueprintName = "Jelly"
-            ReferencedContainer = "container:Jelly.xcodeproj">
+            BuildableName = "Caramel.framework"
+            BlueprintName = "Caramel"
+            ReferencedContainer = "container:Caramel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

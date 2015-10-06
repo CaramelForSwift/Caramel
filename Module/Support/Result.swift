@@ -1,6 +1,6 @@
 //
 //  Result.swift
-//  Jelly
+//  Caramel
 //
 //  Created by Steve Streza on 9/24/15.
 //  Copyright © 2015 Lunar Guard. All rights reserved.

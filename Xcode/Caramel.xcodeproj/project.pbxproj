@@ -12,7 +12,7 @@
 		1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280C21B65AFA200B2C650 /* PullStream.swift */; };
 		1E0280EA1B69DB4D00B2C650 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280E91B69DB4D00B2C650 /* Runtime.swift */; };
 		1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */; };
-		1E02811B1B6C69AD00B2C650 /* Jelly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */; };
+		1E02811B1B6C69AD00B2C650 /* Caramel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; };
 		1E0281221B6C69E100B2C650 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0281211B6C69E100B2C650 /* Quick.framework */; };
 		1E0281241B6C69E700B2C650 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0281231B6C69E700B2C650 /* Nimble.framework */; };
 		1E0281271B6C6C0D00B2C650 /* RuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0281261B6C6C0D00B2C650 /* RuntimeTests.swift */; };
@@ -42,8 +42,8 @@
 		1E8EAD2D1B2E863A00365A68 /* SocketReadStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EAD2C1B2E863A00365A68 /* SocketReadStream.swift */; };
 		1EA3AB091B327360002B1964 /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA3AB081B327360002B1964 /* SocketServer.swift */; };
 		1EB26C591BC1BBDB004136E9 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C581BC1BBDB004136E9 /* Transformer.swift */; settings = {ASSET_TAGS = (); }; };
-		1EFC5A5C1B2BA87000CC11E4 /* Jelly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */; };
-		1EFC5A5E1B2BA87000CC11E4 /* Jelly.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1EFC5A5C1B2BA87000CC11E4 /* Caramel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; };
+		1EFC5A5E1B2BA87000CC11E4 /* Caramel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1EFC5A651B2BA88800CC11E4 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D51B2B5A2C00A602E5 /* Connection.swift */; };
 		1EFC5A661B2BA88800CC11E4 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D61B2B5A2C00A602E5 /* Server.swift */; };
 		1EFC5A681B2BA88B00CC11E4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D01B2B5A2100A602E5 /* main.swift */; };
@@ -59,14 +59,21 @@
 			containerPortal = 1E1607BC1B2B4CDD00A602E5 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1EFC5A461B2BA86F00CC11E4;
-			remoteInfo = Jelly;
+			remoteInfo = Caramel;
+		};
+		1E731E971BC37AF5002D5D63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1607BC1B2B4CDD00A602E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EFC5A301B2BA82300CC11E4;
+			remoteInfo = TestServer;
 		};
 		1EFC5A5A1B2BA87000CC11E4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1E1607BC1B2B4CDD00A602E5 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1EFC5A461B2BA86F00CC11E4;
-			remoteInfo = Jelly;
+			remoteInfo = Caramel;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -77,7 +84,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1EFC5A5E1B2BA87000CC11E4 /* Jelly.framework in Embed Frameworks */,
+				1EFC5A5E1B2BA87000CC11E4 /* Caramel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,7 +97,7 @@
 		1E0280C21B65AFA200B2C650 /* PullStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullStream.swift; sourceTree = "<group>"; };
 		1E0280E91B69DB4D00B2C650 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
 		1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMetadata.swift; sourceTree = "<group>"; };
-		1E0281161B6C69AD00B2C650 /* JellyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JellyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E0281161B6C69AD00B2C650 /* CaramelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaramelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E02811A1B6C69AD00B2C650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E0281211B6C69E100B2C650 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../External/Quick/build/Debug/Quick.framework; sourceTree = "<group>"; };
 		1E0281231B6C69E700B2C650 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../External/Quick/Externals/Nimble/build/Debug/Nimble.framework; sourceTree = "<group>"; };
@@ -130,7 +137,7 @@
 		1EB26C581BC1BBDB004136E9 /* Transformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
 		1EFC5A311B2BA82300CC11E4 /* TestServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EFC5A3E1B2BA82300CC11E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Jelly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Caramel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EFC5A691B2BAF6B00CC11E4 /* SocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketListener.swift; sourceTree = "<group>"; };
 		1EFC5A6B1B2BB03900CC11E4 /* DispatchSocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSocketListener.swift; sourceTree = "<group>"; };
 		1EFC5A711B2BC7BB00CC11E4 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -145,7 +152,7 @@
 			files = (
 				1E0281241B6C69E700B2C650 /* Nimble.framework in Frameworks */,
 				1E0281221B6C69E100B2C650 /* Quick.framework in Frameworks */,
-				1E02811B1B6C69AD00B2C650 /* Jelly.framework in Frameworks */,
+				1E02811B1B6C69AD00B2C650 /* Caramel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EFC5A5C1B2BA87000CC11E4 /* Jelly.framework in Frameworks */,
+				1EFC5A5C1B2BA87000CC11E4 /* Caramel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +199,7 @@
 				1E0281251B6C6BC300B2C650 /* Support */,
 			);
 			name = Tests;
-			path = JellyTests;
+			path = CaramelTests;
 			sourceTree = "<group>";
 		};
 		1E0281251B6C6BC300B2C650 /* Support */ = {
@@ -218,7 +225,7 @@
 		1E1607BB1B2B4CDD00A602E5 = {
 			isa = PBXGroup;
 			children = (
-				1E1607C61B2B4CDD00A602E5 /* Jelly */,
+				1E1607C61B2B4CDD00A602E5 /* Caramel */,
 				1EFC5A321B2BA82300CC11E4 /* TestServer */,
 				1E0281171B6C69AD00B2C650 /* Tests */,
 				1E1607C51B2B4CDD00A602E5 /* Products */,
@@ -229,19 +236,19 @@
 			isa = PBXGroup;
 			children = (
 				1EFC5A311B2BA82300CC11E4 /* TestServer.app */,
-				1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */,
-				1E0281161B6C69AD00B2C650 /* JellyTests.xctest */,
+				1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */,
+				1E0281161B6C69AD00B2C650 /* CaramelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1E1607C61B2B4CDD00A602E5 /* Jelly */ = {
+		1E1607C61B2B4CDD00A602E5 /* Caramel */ = {
 			isa = PBXGroup;
 			children = (
 				1E1607CF1B2B4CEA00A602E5 /* Test */,
 				1E1607CE1B2B4CE600A602E5 /* Module */,
 			);
-			path = Jelly;
+			path = Caramel;
 			sourceTree = "<group>";
 		};
 		1E1607CE1B2B4CE600A602E5 /* Module */ = {
@@ -370,9 +377,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1E0281151B6C69AD00B2C650 /* JellyTests */ = {
+		1E0281151B6C69AD00B2C650 /* CaramelTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E0281201B6C69AD00B2C650 /* Build configuration list for PBXNativeTarget "JellyTests" */;
+			buildConfigurationList = 1E0281201B6C69AD00B2C650 /* Build configuration list for PBXNativeTarget "CaramelTests" */;
 			buildPhases = (
 				1E0281121B6C69AD00B2C650 /* Sources */,
 				1E0281131B6C69AD00B2C650 /* Frameworks */,
@@ -382,10 +389,11 @@
 			);
 			dependencies = (
 				1E02811D1B6C69AD00B2C650 /* PBXTargetDependency */,
+				1E731E981BC37AF5002D5D63 /* PBXTargetDependency */,
 			);
-			name = JellyTests;
-			productName = JellyTests;
-			productReference = 1E0281161B6C69AD00B2C650 /* JellyTests.xctest */;
+			name = CaramelTests;
+			productName = CaramelTests;
+			productReference = 1E0281161B6C69AD00B2C650 /* CaramelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		1EFC5A301B2BA82300CC11E4 /* TestServer */ = {
@@ -407,9 +415,9 @@
 			productReference = 1EFC5A311B2BA82300CC11E4 /* TestServer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1EFC5A461B2BA86F00CC11E4 /* Jelly */ = {
+		1EFC5A461B2BA86F00CC11E4 /* Caramel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EFC5A5F1B2BA87000CC11E4 /* Build configuration list for PBXNativeTarget "Jelly" */;
+			buildConfigurationList = 1EFC5A5F1B2BA87000CC11E4 /* Build configuration list for PBXNativeTarget "Caramel" */;
 			buildPhases = (
 				1EFC5A421B2BA86F00CC11E4 /* Sources */,
 				1EFC5A431B2BA86F00CC11E4 /* Frameworks */,
@@ -420,9 +428,9 @@
 			);
 			dependencies = (
 			);
-			name = Jelly;
-			productName = Jelly;
-			productReference = 1EFC5A471B2BA86F00CC11E4 /* Jelly.framework */;
+			name = Caramel;
+			productName = Caramel;
+			productReference = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -437,6 +445,7 @@
 				TargetAttributes = {
 					1E0281151B6C69AD00B2C650 = {
 						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 1EFC5A301B2BA82300CC11E4;
 					};
 					1EFC5A301B2BA82300CC11E4 = {
 						CreatedOnToolsVersion = 7.0;
@@ -446,7 +455,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1E1607BF1B2B4CDD00A602E5 /* Build configuration list for PBXProject "Jelly" */;
+			buildConfigurationList = 1E1607BF1B2B4CDD00A602E5 /* Build configuration list for PBXProject "Caramel" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -459,8 +468,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1EFC5A461B2BA86F00CC11E4 /* Jelly */,
-				1E0281151B6C69AD00B2C650 /* JellyTests */,
+				1EFC5A461B2BA86F00CC11E4 /* Caramel */,
+				1E0281151B6C69AD00B2C650 /* CaramelTests */,
 				1EFC5A301B2BA82300CC11E4 /* TestServer */,
 			);
 		};
@@ -554,12 +563,17 @@
 /* Begin PBXTargetDependency section */
 		1E02811D1B6C69AD00B2C650 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1EFC5A461B2BA86F00CC11E4 /* Jelly */;
+			target = 1EFC5A461B2BA86F00CC11E4 /* Caramel */;
 			targetProxy = 1E02811C1B6C69AD00B2C650 /* PBXContainerItemProxy */;
+		};
+		1E731E981BC37AF5002D5D63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EFC5A301B2BA82300CC11E4 /* TestServer */;
+			targetProxy = 1E731E971BC37AF5002D5D63 /* PBXContainerItemProxy */;
 		};
 		1EFC5A5B1B2BA87000CC11E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1EFC5A461B2BA86F00CC11E4 /* Jelly */;
+			target = 1EFC5A461B2BA86F00CC11E4 /* Caramel */;
 			targetProxy = 1EFC5A5A1B2BA87000CC11E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -569,10 +583,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = JellyTests/Info.plist;
+				INFOPLIST_FILE = CaramelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.lunarguard.JellyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.caramelforswift.CaramelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestServer.app/Contents/MacOS/TestServer";
 			};
 			name = Debug;
 		};
@@ -580,10 +595,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = JellyTests/Info.plist;
+				INFOPLIST_FILE = CaramelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.lunarguard.JellyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.caramelforswift.CaramelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestServer.app/Contents/MacOS/TestServer";
 			};
 			name = Release;
 		};
@@ -706,11 +722,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Jelly/Info.plist;
+				INFOPLIST_FILE = Caramel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D USE_LIBDISPATCH";
-				PRODUCT_BUNDLE_IDENTIFIER = com.stevestreza.Jelly;
+				PRODUCT_BUNDLE_IDENTIFIER = org.caramelforswift.Caramel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Module/Bridging-Header.h";
@@ -733,11 +749,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Jelly/Info.plist;
+				INFOPLIST_FILE = Caramel/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D USE_LIBDISPATCH";
-				PRODUCT_BUNDLE_IDENTIFIER = com.stevestreza.Jelly;
+				PRODUCT_BUNDLE_IDENTIFIER = org.caramelforswift.Caramel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Module/Bridging-Header.h";
@@ -749,7 +765,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1E0281201B6C69AD00B2C650 /* Build configuration list for PBXNativeTarget "JellyTests" */ = {
+		1E0281201B6C69AD00B2C650 /* Build configuration list for PBXNativeTarget "CaramelTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E02811E1B6C69AD00B2C650 /* Debug */,
@@ -758,7 +774,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1E1607BF1B2B4CDD00A602E5 /* Build configuration list for PBXProject "Jelly" */ = {
+		1E1607BF1B2B4CDD00A602E5 /* Build configuration list for PBXProject "Caramel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E1607C91B2B4CDD00A602E5 /* Debug */,
@@ -776,7 +792,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1EFC5A5F1B2BA87000CC11E4 /* Build configuration list for PBXNativeTarget "Jelly" */ = {
+		1EFC5A5F1B2BA87000CC11E4 /* Build configuration list for PBXNativeTarget "Caramel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EFC5A601B2BA87000CC11E4 /* Debug */,

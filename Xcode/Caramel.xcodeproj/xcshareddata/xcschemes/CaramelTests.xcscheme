@@ -17,9 +17,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1E0281151B6C69AD00B2C650"
-               BuildableName = "JellyTests.xctest"
-               BlueprintName = "JellyTests"
-               ReferencedContainer = "container:Jelly.xcodeproj">
+               BuildableName = "CaramelTests.xctest"
+               BlueprintName = "CaramelTests"
+               ReferencedContainer = "container:Caramel.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

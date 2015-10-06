@@ -1,6 +1,6 @@
-# Jelly
+# Caramel
 
-Jelly is a cross-platform module for building server applications in Swift.
+Caramel is a cross-platform module for building server applications in Swift.
 
 # Design goals
 

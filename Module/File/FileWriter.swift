@@ -1,6 +1,6 @@
 //
 //  FileWriter.swift
-//  Jelly
+//  Caramel
 //
 //  Created by Steve Streza on 1.8.15.
 //  Copyright © 2015 Lunar Guard. All rights reserved.

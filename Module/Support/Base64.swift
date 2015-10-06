@@ -1,6 +1,6 @@
 //
 //  Base64.swift
-//  Jelly
+//  Caramel
 //
 //  Created by Steve Streza on 20.9.15.
 //  Copyright © 2015 Lunar Guard. All rights reserved.
@@ -129,8 +129,7 @@ public class Base64DecoderStream<T: Pullable where T.Sequence: DataConvertible>:
 
 public extension Pullable where Self.Sequence: DataConvertible {
 	var base64Encode: TransformingPullStream<Self, Data> {
-		let foo = TransformingPullStream(inputStream: self, transformer: Base64Transformer())
-		return foo
+		return TransformingPullStream(inputStream: self, transformer: Base64Transformer())
 	}
 }
 

@@ -1,6 +1,6 @@
 //
 //  FileTests.swift
-//  Jelly
+//  Caramel
 //
 //  Created by Steve Streza on 31.7.15.
 //  Copyright © 2015 Lunar Guard. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Quick
 import Nimble
-@testable import Jelly
+@testable import Caramel
 
 class FileSpec: QuickSpec {
 	override func spec() {

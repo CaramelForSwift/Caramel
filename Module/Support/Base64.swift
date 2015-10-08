@@ -129,7 +129,13 @@ public class Base64DecoderStream<T: Pullable where T.Sequence: DataConvertible>:
 
 public extension Pullable where Self.Sequence: DataConvertible {
 	var base64Encode: TransformingPullStream<Self, Data> {
-		return TransformingPullStream(inputStream: self, transformer: Base64Transformer())
+		return self.transformWith(Base64EncodeTransformer())
+	}
+}
+
+public extension Pushable where Self.Sequence: DataConvertible {
+	var base64Encode: TransformingPushStream<Self, Data> {
+		return self.transformWith(Base64EncodeTransformer())
 	}
 }
 
@@ -142,7 +148,7 @@ public extension DataConvertible {
 	}
 }
 
-public class Base64Transformer<T: DataConvertible>: Transformer<T, Data> {
+public class Base64EncodeTransformer<T: DataConvertible>: Transformer<T, Data> {
 	public init() {
 		super.init { (dataConvertible: T, transformer: Transformer<T, Data>) throws -> Data in
 			let data = dataConvertible.data

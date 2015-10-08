@@ -110,3 +110,15 @@ public class TransformingPushStream<T, U where T: Pushable, U: StreamBuffer>: Pu
 		return self.pushStream.isAtEnd
 	}
 }
+
+public extension Pullable {
+	func transformWith<T: StreamBuffer>(transformer: Transformer<Sequence, T>) -> TransformingPullStream<Self, T> {
+		return TransformingPullStream(inputStream: self, transformer: transformer)
+	}
+}
+
+public extension Pushable {
+	func transformWith<T: StreamBuffer>(transformer: Transformer<Sequence, T>) -> TransformingPushStream<Self, T> {
+		return TransformingPushStream(inputStream: self, transformer: transformer)
+	}
+}

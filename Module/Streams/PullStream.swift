@@ -78,6 +78,8 @@ public class TransformPullStream<T: Pullable, U>: TransformPullable {
     }
     
     private let transform: Transformer
+	
+	private var didStart = false
     
     public init(stream: InputStream, transformer: Transformer) {
         _pullStream = stream

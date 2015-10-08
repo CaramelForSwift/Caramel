@@ -10,14 +10,30 @@ public protocol Transforming {
 	typealias Input: StreamBuffer
 	typealias Output: StreamBuffer
 	
+	func start()
 	func transform(input: Input) throws -> Output
+	func finish() throws -> Output?
 }
 
 public class Transformer<T, U where T: StreamBuffer, U: StreamBuffer> : Transforming {
 	public typealias Input = T
 	public typealias Output = U
 	
-	public typealias TransformBlock = (T, Transformer) throws -> U
+	public func start() {
+		
+	}
+	
+	public func transform(input: Input) throws -> Output {
+		return Output()
+	}
+	
+	public func finish() throws -> Output? {
+		return nil
+	}
+}
+
+public final class BlockTransformer<T, U where T: StreamBuffer, U: StreamBuffer>: Transformer<T, U> {
+	public typealias TransformBlock = (T, BlockTransformer) throws -> U
 	
 	public let transformer: TransformBlock
 	
@@ -25,9 +41,6 @@ public class Transformer<T, U where T: StreamBuffer, U: StreamBuffer> : Transfor
 		self.transformer = transformer
 	}
 
-	public func transform(input: Input) throws -> Output {
-		return try self.transformer(input, self)
-	}
 }
 
 public class TransformingPullStream<T, U where U: StreamBuffer, T: Pullable>: TransformPullable {

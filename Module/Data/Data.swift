@@ -10,9 +10,11 @@ import Darwin
 
 public typealias Byte = UInt8
 
-public enum Encoding {
-	case UTF8
-	case UTF16
+public extension String {
+	public enum Encoding {
+		case UTF8
+		case UTF16
+	}
 }
 
 public struct Data {
@@ -122,7 +124,7 @@ public extension Data {
         return stringWithEncoding(.UTF16)
 	}
 	
-	public func stringWithEncoding(encoding: Encoding) -> String? {
+	public func stringWithEncoding(encoding: String.Encoding) -> String? {
 		switch encoding {
 		case .UTF8:
 			var view = String.UnicodeScalarView()

@@ -99,9 +99,6 @@ public class TransformPullStream<T: Pullable, U>: TransformPullable {
 }
 
 public extension Pullable {
-    func transform<U>(transformer: (Self.Sequence) -> [U]) -> TransformPullStream<Self, U> {
-        return TransformPullStream(stream: self, transformer: transformer)
-    }
     func map<U>(transformer: (Self.Sequence.Generator.Element) -> U) -> TransformPullStream<Self, U> {
         return TransformPullStream(stream: self, transformer: { $0.map({ transformer($0) }) })
     }

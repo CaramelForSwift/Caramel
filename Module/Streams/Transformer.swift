@@ -115,10 +115,20 @@ public extension Pullable {
 	func transformWith<T: StreamBuffer>(transformer: Transformer<Sequence, T>) -> TransformingPullStream<Self, T> {
 		return TransformingPullStream(inputStream: self, transformer: transformer)
 	}
+	func transform<T: StreamBuffer>(block: (Self.Sequence) throws -> T) -> TransformingPullStream<Self, T> {
+		return transformWith(BlockTransformer(transformer: { (sequence: Sequence, _: BlockTransformer<Sequence, T>) throws -> T in
+			return try block(sequence)
+		}))
+	}
 }
 
 public extension Pushable {
 	func transformWith<T: StreamBuffer>(transformer: Transformer<Sequence, T>) -> TransformingPushStream<Self, T> {
 		return TransformingPushStream(inputStream: self, transformer: transformer)
+	}
+	func transform<T: StreamBuffer>(block: (Sequence) throws -> T) -> TransformingPushStream<Self, T> {
+		return transformWith(BlockTransformer(transformer: { (sequence: Sequence, _: BlockTransformer<Sequence, T>) throws -> T in
+			return try block(sequence)
+		}))
 	}
 }

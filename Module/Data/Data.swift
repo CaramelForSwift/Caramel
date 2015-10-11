@@ -92,12 +92,12 @@ public extension String.UTF16View {
 }
 
 public extension String {
-	public var UTF8Data: Data {
-        return self.utf8.data
-	}
-	public var UTF16Data: Data {
-        return self.utf16.data
-	}
+//	public var UTF8Data: Data {
+//        return self.utf8.data
+//	}
+//	public var UTF16Data: Data {
+//        return self.utf16.data
+//	}
 	public var UTF32Data: Data {
         var data = Data()
         var bytes: [Byte] = []

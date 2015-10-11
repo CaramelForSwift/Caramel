@@ -124,7 +124,7 @@ public class Base64EncoderStream<T: Pullable where T.Sequence: DataConvertible>:
 }
 
 public extension Pullable where Self.Sequence: DataConvertible {
-	var base64Encode: TransformingPullStream<Self, Data> {
+	var base64Encode: TransformingPullStream<Self, Data, Base64EncodeTransformer<Sequence>> {
 		return self.transformWith(Base64EncodeTransformer())
 	}
 }

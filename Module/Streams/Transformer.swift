@@ -41,21 +41,26 @@ public final class BlockTransformer<T, U where T: StreamBuffer, U: StreamBuffer>
 		self.transformer = transformer
 	}
 
+	public override func transform(input: Input) throws -> Output {
+		return try self.transformer(input, self)
+	}
 }
 
-public class TransformingPullStream<T, U where U: StreamBuffer, T: Pullable>: TransformPullable {
+public class TransformingPullStream<T, U, V: Transforming where U: StreamBuffer, T: Pullable, V.Input == T.Sequence, V.Output == U>: TransformPullable {
 	public typealias InputStream = T
 	public typealias Sequence = U
 	public typealias Output = U
+
+	public typealias StreamTransformer = V
 	
-	let transformer: Transformer<InputStream.Sequence, Sequence>
+	let transformer: StreamTransformer
 	
 	public var pullStream: InputStream
 	
 	public var inputBuffer: InputStream.Sequence
 	public var buffer: Sequence
 	
-	public init(inputStream: InputStream, transformer: Transformer<InputStream.Sequence, Sequence>) {
+	public init(inputStream: InputStream, transformer: StreamTransformer) {
 		self.pullStream = inputStream
 
 		self.inputBuffer = InputStream.Sequence()
@@ -112,10 +117,10 @@ public class TransformingPushStream<T, U where T: Pushable, U: StreamBuffer>: Pu
 }
 
 public extension Pullable {
-	func transformWith<T: StreamBuffer>(transformer: Transformer<Sequence, T>) -> TransformingPullStream<Self, T> {
+	func transformWith<T: StreamBuffer, U: Transforming where U.Input == Sequence, U.Output == T>(transformer: U) -> TransformingPullStream<Self, T, U> {
 		return TransformingPullStream(inputStream: self, transformer: transformer)
 	}
-	func transform<T: StreamBuffer>(block: (Self.Sequence) throws -> T) -> TransformingPullStream<Self, T> {
+	func transform<T: StreamBuffer>(block: (Self.Sequence) throws -> T) -> TransformingPullStream<Self, T, BlockTransformer<Sequence, T>> {
 		return transformWith(BlockTransformer(transformer: { (sequence: Sequence, _: BlockTransformer<Sequence, T>) throws -> T in
 			return try block(sequence)
 		}))

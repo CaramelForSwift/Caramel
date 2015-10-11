@@ -130,7 +130,7 @@ public extension Pullable where Self.Sequence: DataConvertible {
 }
 
 public extension Pushable where Self.Sequence: DataConvertible {
-	var base64Encode: TransformingPushStream<Self, Data> {
+	var base64Encode: TransformingPushStream<Self, Data, Base64EncodeTransformer<Sequence>> {
 		return self.transformWith(Base64EncodeTransformer())
 	}
 }

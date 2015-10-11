@@ -52,11 +52,11 @@ public class PushStream<T: StreamBuffer>: Pushable {
     }
 }
 
-public extension PushStream {
+public extension Pushable {
 	public func drain(handler: (Result<Sequence>) -> Void) {
 		var buffer = Sequence()
 		var ended = false
-		self.wait { (result: Result<Sequence>) in 
+		self.wait(({ (result: Result<Sequence>) in 
 			guard ended == false else { return }
 
 			do {
@@ -70,7 +70,7 @@ public extension PushStream {
 				ended = true
 				handler(result)
 			}
-		}
+		}) as! PushHandler)
 	}
 }
 

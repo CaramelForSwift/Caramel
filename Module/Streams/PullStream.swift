@@ -98,15 +98,6 @@ public class TransformPullStream<T: Pullable, U>: TransformPullable {
     }
 }
 
-public extension Pullable {
-    func map<U>(transformer: (Self.Sequence.Generator.Element) -> U) -> TransformPullStream<Self, U> {
-        return TransformPullStream(stream: self, transformer: { $0.map({ transformer($0) }) })
-    }
-    func flatMap<U>(transformer: (Self.Sequence.Generator.Element) -> [U]) -> TransformPullStream<Self, U> {
-        return TransformPullStream(stream: self, transformer: { $0.flatMap({ transformer($0) }) })
-    }
-}
-
 public extension DataConvertible {
     public var stream: FulfilledPullableStream<Data> {
         return FulfilledPullableStream(values: self.data)

@@ -9,11 +9,15 @@
 public protocol StreamBuffer: SequenceType {
 	init()
 	mutating func append(elements: Self)
+	mutating func append(element: Self.Generator.Element)
 }
 
 extension Data: StreamBuffer {
 	public mutating func append(newBytes: Data) {
 		self.bytes += newBytes
+	}
+	public mutating func append(newByte: Byte) {
+		self.bytes.append(newByte)
 	}
 }
 

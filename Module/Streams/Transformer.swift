@@ -52,7 +52,6 @@ public class TransformingPullStream<T, U, V: Transforming where U: StreamBuffer,
 	public typealias Output = U
 
 	public typealias StreamTransformer = V
-	
 	let transformer: StreamTransformer
 	
 	public var pullStream: InputStream
@@ -83,22 +82,23 @@ public class TransformingPullStream<T, U, V: Transforming where U: StreamBuffer,
 	}
 }
 
-public class TransformingPushStream<T, U where T: Pushable, U: StreamBuffer>: PushStream<U>, TransformPushable {
+public class TransformingPushStream<T, U, V: Transforming where U: StreamBuffer, T: Pushable, V.Input == T.Sequence, V.Output == U>: TransformPushable {
 	public typealias InputStream = T
+	public typealias Sequence = U
 	public typealias Output = U
-	public typealias PushHandler = (Result<Sequence>) -> Void
+	public typealias PushHandler = (Result<U>) -> Void
 	
-	let transformer: Transformer<InputStream.Sequence, Sequence>
+	public typealias StreamTransformer = V
+	let transformer: StreamTransformer
 	
 	public var pushStream: InputStream
-	
 	public var inputBuffer: InputStream.Sequence
+	public var buffer: Sequence = Sequence()
 	
-	public init(inputStream: InputStream, transformer: Transformer<InputStream.Sequence, Sequence>) {
+	public init(inputStream: InputStream, transformer: StreamTransformer) {
 		self.pushStream = inputStream
 		self.inputBuffer = InputStream.Sequence()
 		self.transformer = transformer
-		super.init()
 
 		self.pushStream.wait(({ (result: Result<InputStream.Sequence>) -> Void in
 			do {
@@ -111,29 +111,104 @@ public class TransformingPushStream<T, U where T: Pushable, U: StreamBuffer>: Pu
 		}) as! InputStream.PushHandler)
 	}
 	
-	public override var isAtEnd: Bool {
+	private var handlers: [PushHandler] = []
+	public func wait(handler: PushHandler) {
+		handlers.append(handler)
+	}
+	
+	public func write(sequence: Sequence) {
+		let result = Result.Success(sequence)
+		for handler in handlers {
+			handler(result)
+		}
+	}
+	
+	public func writeError(error: ErrorType) {
+		let result = Result<Sequence>.Error(error)
+		for handler in handlers {
+			handler(result)
+		}
+	}
+	
+	public var isAtEnd: Bool {
 		return self.pushStream.isAtEnd
 	}
 }
 
 public extension Pullable {
-	func transformWith<T: StreamBuffer, U: Transforming where U.Input == Sequence, U.Output == T>(transformer: U) -> TransformingPullStream<Self, T, U> {
-		return TransformingPullStream(inputStream: self, transformer: transformer)
-	}
 	func transform<T: StreamBuffer>(block: (Self.Sequence) throws -> T) -> TransformingPullStream<Self, T, BlockTransformer<Sequence, T>> {
 		return transformWith(BlockTransformer(transformer: { (sequence: Sequence, _: BlockTransformer<Sequence, T>) throws -> T in
 			return try block(sequence)
 		}))
 	}
+
+	func transformWith<T: StreamBuffer, U: Transforming where U.Input == Sequence, U.Output == T>(transformer: U) -> TransformingPullStream<Self, T, U> {
+		return TransformingPullStream(inputStream: self, transformer: transformer)
+	}
+
+	func map<T: StreamBuffer>(transformer: (Self.Sequence.Generator.Element) -> T.Generator.Element) -> TransformingPullStream<Self, T, BlockTransformer<Self.Sequence, T>> {
+		let transformer = BlockTransformer { (elements: Self.Sequence, _: BlockTransformer<Self.Sequence, T>) -> T in
+			// why wont they let me use map here ;~;
+			var outElements = T()
+			elements.forEach({ (element: Self.Sequence.Generator.Element) -> Void in
+				let outElement = transformer(element)
+				outElements.append(outElement)
+			})
+			return outElements
+		}
+		return TransformingPullStream(inputStream: self, transformer: transformer)
+	}
+	
+	func flatMap<T: StreamBuffer>(transformer: (Self.Sequence.Generator.Element) -> T) -> TransformingPullStream<Self, T, BlockTransformer<Self.Sequence, T>> {
+		let transformer = BlockTransformer { (elements: Self.Sequence, _: BlockTransformer<Self.Sequence, T>) -> T in
+			// why wont they let me use map here ;~;
+			var outElements = T()
+			elements.forEach({ (element: Self.Sequence.Generator.Element) -> Void in
+				let out = transformer(element)
+				outElements.append(out)
+			})
+			return outElements
+		}
+		return TransformingPullStream(inputStream: self, transformer: transformer)
+	}
 }
 
 public extension Pushable {
-	func transformWith<T: StreamBuffer>(transformer: Transformer<Sequence, T>) -> TransformingPushStream<Self, T> {
-		return TransformingPushStream(inputStream: self, transformer: transformer)
-	}
-	func transform<T: StreamBuffer>(block: (Sequence) throws -> T) -> TransformingPushStream<Self, T> {
+	func transform<T: StreamBuffer>(block: (Sequence) throws -> T) -> TransformingPushStream<Self, T, BlockTransformer<Sequence, T>> {
 		return transformWith(BlockTransformer(transformer: { (sequence: Sequence, _: BlockTransformer<Sequence, T>) throws -> T in
 			return try block(sequence)
 		}))
 	}
+
+	func transformWith<T: StreamBuffer, U: Transforming where U.Input == Sequence, U.Output == T>(transformer: U) -> TransformingPushStream<Self, T, U> {
+		return TransformingPushStream(inputStream: self, transformer: transformer)
+	}
+
+	
+	func map<T: StreamBuffer>(transformer: (Self.Sequence.Generator.Element) -> T.Generator.Element) -> TransformingPushStream<Self, T, BlockTransformer<Self.Sequence, T>> {
+		let transformer = BlockTransformer { (elements: Self.Sequence, _: BlockTransformer<Self.Sequence, T>) -> T in
+			// why wont they let me use map here ;~;
+			var outElements = T()
+			elements.forEach({ (element: Self.Sequence.Generator.Element) -> Void in
+				let outElement = transformer(element)
+				outElements.append(outElement)
+			})
+			return outElements
+		}
+		return TransformingPushStream(inputStream: self, transformer: transformer)
+	}
+	
+	func flatMap<T: StreamBuffer>(transformer: (Self.Sequence.Generator.Element) -> T) -> TransformingPushStream<Self, T, BlockTransformer<Self.Sequence, T>> {
+		let transformer = BlockTransformer { (elements: Self.Sequence, _: BlockTransformer<Self.Sequence, T>) -> T in
+			// why wont they let me use map here ;~;
+			var outElements = T()
+			elements.forEach({ (element: Self.Sequence.Generator.Element) -> Void in
+				let out = transformer(element)
+				outElements.append(out)
+			})
+			return outElements
+		}
+		return TransformingPushStream(inputStream: self, transformer: transformer)
+	}
 }
+

@@ -27,9 +27,15 @@ public class MD4Hasher: Hasher {
 }
 
 public extension Pullable where Self.Sequence: DataConvertible {
-	var MD4: CryptoDigestStream<Self, MD4Hasher> {
-        return CryptoDigestStream(stream: self, hasher: MD4Hasher())
-	}
+    var MD4: TransformingPullStream<Self, Data, CryptoDigestTransformer<Self.Sequence, MD4Hasher>> {
+        return self.transformWith(CryptoDigestTransformer(hasher: MD4Hasher()))
+    }
+}
+
+public extension Pushable where Self.Sequence: DataConvertible {
+    var MD4: TransformingPushStream<Self, Data, CryptoDigestTransformer<Self.Sequence, MD4Hasher>> {
+        return self.transformWith(CryptoDigestTransformer(hasher: MD4Hasher()))
+    }
 }
 
 public extension DataConvertible {

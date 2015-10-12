@@ -70,6 +70,7 @@
 		A74413271BBF477500908A62 /* uv-version.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413181BBF477500908A62 /* uv-version.h */; };
 		A74413281BBF477500908A62 /* uv-win.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413191BBF477500908A62 /* uv-win.h */; };
 		A74413291BBF477500908A62 /* uv.h in Headers */ = {isa = PBXBuildFile; fileRef = A744131A1BBF477500908A62 /* uv.h */; };
+		A78FE77D1BCC42C4004A3270 /* StringSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78FE77C1BCC42C4004A3270 /* StringSupport.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -273,6 +274,7 @@
 		A74413191BBF477500908A62 /* uv-win.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-win.h"; sourceTree = "<group>"; };
 		A744131A1BBF477500908A62 /* uv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uv.h; sourceTree = "<group>"; };
 		A755D4A41BB5BD8200CE3B08 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A78FE77C1BCC42C4004A3270 /* StringSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringSupport.swift; sourceTree = "<group>"; };
 		A7B52D1E1BBF148C009BA12F /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = ../../External/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		A7B52D351BBF14AA009BA12F /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = ../../External/Quick/Externals/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -472,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				1E55784E1BCA3DED00E10926 /* StringToData.swift */,
+				A78FE77C1BCC42C4004A3270 /* StringSupport.swift */,
 			);
 			name = String;
 			path = Strings;
@@ -853,6 +856,7 @@
 				1E22F8781BAF1F7900B4A047 /* HMACStream.swift in Sources */,
 				1E22F86E1BAE50FD00B4A047 /* SHA1Hasher.swift in Sources */,
 				1E68D8731BC39AE700C45466 /* EventLoop.swift in Sources */,
+				A78FE77D1BCC42C4004A3270 /* StringSupport.swift in Sources */,
 				1E22F8681BAE4E5E00B4A047 /* MD5Hasher.swift in Sources */,
 				1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */,
 				1E68D8721BC39A8B00C45466 /* Result.swift in Sources */,

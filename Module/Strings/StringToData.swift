@@ -132,35 +132,35 @@ public extension String {
 
 public extension Pullable where Self.Sequence.Generator.Element == String {
 	public var UTF8Data: TransformingPullStream<Self, Data, StringToDataTransformer<Self.Sequence>> {
-		return TransformingPullStream(inputStream: self, transformer: StringToDataTransformer(encoding: .UTF8))
+        return self.transformWith(StringToDataTransformer(encoding: .UTF8))
 	}
 	public var UTF16Data: TransformingPullStream<Self, Data, StringToDataTransformer<Self.Sequence>> {
-		return TransformingPullStream(inputStream: self, transformer: StringToDataTransformer(encoding: .UTF16))
+        return self.transformWith(StringToDataTransformer(encoding: .UTF16))
 	}
 }
 
 public extension Pushable where Self.Sequence.Generator.Element == String {
 	public var UTF8Data: TransformingPushStream<Self, Data, StringToDataTransformer<Self.Sequence>> {
-		return TransformingPushStream(inputStream: self, transformer: StringToDataTransformer(encoding: .UTF8))
+        return self.transformWith(StringToDataTransformer(encoding: .UTF8))
 	}
 	public var UTF16Data: TransformingPushStream<Self, Data, StringToDataTransformer<Self.Sequence>> {
-		return TransformingPushStream(inputStream: self, transformer: StringToDataTransformer(encoding: .UTF16))
+        return self.transformWith(StringToDataTransformer(encoding: .UTF16))
 	}
 }
 
 public extension Pullable where Self.Sequence: DataConvertible {
 	public var UTF8StringView: TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>> {
-		return TransformingPullStream(inputStream: self, transformer: DataToStringTransformer(encoding: .UTF8))
+        return self.transformWith(DataToStringTransformer(encoding: .UTF8))
 	}
 	public var UTF16StringView: TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>> {
-		return TransformingPullStream(inputStream: self, transformer: DataToStringTransformer(encoding: .UTF16))
+        return self.transformWith(DataToStringTransformer(encoding: .UTF16))
 	}
 
     public var UTF8String: TransformingPullStream<TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
-        return TransformingPullStream(inputStream: self.UTF8StringView, transformer: UnicodeScalarViewToStringTransformer())
+        return self.UTF8StringView.transformWith(UnicodeScalarViewToStringTransformer())
     }
     public var UTF16String: TransformingPullStream<TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
-        return TransformingPullStream(inputStream: self.UTF16StringView, transformer: UnicodeScalarViewToStringTransformer())
+        return self.UTF16StringView.transformWith(UnicodeScalarViewToStringTransformer())
     }
 }
 

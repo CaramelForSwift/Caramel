@@ -216,7 +216,7 @@ public extension Pullable {
 			})
 			return outElements
 		}
-		return TransformingPullStream(inputStream: self, transformer: transformer)
+        return self.transformWith(transformer)
 	}
 	
 	func flatMap<T: StreamBuffer>(transformer: (Self.Sequence.Generator.Element) -> T) -> TransformingPullStream<Self, T, BlockTransformer<Self.Sequence, T>> {
@@ -229,7 +229,7 @@ public extension Pullable {
 			})
 			return outElements
 		}
-		return TransformingPullStream(inputStream: self, transformer: transformer)
+        return self.transformWith(transformer)
 	}
 }
 

@@ -27,9 +27,15 @@ public class SHA256Hasher: Hasher {
 }
 
 public extension Pullable where Self.Sequence: DataConvertible {
-	var SHA256: CryptoDigestStream<Self, SHA256Hasher> {
-        return CryptoDigestStream(stream: self, hasher: SHA256Hasher())
-	}
+    var SHA256: TransformingPullStream<Self, Data, CryptoDigestTransformer<Self.Sequence, SHA256Hasher>> {
+        return self.transformWith(CryptoDigestTransformer(hasher: SHA256Hasher()))
+    }
+}
+
+public extension Pushable where Self.Sequence: DataConvertible {
+    var SHA256: TransformingPushStream<Self, Data, CryptoDigestTransformer<Self.Sequence, SHA256Hasher>> {
+        return self.transformWith(CryptoDigestTransformer(hasher: SHA256Hasher()))
+    }
 }
 
 public extension DataConvertible {

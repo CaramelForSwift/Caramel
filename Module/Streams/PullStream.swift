@@ -12,7 +12,7 @@ public class PullableStream<T: StreamBuffer>: Pullable {
     }
     
     func appendToBuffer(newElements: Sequence) {
-        self.buffer.append(newElements)
+        self.buffer.appendContentsOf(newElements)
     }
     
     public func read() -> Sequence? {
@@ -52,7 +52,7 @@ public extension Pullable {
         var output = Self.Sequence()
         while (self.isAtEnd == false) {
             if let read = self.pull() {
-                output.append(read)
+                output.appendContentsOf(read)
             }
         }
         return output

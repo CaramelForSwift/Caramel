@@ -9,7 +9,7 @@ public class PushStream<T: StreamBuffer>: Pushable {
     public var buffer = Sequence()
     
     func appendToBuffer(newElements: Sequence) {
-        self.buffer.append(newElements)
+        self.buffer.appendContentsOf(newElements)
     }
     
     private var _isAtEnd = false
@@ -61,7 +61,7 @@ public extension Pushable {
 
 			do {
 				let data = try result.result()
-				buffer.append(data)
+				buffer.appendContentsOf(data)
 				if self.isAtEnd {
 					ended = true
 					handler(Result.Success(buffer))

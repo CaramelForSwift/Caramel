@@ -13,6 +13,9 @@ public protocol Transforming {
 	func start()
 	func transform(input: Input) throws -> Output
 	func finish() throws -> Output?
+
+    func appendToBuffer(input: Input)
+    func drainBuffer() -> Input
 }
 
 public class Transformer<T, U where T: StreamBuffer, U: StreamBuffer> : Transforming {
@@ -30,6 +33,16 @@ public class Transformer<T, U where T: StreamBuffer, U: StreamBuffer> : Transfor
 	public func finish() throws -> Output? {
 		return nil
 	}
+
+    private(set) var buffer: Input = Input()
+    public func appendToBuffer(input: Input) {
+        buffer.appendContentsOf(input)
+    }
+
+    public func drainBuffer() -> Input {
+        defer { buffer = Input() }
+        return buffer
+    }
 }
 
 public final class BlockTransformer<T, U where T: StreamBuffer, U: StreamBuffer>: Transformer<T, U> {
@@ -67,14 +80,39 @@ public class TransformingPullStream<T, U, V: Transforming where U: StreamBuffer,
 		
 		self.transformer = transformer
 	}
-	
+
+    private var didStart = false
+    private var didEnd = false
+
 	public func pull() -> Sequence? {
-		if let input = self.pullStream.pull() {
-			let output = try! self.transformer.transform(input)
-			return output
-		} else {
-			fatalError()
-		}
+        if !didStart {
+            didStart = true
+            self.transformer.start()
+        }
+
+        do {
+            var output = Output()
+
+            if let input = self.pullStream.pull() {
+                transformer.appendToBuffer(input)
+
+                let data = transformer.drainBuffer()
+                let transformed = try self.transformer.transform(data)
+                output.appendContentsOf(transformed)
+            }
+
+            if isAtEnd && !didEnd {
+                didEnd = true
+                if let endData = try self.transformer.finish() {
+                    output.appendContentsOf(endData)
+                }
+            }
+
+            return output
+        } catch let error {
+            print("Do something with this error \(error)")
+            return Output()
+        }
 	}
 	
 	public var isAtEnd: Bool {
@@ -100,16 +138,38 @@ public class TransformingPushStream<T, U, V: Transforming where U: StreamBuffer,
 		self.inputBuffer = InputStream.Sequence()
 		self.transformer = transformer
 
-		self.pushStream.wait(({ (result: Result<InputStream.Sequence>) -> Void in
-			do {
-				let inValue = try result.result()
-				let outValue = try self.transformer.transform(inValue)
-				self.write(outValue)
-			} catch let error {
-				self.writeError(error)
-			}
+		self.pushStream.wait(({ [weak self] (result: Result<InputStream.Sequence>) -> Void in
+            self?.received(result)
 		}) as! InputStream.PushHandler)
 	}
+
+    private var didStart = false
+    private var didEnd = false
+    private func received(result: Result<InputStream.Sequence>) {
+        if didStart == false {
+            didStart = true
+            self.transformer.start()
+        }
+
+        do {
+            var buffer = Output()
+
+            let inValue = try result.result()
+            let outValue = try self.transformer.transform(inValue)
+            buffer.appendContentsOf(outValue)
+
+            if isAtEnd && !didEnd {
+                didEnd = true
+                if let endData = try self.transformer.finish() {
+                    buffer.appendContentsOf(endData)
+                }
+            }
+
+            self.write(buffer)
+        } catch let error {
+            self.writeError(error)
+        }
+    }
 	
 	private var handlers: [PushHandler] = []
 	public func wait(handler: PushHandler) {
@@ -165,7 +225,7 @@ public extension Pullable {
 			var outElements = T()
 			elements.forEach({ (element: Self.Sequence.Generator.Element) -> Void in
 				let out = transformer(element)
-				outElements.append(out)
+				outElements.appendContentsOf(out)
 			})
 			return outElements
 		}
@@ -204,7 +264,7 @@ public extension Pushable {
 			var outElements = T()
 			elements.forEach({ (element: Self.Sequence.Generator.Element) -> Void in
 				let out = transformer(element)
-				outElements.append(out)
+				outElements.appendContentsOf(out)
 			})
 			return outElements
 		}

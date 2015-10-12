@@ -49,7 +49,6 @@ public class StringToDataTransformer<T: StreamBuffer where T.Generator.Element =
 }
 
 public class DataToStringTransformer<T: DataConvertible>: Transformer<T, String.UnicodeScalarView> {
-	public typealias Input = T
 	let encoding: String.Encoding
 	public init(encoding: String.Encoding) {
 		self.encoding = encoding
@@ -113,6 +112,18 @@ public class DataToStringTransformer<T: DataConvertible>: Transformer<T, String.
 	}
 }
 
+public class UnicodeScalarViewToStringTransformer: Transformer<String.UnicodeScalarView, [String]> {
+    public override func transform(input: String.UnicodeScalarView) throws -> [String] {
+        self.appendToBuffer(input)
+        return []
+    }
+
+    public override func finish() throws -> [String]? {
+        let scalars = self.drainBuffer()
+        return [String(scalars)]
+    }
+}
+
 public extension String {
 	public var pullStream: FulfilledPullableStream<[String]> {
 		return FulfilledPullableStream(values: [self])
@@ -144,6 +155,13 @@ public extension Pullable where Self.Sequence: DataConvertible {
 	public var UTF16StringView: TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>> {
 		return TransformingPullStream(inputStream: self, transformer: DataToStringTransformer(encoding: .UTF16))
 	}
+
+    public var UTF8String: TransformingPullStream<TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
+        return TransformingPullStream(inputStream: self.UTF8StringView, transformer: UnicodeScalarViewToStringTransformer())
+    }
+    public var UTF16String: TransformingPullStream<TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
+        return TransformingPullStream(inputStream: self.UTF16StringView, transformer: UnicodeScalarViewToStringTransformer())
+    }
 }
 
 public extension Pushable where Self.Sequence: DataConvertible {
@@ -153,4 +171,12 @@ public extension Pushable where Self.Sequence: DataConvertible {
 	public var UTF16StringView: TransformingPushStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>> {
 		return TransformingPushStream(inputStream: self, transformer: DataToStringTransformer(encoding: .UTF16))
 	}
+
+    public var UTF8String: TransformingPushStream<TransformingPushStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
+        return TransformingPushStream(inputStream: self.UTF8StringView, transformer: UnicodeScalarViewToStringTransformer())
+    }
+    public var UTF16String: TransformingPushStream<TransformingPushStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
+        return TransformingPushStream(inputStream: self.UTF16StringView, transformer: UnicodeScalarViewToStringTransformer())
+    }
 }
+

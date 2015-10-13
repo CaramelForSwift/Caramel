@@ -7,16 +7,22 @@ let splatoonFile = File.rootDirectory/"Users"/"syco"/"Downloads"/"Splatoon Squid
 //	print("Splatoon file MD5 is \(data.debugDescription.lowercaseString)")
 //}
 
-hostsFile.readPushStream.base64Encode.drain { (result: Result<Data>) -> Void in
-	do {
-		let data = try result.result()
-		if let string = data.UTF8String {
-			print("yay: \(string)")
+hostsFile.readPushStream
+	.transform { [$0.UTF8String!] }
+	.UTF8Data
+	.base64Encode
+	.transform { [$0.UTF8String!] }
+	.drain { (result: Result<[String]>) -> Void in
+		do {
+			let data = try result.result()
+	//		if let string = data.UTF8String {
+				print("yay: \(data)")
+	//		}
+		} catch let error {
+			print("Fail: \(error)")
 		}
-	} catch let error {
-		print("Fail: \(error)")
+		print("done")
 	}
-}
 
 do {
     let hostsStream = try hostsFile.readPullStream()
@@ -29,15 +35,18 @@ do {
     
     let stringStream = hostsStream
         // convert binary data from file to string
-        .transform { (data: Data) -> [String] in
-            return [data.UTF8String!]
+        .transform { (data: Data) throws -> [String] in
+            [data.UTF8String!]
         }
         // split buffer by newline into separate strings
         .flatMap { (buffer: String) -> [String] in
             buffer.characters.split { $0 == "\n" }.map { String($0) }
         }
-    
-    print("MD5: \(stringStream.drain())")
+	
+	let lines = stringStream.drain()
+	lines.forEach({ (line: String) -> () in
+		print("-- \(line)")
+	})
 } catch let error {
     print("File error: \(error)")
 }

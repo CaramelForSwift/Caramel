@@ -234,6 +234,7 @@
 		1E3F92021B65469D00235033 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		1E3F92041B6547D300235033 /* DataChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataChunk.swift; sourceTree = "<group>"; };
 		1E55784E1BCA3DED00E10926 /* StringToData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringToData.swift; sourceTree = "<group>"; };
+		1E5578641BCCC62400E10926 /* FileWritePushStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWritePushStream.swift; sourceTree = "<group>"; };
 		1E785BB41B2BEB6800BBC93F /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		1E785BB61B2BEB7100BBC93F /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		1E785BB81B2BEC1000BBC93F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -483,10 +484,11 @@
 		1E7E588B1B61955600F2F60C /* File */ = {
 			isa = PBXGroup;
 			children = (
-				1EB26C4A1BC10F85004136E9 /* FileReadPushStream.swift */,
 				1E7E588C1B61957400F2F60C /* File.swift */,
-				1E3F91FF1B649FED00235033 /* FileReader.swift */,
 				1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */,
+				1EB26C4A1BC10F85004136E9 /* FileReadPushStream.swift */,
+				1E5578641BCCC62400E10926 /* FileWritePushStream.swift */,
+				1E3F91FF1B649FED00235033 /* FileReader.swift */,
 				1E0281341B6D472200B2C650 /* FileWriter.swift */,
 				1E0281281B6C6D2800B2C650 /* FileTests.swift */,
 			);

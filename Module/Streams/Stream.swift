@@ -1,4 +1,4 @@
-public protocol Buffered {
+public protocol Buffered: AnyObject {
     typealias Sequence: StreamBuffer
     
     var buffer: Sequence { get set }

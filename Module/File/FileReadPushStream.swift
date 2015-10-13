@@ -34,7 +34,8 @@ public class FileReadPushStream: PushStream<Data> {
 
 		open()
 	}
-	func open() {
+
+	private func open() {
 		openRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
 		uv_fs_open(eventLoop.uvLoop, openRequest, self.file.path, O_RDONLY, 0, FileReadPushStream_uv_fs_open_cb)
 		openRequest.memory.ptr = unsafeBitCast(self, UnsafeMutablePointer<Void>.self)

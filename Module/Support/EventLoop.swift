@@ -23,7 +23,6 @@ public class EventLoop {
 	}()
 	
 	public init() {
-		var type = uv_fs_t()
 	}
 	
 	public func run() {

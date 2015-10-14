@@ -6,6 +6,21 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+internal func FileWritePushStream_uv_cb(req: UnsafeMutablePointer<uv_fs_t>) {
+	let ptr = req.memory.ptr
+	let cb = unsafeBitCast(ptr, UVCallbackClosureBox.self).callback
+	cb(req)
+}
+
+internal class UVCallbackClosureBox {
+	let callback: UVCallback
+	init(_ callback: UVCallback) {
+		self.callback = callback
+	}
+}
+
+internal typealias UVCallback = (UnsafeMutablePointer<uv_fs_t>) -> Void
+
 public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>: PushStream<Data> {
 	public typealias InputStream = T
 	
@@ -24,7 +39,14 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>:
 		self.inputStream = inputStream
 		self.eventLoop = eventLoop
 		super.init()
-		
+
+		openBlock = UVCallbackClosureBox({ (req: UnsafeMutablePointer<uv_fs_t>) -> Void in
+			self.didOpen(req)
+		})
+		writeBlock = UVCallbackClosureBox({ (req: UnsafeMutablePointer<uv_fs_t>) -> Void in
+			self.didWrite(req)
+		})
+
 		open()
 	}
 	
@@ -42,16 +64,21 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>:
 	
 	private var fileDescriptor: File.Descriptor? = nil
 
-	public func didOpen(request: UnsafeMutablePointer<uv_fs_t>) {
-		self.fileDescriptor = File.Descriptor(request.memory.result)
-	}
-	
 	private var bytesWritten: Int64 = 0
+	
+	private var openBlock: UVCallbackClosureBox? = nil
+	private var writeBlock: UVCallbackClosureBox? = nil
 	
 	private func open() {
 		openRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
-		uv_fs_open(eventLoop.uvLoop, openRequest, self.file.path, O_RDONLY, 0, FileWritePushStream_uv_fs_open_cb)
-		openRequest.memory.ptr = unsafeBitCast(self, UnsafeMutablePointer<Void>.self)
+		uv_fs_open(eventLoop.uvLoop, openRequest, self.file.path, O_RDONLY, 0, FileWritePushStream_uv_cb)
+		openRequest.memory.ptr = unsafeBitCast(openBlock!, UnsafeMutablePointer<Void>.self)
+	}
+	
+	public func didOpen(request: UnsafeMutablePointer<uv_fs_t>) {
+		defer { openBlock = nil }
+
+		self.fileDescriptor = File.Descriptor(request.memory.result)
 	}
 	
 	public override func write(data: Data) {
@@ -59,20 +86,11 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>:
 		var buffer = uv_buf_init_d(&data.bytes, UInt32(self.numberOfBytes))
 		self.writeRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
 
-		uv_fs_write(self.eventLoop.uvLoop, self.writeRequest, uv_file(self.fileDescriptor!), &buffer, UInt32(buffer.len), self.bytesWritten) { (req: UnsafeMutablePointer<uv_fs_t>) in
-			let object = req.memory.ptr
-			if object != nil {
-				let ptr = unsafeBitCast(object, FileWritePushStream<InputStream>.self)
-				ptr.didWrite(req)
-			}
-		}
+		uv_fs_write(self.eventLoop.uvLoop, self.writeRequest, uv_file(self.fileDescriptor!), &buffer, UInt32(buffer.len), self.bytesWritten, FileWritePushStream_uv_cb)
 
-		self.writeRequest.memory.ptr = unsafeBitCast(self, UnsafeMutablePointer<Void>.self)
+		self.writeRequest.memory.ptr = unsafeBitCast(writeBlock!, UnsafeMutablePointer<Void>.self)
 	}
 	
-	public func didRead(req: UnsafeMutablePointer<uv_fs_t>) { 
-	}
-
 	public func didWrite(request: UnsafeMutablePointer<uv_fs_t>) {
 		guard request == writeRequest else { return }
 		guard request.memory.result >= 0 else { 
@@ -91,11 +109,8 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>:
 	}
 }
 
-func FileWritePushStream_uv_fs_open_cb(req: UnsafeMutablePointer<uv_fs_t>) {
-	/*
-	let ptr = req.memory.ptr
-	// The compiler needs a generic FileWritePushStream to call into, so this doesn't work
-	let fileWrite = unsafeBitCast(ptr, FileWritePushStream.self)
-	fileWrite.didOpen(req)
-	*/
+public extension Pushable where Self.Sequence: DataConvertible {
+	public func writeTo(file: File) -> FileWritePushStream<Self> {
+		return FileWritePushStream(file: file, inputStream: self)
+	}
 }

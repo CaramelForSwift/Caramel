@@ -33,6 +33,7 @@
 		1E3F92031B65469D00235033 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92021B65469D00235033 /* Data.swift */; };
 		1E3F92051B6547D300235033 /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92041B6547D300235033 /* DataChunk.swift */; };
 		1E55784F1BCA3DED00E10926 /* StringToData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E55784E1BCA3DED00E10926 /* StringToData.swift */; settings = {ASSET_TAGS = (); }; };
+		1E55788D1BCEAA2400E10926 /* FileWritePushStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5578641BCCC62400E10926 /* FileWritePushStream.swift */; settings = {ASSET_TAGS = (); }; };
 		1E68D8721BC39A8B00C45466 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A755D4A41BB5BD8200CE3B08 /* Result.swift */; };
 		1E68D8731BC39AE700C45466 /* EventLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C561BC10F91004136E9 /* EventLoop.swift */; };
 		1E68D8741BC39B7E00C45466 /* FileReadPushStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C4A1BC10F85004136E9 /* FileReadPushStream.swift */; };
@@ -858,6 +859,7 @@
 				1E22F8781BAF1F7900B4A047 /* HMACStream.swift in Sources */,
 				1E22F86E1BAE50FD00B4A047 /* SHA1Hasher.swift in Sources */,
 				1E68D8731BC39AE700C45466 /* EventLoop.swift in Sources */,
+				1E55788D1BCEAA2400E10926 /* FileWritePushStream.swift in Sources */,
 				A78FE77D1BCC42C4004A3270 /* StringSupport.swift in Sources */,
 				1E22F8681BAE4E5E00B4A047 /* MD5Hasher.swift in Sources */,
 				1E0280FC1B6C5ACD00B2C650 /* FileMetadata.swift in Sources */,

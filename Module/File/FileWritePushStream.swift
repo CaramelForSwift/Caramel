@@ -21,24 +21,26 @@ internal class UVCallbackClosureBox {
 
 internal typealias UVCallback = (UnsafeMutablePointer<uv_fs_t>) -> Void
 
-public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>: PushStream<Data> {
+public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible> {
 	public typealias InputStream = T
-	
+
 	let file: File
+	let mode: File.Mode
 	let eventLoop: EventLoop
-	let numberOfBytes = 32 * 1024
-	var nextData: Data! = nil
+
+	private let numberOfBytes = 32 * 1024
+	private var nextData = Data()
 	
 	private var openRequest: UnsafeMutablePointer<uv_fs_t> = nil
 	private var writeRequest: UnsafeMutablePointer<uv_fs_t> = nil
 
 	private let inputStream: InputStream
-	
-	public init(file: File, inputStream: InputStream, eventLoop: EventLoop = EventLoop.defaultLoop) {
+
+	public init(file: File, mode: File.Mode, inputStream: InputStream, eventLoop: EventLoop = EventLoop.defaultLoop) {
 		self.file = file
 		self.inputStream = inputStream
+		self.mode = mode
 		self.eventLoop = eventLoop
-		super.init()
 
 		openBlock = UVCallbackClosureBox({ (req: UnsafeMutablePointer<uv_fs_t>) -> Void in
 			self.didOpen(req)
@@ -46,6 +48,15 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>:
 		writeBlock = UVCallbackClosureBox({ (req: UnsafeMutablePointer<uv_fs_t>) -> Void in
 			self.didWrite(req)
 		})
+
+		self.inputStream.wait(({ (result: Result<InputStream.Sequence>) -> Void in
+			do {
+				let data = try result.result()
+				self.write(data)
+			} catch let error {
+				print("Welp")
+			}
+		}) as! InputStream.PushHandler)
 
 		open()
 	}
@@ -68,25 +79,35 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>:
 	
 	private var openBlock: UVCallbackClosureBox? = nil
 	private var writeBlock: UVCallbackClosureBox? = nil
-	
+	private var closeBlock: UVCallbackClosureBox? = nil
+
 	private func open() {
 		openRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
-		uv_fs_open(eventLoop.uvLoop, openRequest, self.file.path, O_RDONLY, 0, FileWritePushStream_uv_cb)
+		uv_fs_open(eventLoop.uvLoop, openRequest, self.file.path, O_WRONLY | O_CREAT, Int32(self.mode.unixMode), FileWritePushStream_uv_cb)
 		openRequest.memory.ptr = unsafeBitCast(openBlock!, UnsafeMutablePointer<Void>.self)
+		attemptWrite()
 	}
-	
+
 	public func didOpen(request: UnsafeMutablePointer<uv_fs_t>) {
 		defer { openBlock = nil }
 
 		self.fileDescriptor = File.Descriptor(request.memory.result)
+		attemptWrite()
 	}
 	
-	public override func write(data: Data) {
-		var data = data
-		var buffer = uv_buf_init_d(&data.bytes, UInt32(self.numberOfBytes))
+	public func write(data: InputStream.Sequence) {
+		nextData.appendContentsOf(data.data)
+		attemptWrite()
+	}
+
+
+	private func attemptWrite() {
+		guard let fileDescriptor = self.fileDescriptor else { return }
+
+		var buffer = uv_buf_init_d(&nextData.bytes, UInt32(nextData.bytes.count))
 		self.writeRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
 
-		uv_fs_write(self.eventLoop.uvLoop, self.writeRequest, uv_file(self.fileDescriptor!), &buffer, UInt32(buffer.len), self.bytesWritten, FileWritePushStream_uv_cb)
+		uv_fs_write(self.eventLoop.uvLoop, self.writeRequest, uv_file(fileDescriptor), &buffer, UInt32(buffer.len), self.bytesWritten, FileWritePushStream_uv_cb)
 
 		self.writeRequest.memory.ptr = unsafeBitCast(writeBlock!, UnsafeMutablePointer<Void>.self)
 	}
@@ -94,7 +115,7 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>:
 	public func didWrite(request: UnsafeMutablePointer<uv_fs_t>) {
 		guard request == writeRequest else { return }
 		guard request.memory.result >= 0 else { 
-			print("problem reading: \(request.memory.result)")
+			print("problem writing: \(request.memory.result)")
 			return
 		}
 		
@@ -104,13 +125,19 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible>:
 		}
 		
 		self.bytesWritten += request.memory.result
-		self.nextData!.bytes.removeRange(Range<Array<Byte>.Index>(start: request.memory.result, end: self.nextData!.bytes.endIndex))
-		write(self.nextData!)
+		self.nextData.bytes.removeRange(Range<Array<Byte>.Index>(start: self.nextData.bytes.startIndex, end: self.nextData.bytes.startIndex.advancedBy(request.memory.result)))
+		if self.nextData.bytes.count > 0 {
+			self.attemptWrite()
+		}
+	}
+
+	func end() {
+
 	}
 }
 
-public extension Pushable where Self.Sequence: DataConvertible {
-	public func writeTo(file: File) -> FileWritePushStream<Self> {
-		return FileWritePushStream(file: file, inputStream: self)
+public extension Pushable where Self.Sequence == Data {
+	public func writeTo(file: File, mode: File.Mode) -> FileWritePushStream<Self> {
+		return FileWritePushStream(file: file, mode: mode, inputStream: self)
 	}
 }

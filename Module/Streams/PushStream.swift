@@ -1,5 +1,5 @@
 public protocol Pushable: Buffered {
-    typealias PushHandler = (Result<Sequence> -> Void)
+    typealias PushHandler = (Result<Sequence>) -> Void
     func wait(handler: PushHandler)
 }
 

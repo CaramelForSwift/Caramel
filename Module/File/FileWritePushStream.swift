@@ -90,6 +90,11 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible> 
 
 	public func didOpen(request: UnsafeMutablePointer<uv_fs_t>) {
 		defer { openBlock = nil }
+		guard request.memory.result >= 0 else {
+			/* Failed to open! */
+			
+			return
+		}
 
 		self.fileDescriptor = File.Descriptor(request.memory.result)
 		attemptWrite()

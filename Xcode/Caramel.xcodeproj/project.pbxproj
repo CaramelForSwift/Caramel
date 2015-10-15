@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E01F5D51BAE199E002EA5E0 /* StreamBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E01F5D41BAE199E002EA5E0 /* StreamBuffer.swift */; };
 		1E01F5D81BAE1DAD002EA5E0 /* HashStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E01F5D71BAE1DAD002EA5E0 /* HashStream.swift */; };
 		1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280C21B65AFA200B2C650 /* PullStream.swift */; };
 		1E0280EA1B69DB4D00B2C650 /* Runtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0280E91B69DB4D00B2C650 /* Runtime.swift */; };
@@ -31,7 +30,6 @@
 		1E22F87A1BAF267500B4A047 /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22F8791BAF267500B4A047 /* Base64.swift */; };
 		1E3F92001B649FED00235033 /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F91FF1B649FED00235033 /* FileReader.swift */; };
 		1E3F92031B65469D00235033 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92021B65469D00235033 /* Data.swift */; };
-		1E3F92051B6547D300235033 /* DataChunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3F92041B6547D300235033 /* DataChunk.swift */; };
 		1E55784F1BCA3DED00E10926 /* StringToData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E55784E1BCA3DED00E10926 /* StringToData.swift */; settings = {ASSET_TAGS = (); }; };
 		1E55788D1BCEAA2400E10926 /* FileWritePushStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5578641BCCC62400E10926 /* FileWritePushStream.swift */; settings = {ASSET_TAGS = (); }; };
 		1E68D8721BC39A8B00C45466 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = A755D4A41BB5BD8200CE3B08 /* Result.swift */; };
@@ -41,11 +39,11 @@
 		1E785BB71B2BEB7100BBC93F /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E785BB61B2BEB7100BBC93F /* GCDAsyncSocket.m */; };
 		1E7E588D1B61957400F2F60C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7E588C1B61957400F2F60C /* File.swift */; };
 		1E87BA9D1B85B79B006482CC /* DispatchSocketListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A6B1B2BB03900CC11E4 /* DispatchSocketListener.swift */; };
-		1E8EAD271B2E15EB00365A68 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EAD261B2E15EB00365A68 /* Stream.swift */; };
+		1E8EAD271B2E15EB00365A68 /* Streaming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EAD261B2E15EB00365A68 /* Streaming.swift */; };
 		1E8EAD291B2E724F00365A68 /* PushStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EAD281B2E724F00365A68 /* PushStream.swift */; };
 		1E8EAD2D1B2E863A00365A68 /* SocketReadStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EAD2C1B2E863A00365A68 /* SocketReadStream.swift */; };
 		1EA3AB091B327360002B1964 /* SocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA3AB081B327360002B1964 /* SocketServer.swift */; };
-		1EB26C591BC1BBDB004136E9 /* Transformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C581BC1BBDB004136E9 /* Transformer.swift */; };
+		1EB26C591BC1BBDB004136E9 /* StreamTransforming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB26C581BC1BBDB004136E9 /* StreamTransforming.swift */; };
 		1EFC5A5C1B2BA87000CC11E4 /* Caramel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; };
 		1EFC5A5E1B2BA87000CC11E4 /* Caramel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1EFC5A651B2BA88800CC11E4 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D51B2B5A2C00A602E5 /* Connection.swift */; };
@@ -204,7 +202,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1E01F5D41BAE199E002EA5E0 /* StreamBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamBuffer.swift; sourceTree = "<group>"; };
 		1E01F5D71BAE1DAD002EA5E0 /* HashStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashStream.swift; sourceTree = "<group>"; };
 		1E0280C21B65AFA200B2C650 /* PullStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullStream.swift; sourceTree = "<group>"; };
 		1E0280E91B69DB4D00B2C650 /* Runtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runtime.swift; sourceTree = "<group>"; };
@@ -233,7 +230,6 @@
 		1E22F8791BAF267500B4A047 /* Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
 		1E3F91FF1B649FED00235033 /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
 		1E3F92021B65469D00235033 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		1E3F92041B6547D300235033 /* DataChunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataChunk.swift; sourceTree = "<group>"; };
 		1E55784E1BCA3DED00E10926 /* StringToData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringToData.swift; sourceTree = "<group>"; };
 		1E5578641BCCC62400E10926 /* FileWritePushStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWritePushStream.swift; sourceTree = "<group>"; };
 		1E785BB41B2BEB6800BBC93F /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
@@ -241,7 +237,7 @@
 		1E785BB81B2BEC1000BBC93F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		1E785BB91B2BF2BD00BBC93F /* GCDAsyncSocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDAsyncSocketListener.swift; sourceTree = "<group>"; };
 		1E7E588C1B61957400F2F60C /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		1E8EAD261B2E15EB00365A68 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
+		1E8EAD261B2E15EB00365A68 /* Streaming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streaming.swift; sourceTree = "<group>"; };
 		1E8EAD281B2E724F00365A68 /* PushStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushStream.swift; sourceTree = "<group>"; };
 		1E8EAD2C1B2E863A00365A68 /* SocketReadStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketReadStream.swift; sourceTree = "<group>"; };
 		1EA3AB061B32721E002B1964 /* HTTPServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPServer.swift; sourceTree = "<group>"; };
@@ -249,7 +245,7 @@
 		1EA3AB0A1B32743E002B1964 /* HTTPResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPResponse.swift; sourceTree = "<group>"; };
 		1EB26C4A1BC10F85004136E9 /* FileReadPushStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReadPushStream.swift; sourceTree = "<group>"; };
 		1EB26C561BC10F91004136E9 /* EventLoop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLoop.swift; sourceTree = "<group>"; };
-		1EB26C581BC1BBDB004136E9 /* Transformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformer.swift; sourceTree = "<group>"; };
+		1EB26C581BC1BBDB004136E9 /* StreamTransforming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamTransforming.swift; sourceTree = "<group>"; };
 		1EFC5A311B2BA82300CC11E4 /* TestServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EFC5A3E1B2BA82300CC11E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Caramel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -354,6 +350,7 @@
 		1E0281311B6CB50600B2C650 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				1E5578431BCA37B300E10926 /* String */,
 				A74412DD1BBF34D500908A62 /* Result */,
 				1EB26C561BC10F91004136E9 /* EventLoop.swift */,
 				1E0281321B6CB53F00B2C650 /* SupportGenerators.swift */,
@@ -395,15 +392,13 @@
 		1E1607CE1B2B4CE600A602E5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				1E5578431BCA37B300E10926 /* String */,
+				1E24B2391BCF8588009A8C94 /* Deprecated */,
+				1E3F92011B65468300235033 /* Data */,
+				1E8EAD211B2E15C300365A68 /* Streams */,
 				1E01F5D61BAE1D75002EA5E0 /* Crypto */,
 				1E0281311B6CB50600B2C650 /* Support */,
 				1E0280E81B69DB4D00B2C650 /* Process */,
-				1E3F92011B65468300235033 /* Data */,
 				1E7E588B1B61955600F2F60C /* File */,
-				1E8EAD211B2E15C300365A68 /* Streams */,
-				1E1607D21B2B5A2C00A602E5 /* Network */,
-				1E1607D71B2B5A2C00A602E5 /* HTTP */,
 				1E785BB81B2BEC1000BBC93F /* Bridging-Header.h */,
 			);
 			name = Module;
@@ -435,7 +430,8 @@
 				1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */,
 				1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */,
 			);
-			path = Network;
+			name = Network;
+			path = Deprecated/Network;
 			sourceTree = "<group>";
 		};
 		1E1607D71B2B5A2C00A602E5 /* HTTP */ = {
@@ -445,7 +441,8 @@
 				1EA3AB061B32721E002B1964 /* HTTPServer.swift */,
 				1EA3AB0A1B32743E002B1964 /* HTTPResponse.swift */,
 			);
-			path = HTTP;
+			name = HTTP;
+			path = Deprecated/HTTP;
 			sourceTree = "<group>";
 		};
 		1E22F8621BAE4DD000B4A047 /* Hashing */ = {
@@ -463,11 +460,19 @@
 			path = Hashing;
 			sourceTree = "<group>";
 		};
+		1E24B2391BCF8588009A8C94 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				1E1607D71B2B5A2C00A602E5 /* HTTP */,
+				1E1607D21B2B5A2C00A602E5 /* Network */,
+			);
+			name = Deprecated;
+			sourceTree = "<group>";
+		};
 		1E3F92011B65468300235033 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				1E3F92021B65469D00235033 /* Data.swift */,
-				1E3F92041B6547D300235033 /* DataChunk.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -479,7 +484,7 @@
 				A78FE77C1BCC42C4004A3270 /* StringSupport.swift */,
 			);
 			name = String;
-			path = Strings;
+			path = ../Strings;
 			sourceTree = "<group>";
 		};
 		1E7E588B1B61955600F2F60C /* File */ = {
@@ -499,11 +504,10 @@
 		1E8EAD211B2E15C300365A68 /* Streams */ = {
 			isa = PBXGroup;
 			children = (
-				1E8EAD261B2E15EB00365A68 /* Stream.swift */,
+				1E8EAD261B2E15EB00365A68 /* Streaming.swift */,
 				1E8EAD281B2E724F00365A68 /* PushStream.swift */,
 				1E0280C21B65AFA200B2C650 /* PullStream.swift */,
-				1E01F5D41BAE199E002EA5E0 /* StreamBuffer.swift */,
-				1EB26C581BC1BBDB004136E9 /* Transformer.swift */,
+				1EB26C581BC1BBDB004136E9 /* StreamTransforming.swift */,
 			);
 			path = Streams;
 			sourceTree = "<group>";
@@ -873,19 +877,17 @@
 				1E68D8741BC39B7E00C45466 /* FileReadPushStream.swift in Sources */,
 				1EFC5A661B2BA88800CC11E4 /* Server.swift in Sources */,
 				1EA3AB091B327360002B1964 /* SocketServer.swift in Sources */,
-				1E01F5D51BAE199E002EA5E0 /* StreamBuffer.swift in Sources */,
 				1E8EAD2D1B2E863A00365A68 /* SocketReadStream.swift in Sources */,
-				1EB26C591BC1BBDB004136E9 /* Transformer.swift in Sources */,
+				1EB26C591BC1BBDB004136E9 /* StreamTransforming.swift in Sources */,
 				1E22F8741BAE517A00B4A047 /* SHA224Hasher.swift in Sources */,
 				1E87BA9D1B85B79B006482CC /* DispatchSocketListener.swift in Sources */,
 				1E0281351B6D472200B2C650 /* FileWriter.swift in Sources */,
-				1E8EAD271B2E15EB00365A68 /* Stream.swift in Sources */,
+				1E8EAD271B2E15EB00365A68 /* Streaming.swift in Sources */,
 				1E55784F1BCA3DED00E10926 /* StringToData.swift in Sources */,
 				1EFC5A721B2BC7BB00CC11E4 /* Types.swift in Sources */,
 				1E01F5D81BAE1DAD002EA5E0 /* HashStream.swift in Sources */,
 				1E7E588D1B61957400F2F60C /* File.swift in Sources */,
 				1E22F86C1BAE4ED900B4A047 /* MD4Hasher.swift in Sources */,
-				1E3F92051B6547D300235033 /* DataChunk.swift in Sources */,
 				1EFC5A6A1B2BAF6B00CC11E4 /* SocketListener.swift in Sources */,
 				1E0281331B6CB53F00B2C650 /* SupportGenerators.swift in Sources */,
 				1E22F8721BAE515300B4A047 /* SHA256Hasher.swift in Sources */,

@@ -8,10 +8,10 @@ let splatoonFile = File.rootDirectory/"Users"/"syco"/"Downloads"/"Splatoon Squid
 //}
 
 hostsFile.readPushStream
-	.transform { [$0.UTF8String!] }
+	.UTF8String
 	.UTF8Data
 	.base64Encode
-	.transform { [$0.UTF8String!] }
+	.UTF8String
 	.drain { (result: Result<[String]>) -> Void in
 		do {
 			let data = try result.result()
@@ -23,6 +23,8 @@ hostsFile.readPushStream
 		}
 		print("done")
 	}
+
+hostsFile.readPushStream.writeTo(File.homeDirectory / "hostsFile")
 
 do {
     let hostsStream = try hostsFile.readPullStream()
@@ -50,6 +52,7 @@ do {
 } catch let error {
     print("File error: \(error)")
 }
+
 //Server(port: 8080) { connection in
 //	if let data = connection.read() {
 //		connection.write(data)

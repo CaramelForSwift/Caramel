@@ -1,11 +1,3 @@
-//
-//  StreamBuffer.swift
-//  Caramel
-//
-//  Created by Steve Streza on 19.9.15.
-//  Copyright © 2015 Lunar Guard. All rights reserved.
-//
-
 public protocol StreamBuffer: SequenceType {
 	init()
 	mutating func appendContentsOf(elements: Self)
@@ -26,3 +18,11 @@ extension Array: StreamBuffer {
 		self.appendContentsOf(elements)
 	}
 }
+
+public protocol Buffered: AnyObject {
+	typealias Sequence: StreamBuffer
+	
+	var buffer: Sequence { get set }
+	var isAtEnd: Bool { get }    
+}
+

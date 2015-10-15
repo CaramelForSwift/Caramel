@@ -64,40 +64,6 @@ public protocol TransformPullable: Pullable {
     var pullStream: InputStream { get }
 }
 
-public class TransformPullStream<T: Pullable, U>: TransformPullable {
-    public typealias InputStream = T
-    public typealias Sequence = [U]
-    
-    public typealias Transformer = (T.Sequence) -> [U]
-    
-    public var buffer = Array<U>()
-    
-    private(set) var _pullStream: InputStream
-    public var pullStream: InputStream {
-        return _pullStream
-    }
-    
-    private let transform: Transformer
-	
-	private var didStart = false
-    
-    public init(stream: InputStream, transformer: Transformer) {
-        _pullStream = stream
-        transform = transformer
-    }
-    
-    public func pull() -> [U]? {
-        if let data = self.pullStream.pull() {
-            return self.transform(data)
-        } else {
-            return nil
-        }
-    }
-    public var isAtEnd: Bool {
-        return self.pullStream.isAtEnd
-    }
-}
-
 public extension DataConvertible {
     public var stream: FulfilledPullableStream<Data> {
         return FulfilledPullableStream(values: self.data)

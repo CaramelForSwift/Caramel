@@ -146,10 +146,11 @@ public extension DataConvertible {
 
 public class Base64EncodeTransformer<T: DataConvertible>: Transformer<T, Data> {
 	public override func transform(input: T) -> Data {
-		let data = input.data
+		var data = input.data
 		let numberOfOutBytes = Int(ceil(Double(data.bytes.count) / 3) * 4)
 		var newData = Data(numberOfZeroes: numberOfOutBytes)
 		var highestIndex = data.bytes.startIndex
+		var encodedDataIndex = 0
 		for i in data.bytes.startIndex.stride(to: data.bytes.endIndex, by: 3) {
 			let byte0 = (i + 0 < data.bytes.endIndex) ? data.bytes[i + 0] : 0
 			let byte1 = (i + 1 < data.bytes.endIndex) ? data.bytes[i + 1] : 0
@@ -173,8 +174,25 @@ public class Base64EncodeTransformer<T: DataConvertible>: Transformer<T, Data> {
 			}
 			
 			highestIndex = i + 3
+			encodedDataIndex += 4
 		}
-		newData.bytes.removeRange(Range<Array<Byte>.Index>(start: highestIndex, end: newData.bytes.endIndex))
+
+		if data.bytes.count > highestIndex {
+			data.bytes.removeRange(Range<Array<Byte>.Index>(start: data.bytes.startIndex, end: highestIndex))
+			print("- \(data.bytes.count)")
+			self.appendToBuffer(data as! T)
+		}
+		
+		if encodedDataIndex < newData.bytes.endIndex {
+			print("delta: \(encodedDataIndex) to \(newData.bytes.endIndex) \(encodedDataIndex % 3)")
+			newData.bytes.removeRange(Range<Array<Byte>.Index>(start: encodedDataIndex, end: newData.bytes.endIndex))
+		}
 		return newData
+	}
+	public override func finish() throws -> Data? {
+		var data = Data()
+		let buffer = self.drainBuffer()
+		
+		return data
 	}
 }

@@ -100,20 +100,25 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible> 
 		attemptWrite()
 	}
 
-
+	var isWriting = false
 	private func attemptWrite() {
 		guard let fileDescriptor = self.fileDescriptor else { return }
+		guard nextData.bytes.count > 0 else { return }
+		guard isWriting == false else { return }
 
+		isWriting = true
+		
 		var buffer = uv_buf_init_d(&nextData.bytes, UInt32(nextData.bytes.count))
 		self.writeRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
-
-		uv_fs_write(self.eventLoop.uvLoop, self.writeRequest, uv_file(fileDescriptor), &buffer, UInt32(buffer.len), self.bytesWritten, FileWritePushStream_uv_cb)
-
+		uv_fs_write(self.eventLoop.uvLoop, self.writeRequest, uv_file(fileDescriptor), &buffer, 1, self.bytesWritten, FileWritePushStream_uv_cb)
 		self.writeRequest.memory.ptr = unsafeBitCast(writeBlock!, UnsafeMutablePointer<Void>.self)
 	}
 	
 	public func didWrite(request: UnsafeMutablePointer<uv_fs_t>) {
 		guard request == writeRequest else { return }
+
+		isWriting = false
+		
 		guard request.memory.result >= 0 else { 
 			print("problem writing: \(request.memory.result)")
 			return

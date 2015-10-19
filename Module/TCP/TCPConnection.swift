@@ -6,46 +6,69 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
-internal typealias TCPConnectionUVCallback = (UnsafeMutablePointer<uv_stream_t>, Int, UnsafePointer<uv_buf_t>) -> Void
+internal typealias TCPConnectionUVReadCallback = (UnsafeMutablePointer<uv_stream_t>, Int, UnsafePointer<uv_buf_t>) -> Void
+internal typealias TCPConnectionUVWriteCallback = (UnsafeMutablePointer<uv_write_t>, Int32) -> Void
 
 internal func TCPConnection_uv_read_cb(stream: UnsafeMutablePointer<uv_stream_t>, size: Int, buf: UnsafePointer<uv_buf_t>) {
 	let ptr = stream.memory.data
-	let cb = unsafeBitCast(ptr, TCPConnectionUVCallbackClosureBox.self).callback
+	let cb = unsafeBitCast(ptr, TCPConnectionUVReadCallbackClosureBox.self).callback
 	cb(stream, size, buf)
 }
 
-internal class TCPConnectionUVCallbackClosureBox {
-	let callback: TCPConnectionUVCallback
-	init(_ callback: TCPConnectionUVCallback) {
+internal func TCPConnection_uv_write_cb(handle: UnsafeMutablePointer<uv_write_t>, size: Int32) {
+	let ptr = handle.memory.data
+	let cb = unsafeBitCast(ptr, TCPConnectionUVWriteCallbackClosureBox.self).callback
+	cb(handle, size)
+}
+
+internal class TCPConnectionUVReadCallbackClosureBox {
+	let callback: TCPConnectionUVReadCallback
+	init(_ callback: TCPConnectionUVReadCallback) {
 		self.callback = callback
 	}
 }
 
-public class NetConnection<T: StreamBuffer> {
-	public typealias Source = T
-	public let input: PushStream<T>
-	public required init(input: PushStream<T>) {
-		self.input = input
+internal class TCPConnectionUVWriteCallbackClosureBox {
+	let callback: TCPConnectionUVWriteCallback
+	init(_ callback: TCPConnectionUVWriteCallback) {
+		self.callback = callback
 	}
 }
 
-public class TCPConnection: NetConnection<Data> {
-	public required init(input: PushStream<TCPConnection.Source>) {
-		super.init(input: input)
+public class NetConnection<T: StreamBuffer, U: StreamBuffer> {
+	public typealias Incoming = T
+	public typealias Outgoing = T
+	public let incoming: PushStream<Incoming>
+	public let outgoing: PushStream<Outgoing>
+	public required init(incoming: PushStream<Incoming>, outgoing: PushStream<Outgoing>) {
+		self.incoming = incoming
+		self.outgoing = outgoing
+	}
+}
+
+public class TCPConnection: NetConnection<Data, Data> {
+	public required init(incoming: PushStream<TCPConnection.Incoming>) {
+		let writeStream = PushStream<TCPConnection.Outgoing>()
+		super.init(incoming: incoming, outgoing: writeStream)
+		
+		writeStream.wait { [weak self] result in
+			self?.writeResult(result)
+		}
 	}
 	
 	private var clientTCP: UnsafeMutablePointer<uv_tcp_t> = nil
 	private var clientStream: UnsafeMutablePointer<uv_stream_t> {
 		return UnsafeMutablePointer<uv_stream_t>(clientTCP)
 	}
-	private var readClosure: TCPConnectionUVCallbackClosureBox?
+	private var readClosure: TCPConnectionUVReadCallbackClosureBox?
+	private var writeClosure: TCPConnectionUVWriteCallbackClosureBox?
 	
 	private var connection: TCPConnection? = nil
 	
 	internal func listen(server: TCPServer) {
 		guard clientTCP == nil else { return }
 
-		readClosure = TCPConnectionUVCallbackClosureBox { [weak self] handle, size, buf in
+		readClosure = TCPConnectionUVReadCallbackClosureBox { [weak self] handle, size, buf in
 			self?.didRead(handle, size: size, buffer: buf)
 		}
 		connection = self
@@ -59,10 +82,40 @@ public class TCPConnection: NetConnection<Data> {
 	}
 	
 	private func didRead(stream: UnsafeMutablePointer<uv_stream_t>, size: Int, buffer buf: UnsafePointer<uv_buf_t>) {
+		guard size >= 0 else { return }
 		print("Did read: \(size)")
 		var data = Data()
 		data.append(UnsafePointer<Void>(buf.memory.base), length: size)
-		self.input.write(data)
+		self.incoming.write(data)
+	}
+	
+	private var currentWrite: UnsafeMutablePointer<uv_write_t> = nil
+	private func writeResult(result: Result<Data>) {
+		do {
+			var data = try result.result()
+			guard currentWrite == nil else {
+				self.outgoing.appendToBuffer(data)
+				return
+			}
+			
+			writeClosure = TCPConnectionUVWriteCallbackClosureBox { [weak self] handle, size in
+				self?.didWrite(handle, size: size)
+			}
+			
+			currentWrite = UnsafeMutablePointer<uv_write_t>.alloc(1)
+			var buffer = uv_buf_init_d(&data.bytes, UInt32(data.bytes.count))
+			uv_write(currentWrite, self.clientStream, &buffer, 1, TCPConnection_uv_write_cb)
+			currentWrite.memory.data = unsafeBitCast(writeClosure, UnsafeMutablePointer<Void>.self)
+		} catch {
+			
+		}
+	}
+	
+	private func didWrite(handle: UnsafeMutablePointer<uv_write_t>, size: Int32) {
+		print("did write \(size)")
+		writeClosure = nil
+		currentWrite.dealloc(1)
+		currentWrite = nil
 	}
 }
 

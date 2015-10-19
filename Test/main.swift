@@ -61,4 +61,23 @@ hostsFile.readPushStream.writeTo(newFile, mode: File.Mode(user: .Read, group: .R
 ////}
 ////
 
+do {
+	try TCPServer().listen(8080) { connection in
+		connection.incoming.wait({ (result: Result<Data>) -> Void in
+			do {
+				if let data = try result.result().UTF8String {
+					print("OMG DATA: \(data)")
+					let result = "You said: \(data)"
+					connection.outgoing.write(result.utf8.data)
+				}
+			} catch let error {
+				print("error: \(error)")
+				connection.outgoing.writeError(error)
+			}
+		})
+	}
+} catch let error {
+	print("Welp \(error)")
+}
+
 EventLoop.defaultLoop.run()

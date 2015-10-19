@@ -24,7 +24,7 @@ internal class TCPServerUVCallbackClosureBox {
 public protocol Listenable {
 	typealias InputStream: StreamBuffer
 	typealias OutputStream: StreamBuffer
-	typealias ListenHandler = (NetConnection<Self.InputStream>) -> Void
+	typealias ListenHandler = (NetConnection<Self.InputStream, Self.OutputStream>) -> Void
 	func listen(port: UInt16, listener: Self.ListenHandler) throws
 }
 
@@ -74,8 +74,8 @@ public class TCPServer: Listenable {
 	}
 	
 	private func didConnect(tcp: UnsafeMutablePointer<uv_tcp_t>, status: Int32) {
-		let stream = PushStream<Data>()
-		let connection = TCPConnection(input: stream)
+		let readStream = PushStream<Data>()
+		let connection = TCPConnection(incoming: readStream)
 		connection.listen(self)
 		self.listener?(connection)
 	}

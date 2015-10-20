@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1EFC5A301B2BA82300CC11E4"
-               BuildableName = "TestServer.app"
-               BlueprintName = "TestServer"
-               ReferencedContainer = "container:Jelly.xcodeproj">
+               BlueprintIdentifier = "A70FF89F1BD59C7C00DABB71"
+               BuildableName = "TestIRCServer.app"
+               BlueprintName = "TestIRCServer"
+               ReferencedContainer = "container:Caramel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1EFC5A301B2BA82300CC11E4"
-            BuildableName = "TestServer.app"
-            BlueprintName = "TestServer"
-            ReferencedContainer = "container:Jelly.xcodeproj">
+            BlueprintIdentifier = "A70FF89F1BD59C7C00DABB71"
+            BuildableName = "TestIRCServer.app"
+            BlueprintName = "TestIRCServer"
+            ReferencedContainer = "container:Caramel.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,19 +55,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1EFC5A301B2BA82300CC11E4"
-            BuildableName = "TestServer.app"
-            BlueprintName = "TestServer"
-            ReferencedContainer = "container:Jelly.xcodeproj">
+            BlueprintIdentifier = "A70FF89F1BD59C7C00DABB71"
+            BuildableName = "TestIRCServer.app"
+            BlueprintName = "TestIRCServer"
+            ReferencedContainer = "container:Caramel.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "fart"
-            value = "butt"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -77,15 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1EFC5A301B2BA82300CC11E4"
-            BuildableName = "TestServer.app"
-            BlueprintName = "TestServer"
-            ReferencedContainer = "container:Jelly.xcodeproj">
+            BlueprintIdentifier = "A70FF89F1BD59C7C00DABB71"
+            BuildableName = "TestIRCServer.app"
+            BlueprintName = "TestIRCServer"
+            ReferencedContainer = "container:Caramel.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

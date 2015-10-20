@@ -3,12 +3,20 @@ public protocol Pushable: Buffered {
     func wait(handler: PushHandler)
 }
 
-public class PushStream<T: StreamBuffer>: Pushable {
+public protocol Writeable: Buffered {
+    func write(sequence: Self.Sequence)
+}
+
+public protocol BufferedAppendable: Buffered {
+    func appendToBuffer(newElements: Sequence)
+}
+
+public class PushStream<T: StreamBuffer>: Pushable, Writeable, BufferedAppendable {
     public typealias Sequence = T
     
     public var buffer = Sequence()
     
-    func appendToBuffer(newElements: Sequence) {
+    public func appendToBuffer(newElements: Sequence) {
         self.buffer.appendContentsOf(newElements)
     }
     
@@ -47,7 +55,7 @@ public class PushStream<T: StreamBuffer>: Pushable {
 	}
 
 	private var retained: PushStream? = nil
-    public init() {
+    public required init() {
         retained = self
     }
 }

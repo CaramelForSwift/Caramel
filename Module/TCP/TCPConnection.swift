@@ -35,25 +35,26 @@ internal class TCPConnectionUVWriteCallbackClosureBox {
 	}
 }
 
-public class NetConnection<T: StreamBuffer, U: StreamBuffer> {
-	public typealias Incoming = T
-	public typealias Outgoing = T
-	public let incoming: PushStream<Incoming>
-	public let outgoing: PushStream<Outgoing>
-	public required init(incoming: PushStream<Incoming>, outgoing: PushStream<Outgoing>) {
+public class NetConnection<T: Pushable, U: Pushable where T.Sequence: StreamBuffer, U.Sequence: StreamBuffer> {
+	public typealias IncomingStream = T
+	public typealias OutgoingStream = U
+    public typealias Incoming = IncomingStream.Sequence
+    public typealias Outgoing = OutgoingStream.Sequence
+	public let incoming: IncomingStream
+	public let outgoing: OutgoingStream
+	public required init(incoming: IncomingStream, outgoing: OutgoingStream) {
 		self.incoming = incoming
 		self.outgoing = outgoing
 	}
 }
 
-public class TCPConnection: NetConnection<Data, Data> {
-	public required init(incoming: PushStream<TCPConnection.Incoming>) {
-		let writeStream = PushStream<TCPConnection.Outgoing>()
-		super.init(incoming: incoming, outgoing: writeStream)
-		
-		writeStream.wait { [weak self] result in
+public class TCPConnection<T: Pushable, U: Pushable where T: Writeable, U: BufferedAppendable, T.Sequence == Data, U.Sequence == Data>: NetConnection<T, U> {
+    public required init(incoming: IncomingStream, outgoing: OutgoingStream) {
+		super.init(incoming: incoming, outgoing: outgoing)
+
+        outgoing.wait({ [weak self] (result: Result<OutgoingStream.Sequence>) -> Void in
 			self?.writeResult(result)
-		}
+		} as! OutgoingStream.PushHandler)
 	}
 	
 	private var clientTCP: UnsafeMutablePointer<uv_tcp_t> = nil
@@ -84,7 +85,7 @@ public class TCPConnection: NetConnection<Data, Data> {
 	private func didRead(stream: UnsafeMutablePointer<uv_stream_t>, size: Int, buffer buf: UnsafePointer<uv_buf_t>) {
 		guard size >= 0 else { return }
 		print("Did read: \(size)")
-		var data = Data()
+		var data = IncomingStream.Sequence()
 		data.append(UnsafePointer<Void>(buf.memory.base), length: size)
 		self.incoming.write(data)
 	}

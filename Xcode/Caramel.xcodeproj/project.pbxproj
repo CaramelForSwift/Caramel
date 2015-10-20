@@ -49,6 +49,9 @@
 		1EFC5A681B2BA88B00CC11E4 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1607D01B2B5A2100A602E5 /* main.swift */; };
 		1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = 1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */; };
 		1EFC5A791B2BD47F00CC11E4 /* SocketUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */; };
+		A70FF8A51BD59C7C00DABB71 /* Caramel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; };
+		A70FF8A81BD59C7C00DABB71 /* Caramel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A70FF8B01BD59D5D00DABB71 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70FF8AE1BD59D1D00DABB71 /* main.swift */; settings = {ASSET_TAGS = (); }; };
 		A74413031BBF464200908A62 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74413021BBF464200908A62 /* libuv.a */; };
 		A744131B1BBF477500908A62 /* android-ifaddrs.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130C1BBF477500908A62 /* android-ifaddrs.h */; };
 		A744131C1BBF477500908A62 /* pthread-fixes.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130D1BBF477500908A62 /* pthread-fixes.h */; };
@@ -84,6 +87,13 @@
 			remoteInfo = TestServer;
 		};
 		1EFC5A5A1B2BA87000CC11E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E1607BC1B2B4CDD00A602E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EFC5A461B2BA86F00CC11E4;
+			remoteInfo = Caramel;
+		};
+		A70FF8A11BD59C7C00DABB71 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1E1607BC1B2B4CDD00A602E5 /* Project object */;
 			proxyType = 1;
@@ -195,6 +205,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A70FF8A71BD59C7C00DABB71 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A70FF8A81BD59C7C00DABB71 /* Caramel.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -253,6 +274,10 @@
 		1EFC5A711B2BC7BB00CC11E4 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		1EFC5A761B2BD47F00CC11E4 /* SocketUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SocketUtils.c; sourceTree = "<group>"; };
 		1EFC5A771B2BD47F00CC11E4 /* SocketUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketUtils.h; sourceTree = "<group>"; };
+		A70FF8AC1BD59C7C00DABB71 /* TestIRCServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestIRCServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70FF8AD1BD59C7D00DABB71 /* TestServer copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TestServer copy-Info.plist"; path = "/Volumes/Luna/Caramel/Xcode/TestServer copy-Info.plist"; sourceTree = "<absolute>"; };
+		A70FF8AE1BD59D1D00DABB71 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A72C05C61BD5925E00B0BD37 /* ServerTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerTransformer.swift; sourceTree = "<group>"; };
 		A74412F21BBF448C00908A62 /* uv.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = uv.xcodeproj; sourceTree = "<group>"; };
 		A74413021BBF464200908A62 /* libuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libuv.a; path = ../libuv/.libs/libuv.a; sourceTree = "<group>"; };
 		A744130C1BBF477500908A62 /* android-ifaddrs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "android-ifaddrs.h"; sourceTree = "<group>"; };
@@ -300,6 +325,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A74413031BBF464200908A62 /* libuv.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70FF8A41BD59C7C00DABB71 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70FF8A51BD59C7C00DABB71 /* Caramel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +400,7 @@
 				1EFC5A321B2BA82300CC11E4 /* TestServer */,
 				1E0281171B6C69AD00B2C650 /* Tests */,
 				1E1607C51B2B4CDD00A602E5 /* Products */,
+				A70FF8AD1BD59C7D00DABB71 /* TestServer copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -376,6 +410,7 @@
 				1EFC5A311B2BA82300CC11E4 /* TestServer.app */,
 				1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */,
 				1E0281161B6C69AD00B2C650 /* CaramelTests.xctest */,
+				A70FF8AC1BD59C7C00DABB71 /* TestIRCServer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -409,6 +444,7 @@
 		1E1607CF1B2B4CEA00A602E5 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				A70FF89E1BD59C7000DABB71 /* IRC Server */,
 				1E1607D01B2B5A2100A602E5 /* main.swift */,
 			);
 			name = Test;
@@ -518,6 +554,7 @@
 			children = (
 				1E9AC4931BD3133700D2B064 /* TCPServer.swift */,
 				1E9AC4991BD4966600D2B064 /* TCPConnection.swift */,
+				A72C05C61BD5925E00B0BD37 /* ServerTransformer.swift */,
 			);
 			path = TCP;
 			sourceTree = "<group>";
@@ -528,6 +565,15 @@
 				1EFC5A3E1B2BA82300CC11E4 /* Info.plist */,
 			);
 			path = TestServer;
+			sourceTree = "<group>";
+		};
+		A70FF89E1BD59C7000DABB71 /* IRC Server */ = {
+			isa = PBXGroup;
+			children = (
+				A70FF8AE1BD59D1D00DABB71 /* main.swift */,
+			);
+			name = "IRC Server";
+			path = IRC;
 			sourceTree = "<group>";
 		};
 		A74412DD1BBF34D500908A62 /* Result */ = {
@@ -692,6 +738,25 @@
 			productReference = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		A70FF89F1BD59C7C00DABB71 /* TestIRCServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70FF8A91BD59C7C00DABB71 /* Build configuration list for PBXNativeTarget "TestIRCServer" */;
+			buildPhases = (
+				A70FF8A21BD59C7C00DABB71 /* Sources */,
+				A70FF8A41BD59C7C00DABB71 /* Frameworks */,
+				A70FF8A61BD59C7C00DABB71 /* Resources */,
+				A70FF8A71BD59C7C00DABB71 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A70FF8A01BD59C7C00DABB71 /* PBXTargetDependency */,
+			);
+			name = TestIRCServer;
+			productName = TestServer;
+			productReference = A70FF8AC1BD59C7C00DABB71 /* TestIRCServer.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -744,6 +809,7 @@
 				1EFC5A461B2BA86F00CC11E4 /* Caramel */,
 				1E0281151B6C69AD00B2C650 /* CaramelTests */,
 				1EFC5A301B2BA82300CC11E4 /* TestServer */,
+				A70FF89F1BD59C7C00DABB71 /* TestIRCServer */,
 			);
 		};
 /* End PBXProject section */
@@ -843,6 +909,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A70FF8A61BD59C7C00DABB71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -903,6 +976,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A70FF8A21BD59C7C00DABB71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A70FF8B01BD59D5D00DABB71 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -920,6 +1001,11 @@
 			isa = PBXTargetDependency;
 			target = 1EFC5A461B2BA86F00CC11E4 /* Caramel */;
 			targetProxy = 1EFC5A5A1B2BA87000CC11E4 /* PBXContainerItemProxy */;
+		};
+		A70FF8A01BD59C7C00DABB71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EFC5A461B2BA86F00CC11E4 /* Caramel */;
+			targetProxy = A70FF8A11BD59C7C00DABB71 /* PBXContainerItemProxy */;
 		};
 		A74413071BBF465500908A62 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1124,6 +1210,34 @@
 			};
 			name = Release;
 		};
+		A70FF8AA1BD59C7C00DABB71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "TestServer copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.lunarguard.TestServer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A70FF8AB1BD59C7C00DABB71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "TestServer copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = co.lunarguard.TestServer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1159,6 +1273,15 @@
 			buildConfigurations = (
 				1EFC5A601B2BA87000CC11E4 /* Debug */,
 				1EFC5A611B2BA87000CC11E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A70FF8A91BD59C7C00DABB71 /* Build configuration list for PBXNativeTarget "TestIRCServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70FF8AA1BD59C7C00DABB71 /* Debug */,
+				A70FF8AB1BD59C7C00DABB71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

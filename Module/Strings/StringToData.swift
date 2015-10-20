@@ -13,42 +13,73 @@ extension String.UnicodeScalarView: StreamBuffer {
 }
 
 public class StringToDataTransformer<T: StreamBuffer where T.Generator.Element == String>: Transformer<T, Data> {
-	public typealias Input = T
-	let encoding: String.Encoding
-	public init(encoding: String.Encoding) {
-		self.encoding = encoding
-	}
-	
-	public override func transform(input: Input) throws -> Data {
-		var data = Data()
-		switch self.encoding {
-		case .UTF8:
-			input.forEach({ (string: String) -> () in
-				var bytes: [Byte] = []
-				for thing in string.utf8 {
-					bytes.append(Byte(thing))
-				}
-				data.append(bytes)
-			})
-		case .UTF16:
-			input.forEach({ (string: String) -> () in
-				var bytes: [Byte] = []
-				for thing in string.utf16 {
-					bytes.append(Byte((thing & 0xFF00) >> 8))
-					bytes.append(Byte(thing & 0xFF))
-				}
-				data.append(bytes)
-			})
-		}
-		return data;
-	}
-	
-	public override func finish() throws -> Data? {
-		return nil
-	}
+    public typealias Input = T
+    let encoding: String.Encoding
+    public init(encoding: String.Encoding) {
+        self.encoding = encoding
+    }
+
+    public override func transform(input: Input) throws -> Data {
+        var data = Data()
+        switch self.encoding {
+        case .UTF8:
+            input.forEach({ (string: String) -> () in
+                var bytes: [Byte] = []
+                for thing in string.utf8 {
+                    bytes.append(Byte(thing))
+                }
+                data.append(bytes)
+            })
+        case .UTF16:
+            input.forEach({ (string: String) -> () in
+                var bytes: [Byte] = []
+                for thing in string.utf16 {
+                    bytes.append(Byte((thing & 0xFF00) >> 8))
+                    bytes.append(Byte(thing & 0xFF))
+                }
+                data.append(bytes)
+            })
+        }
+        return data;
+    }
+    
+    public override func finish() throws -> Data? {
+        return nil
+    }
 }
 
-public class DataToStringTransformer<T: DataConvertible>: Transformer<T, String.UnicodeScalarView> {
+public class StringUnicodeScalarViewToDataTransformer: Transformer<String.UnicodeScalarView, Data> {
+    let encoding: String.Encoding
+    public init(encoding: String.Encoding) {
+        self.encoding = encoding
+    }
+
+    public override func transform(input: Input) throws -> Data {
+        var data = Data()
+        switch self.encoding {
+        case .UTF8:
+            input.forEach { (scalar: UnicodeScalar) -> () in
+                UTF8.encode(scalar, output: { (unit: UTF8.CodeUnit) -> () in
+                    data.append(Byte(unit))
+                })
+            }
+        case .UTF16:
+            input.forEach({ (scalar: UnicodeScalar) -> () in
+                UTF16.encode(scalar, output: { (unit: UTF16.CodeUnit) -> () in
+                    data.append(Byte((unit & 0xFF00) >> 8))
+                    data.append(Byte(unit & 0xFF))
+                })
+            })
+        }
+        return data;
+    }
+    
+    public override func finish() throws -> Data? {
+        return nil
+    }
+}
+
+public class DataToStringUnicodeScalarViewTransformer<T: DataConvertible>: Transformer<T, String.UnicodeScalarView> {
 	let encoding: String.Encoding
 	public init(encoding: String.Encoding) {
 		self.encoding = encoding
@@ -149,33 +180,33 @@ public extension Pushable where Self.Sequence.Generator.Element == String {
 }
 
 public extension Pullable where Self.Sequence: DataConvertible {
-	public var UTF8StringView: TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>> {
-        return self.transformWith(DataToStringTransformer(encoding: .UTF8))
+	public var UTF8StringView: TransformingPullStream<Self, String.UnicodeScalarView, DataToStringUnicodeScalarViewTransformer<Self.Sequence>> {
+        return self.transformWith(DataToStringUnicodeScalarViewTransformer(encoding: .UTF8))
 	}
-	public var UTF16StringView: TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>> {
-        return self.transformWith(DataToStringTransformer(encoding: .UTF16))
+	public var UTF16StringView: TransformingPullStream<Self, String.UnicodeScalarView, DataToStringUnicodeScalarViewTransformer<Self.Sequence>> {
+        return self.transformWith(DataToStringUnicodeScalarViewTransformer(encoding: .UTF16))
 	}
 
-    public var UTF8String: TransformingPullStream<TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
+    public var UTF8String: TransformingPullStream<TransformingPullStream<Self, String.UnicodeScalarView, DataToStringUnicodeScalarViewTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
         return self.UTF8StringView.transformWith(UnicodeScalarViewToStringTransformer())
     }
-    public var UTF16String: TransformingPullStream<TransformingPullStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
+    public var UTF16String: TransformingPullStream<TransformingPullStream<Self, String.UnicodeScalarView, DataToStringUnicodeScalarViewTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
         return self.UTF16StringView.transformWith(UnicodeScalarViewToStringTransformer())
     }
 }
 
 public extension Pushable where Self.Sequence: DataConvertible {
-	public var UTF8StringView: TransformingPushStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>> {
-		return TransformingPushStream(inputStream: self, transformer: DataToStringTransformer(encoding: .UTF8))
+	public var UTF8StringView: TransformingPushStream<Self, String.UnicodeScalarView, DataToStringUnicodeScalarViewTransformer<Self.Sequence>> {
+		return TransformingPushStream(inputStream: self, transformer: DataToStringUnicodeScalarViewTransformer(encoding: .UTF8))
 	}
-	public var UTF16StringView: TransformingPushStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>> {
-		return TransformingPushStream(inputStream: self, transformer: DataToStringTransformer(encoding: .UTF16))
+	public var UTF16StringView: TransformingPushStream<Self, String.UnicodeScalarView, DataToStringUnicodeScalarViewTransformer<Self.Sequence>> {
+		return TransformingPushStream(inputStream: self, transformer: DataToStringUnicodeScalarViewTransformer(encoding: .UTF16))
 	}
 
-    public var UTF8String: TransformingPushStream<TransformingPushStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
+    public var UTF8String: TransformingPushStream<TransformingPushStream<Self, String.UnicodeScalarView, DataToStringUnicodeScalarViewTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
         return TransformingPushStream(inputStream: self.UTF8StringView, transformer: UnicodeScalarViewToStringTransformer())
     }
-    public var UTF16String: TransformingPushStream<TransformingPushStream<Self, String.UnicodeScalarView, DataToStringTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
+    public var UTF16String: TransformingPushStream<TransformingPushStream<Self, String.UnicodeScalarView, DataToStringUnicodeScalarViewTransformer<Self.Sequence>>, [String], UnicodeScalarViewToStringTransformer> {
         return TransformingPushStream(inputStream: self.UTF16StringView, transformer: UnicodeScalarViewToStringTransformer())
     }
 }

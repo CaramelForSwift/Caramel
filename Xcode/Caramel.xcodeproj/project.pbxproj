@@ -52,6 +52,7 @@
 		A70FF8A51BD59C7C00DABB71 /* Caramel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; };
 		A70FF8A81BD59C7C00DABB71 /* Caramel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFC5A471B2BA86F00CC11E4 /* Caramel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A70FF8B01BD59D5D00DABB71 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70FF8AE1BD59D1D00DABB71 /* main.swift */; settings = {ASSET_TAGS = (); }; };
+		A70FF8B31BD6047B00DABB71 /* ServerTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72C05C61BD5925E00B0BD37 /* ServerTransformer.swift */; settings = {ASSET_TAGS = (); }; };
 		A74413031BBF464200908A62 /* libuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A74413021BBF464200908A62 /* libuv.a */; };
 		A744131B1BBF477500908A62 /* android-ifaddrs.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130C1BBF477500908A62 /* android-ifaddrs.h */; };
 		A744131C1BBF477500908A62 /* pthread-fixes.h in Headers */ = {isa = PBXBuildFile; fileRef = A744130D1BBF477500908A62 /* pthread-fixes.h */; };
@@ -956,6 +957,7 @@
 				1E3F92001B649FED00235033 /* FileReader.swift in Sources */,
 				1EFC5A781B2BD47F00CC11E4 /* SocketUtils.c in Sources */,
 				1E8EAD291B2E724F00365A68 /* PushStream.swift in Sources */,
+				A70FF8B31BD6047B00DABB71 /* ServerTransformer.swift in Sources */,
 				1E22F86A1BAE4EC600B4A047 /* MD2Hasher.swift in Sources */,
 				1E0280C31B65AFA200B2C650 /* PullStream.swift in Sources */,
 				1E22F87A1BAF267500B4A047 /* Base64.swift in Sources */,

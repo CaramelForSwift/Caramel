@@ -27,7 +27,7 @@ public protocol Listenable {
 	typealias Input = InputStream.Sequence
 	typealias Output = OutputStream.Sequence
 	typealias ListenHandler = (NetConnection<Self.InputStream, Self.OutputStream>) -> Void
-	func listen(port: UInt16, listener: Self.ListenHandler) throws
+	func listen(listener: Self.ListenHandler) throws
 }
 
 public class TCPServer: Listenable {
@@ -49,7 +49,7 @@ public class TCPServer: Listenable {
 	private var connectCallback: TCPServerUVCallbackClosureBox? = nil
 	
 	private var listener: TCPServer.ListenHandler? = nil
-	public func listen(port: UInt16, listener: TCPServer.ListenHandler) throws {
+	public func listen(listener: TCPServer.ListenHandler) throws {
 		guard self.listener == nil else { 
 			throw Error.AlreadyListening
 		}
@@ -87,8 +87,10 @@ public class TCPServer: Listenable {
 		strongSelf = nil
 		listener = nil
 	}
-	
-	public init() {
+
+    private let port: UInt16
+    public init(port: UInt16) {
+        self.port = port
 	}
 	
 	deinit {

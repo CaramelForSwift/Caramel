@@ -155,6 +155,39 @@ public class UnicodeScalarViewToStringTransformer: Transformer<String.UnicodeSca
     }
 }
 
+public class UnicodeScalarViewToSplitStringTransformer: Transformer<String.UnicodeScalarView, [String]> {
+    private func split(input: String.UnicodeScalarView) -> ([String], String.UnicodeScalarView) {
+        var strings: [String] = []
+        var slicedInput = input
+        while let next = slicedInput.indexOf(splitter) {
+            let slice = slicedInput.prefixUpTo(next)
+            strings.append(String(slice))
+            slicedInput = slicedInput.suffixFrom(next.advancedBy(1))
+        }
+        return (strings, slicedInput)
+    }
+
+    public let splitter: UnicodeScalar
+    public init(splitter: UnicodeScalar) {
+        self.splitter = splitter
+    }
+
+    public override func transform(input: String.UnicodeScalarView) throws -> [String] {
+        let (strings, remainder) = split(input)
+        self.appendToBuffer(remainder)
+        return strings
+    }
+
+    public override func finish() throws -> [String]? {
+        let input = self.drainBuffer()
+        var (strings, remainder) = split(input)
+        if remainder.count > 0 {
+            strings.append(String(remainder))
+        }
+        return strings
+    }
+}
+
 public extension String {
 	public var pullStream: FulfilledPullableStream<[String]> {
 		return FulfilledPullableStream(values: [self])

@@ -59,6 +59,16 @@ public final class BlockTransformer<T, U where T: StreamBuffer, U: StreamBuffer>
 	}
 }
 
+public final class IdentityTransformer<T where T: StreamBuffer>: Transformer<T, T> {
+    public override func transform(input: Input) throws -> Output {
+        return Input()
+    }
+
+    public override func finish() throws -> Output? {
+        return self.drainBuffer()
+    }
+}
+
 public class TransformingPullStream<T, U, V: Transforming where U: StreamBuffer, T: Pullable, V.Input == T.Sequence, V.Output == U>: TransformPullable {
 	public typealias InputStream = T
 	public typealias Sequence = U
@@ -120,7 +130,7 @@ public class TransformingPullStream<T, U, V: Transforming where U: StreamBuffer,
 	}
 }
 
-public class TransformingPushStream<T, U, V: Transforming where U: StreamBuffer, T: Pushable, V.Input == T.Sequence, V.Output == U>: TransformPushable {
+public class TransformingPushStream<T, U, V: Transforming where T: Pushable, U: StreamBuffer, V.Input == T.Sequence, V.Output == U>: TransformPushable {
 	public typealias InputStream = T
 	public typealias Sequence = U
 	public typealias Output = U
@@ -271,4 +281,3 @@ public extension Pushable {
 		return TransformingPushStream(inputStream: self, transformer: transformer)
 	}
 }
-

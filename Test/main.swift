@@ -5,7 +5,7 @@ let splatoonFile = File.rootDirectory/"Users"/"syco"/"Downloads"/"Splatoon Squid
 //let hostsFile = File.rootDirectory/"etc"/"hosts"
 let hostsFile = File.homeDirectory/"Downloads"/"ownCloud-2.0.1.2694.pkg"
 let newFile = File.homeDirectory / "hostsFile.txt"
-hostsFile.readPushStream.writeTo(newFile, mode: File.Mode(user: .Read, group: .Read, everyone: .None))
+hostsFile.readPushStream.SHA512.writeTo(newFile, mode: File.Mode(user: .Read, group: .Read, everyone: .None))
 
 //if let stream = splatoonFile.readPullStream?.MD5Stream, data = stream.drain() {
 //	print("Splatoon file MD5 is \(data.debugDescription.lowercaseString)")

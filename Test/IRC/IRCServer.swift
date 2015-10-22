@@ -16,11 +16,12 @@ class IRCServer {
         server = TCPServer(port: port).toStringUnicodeScalarsViewWithEncoding(.UTF8).stringsSplitByNewline
     }
 
-    var connections: [Server.Connection] = []
+    var connectionsToUsers: [Server.Connection: User] = [:]
 
     func start() throws {
         try server.listen { connection in
-            self.connections.append(connection)
+            let user = User()
+            self.connectionsToUsers[connection] = user
             
             connection.incoming.wait { result in
                 do {
@@ -29,16 +30,40 @@ class IRCServer {
                         if let
                             spaceIndex = line.characters.indexOf(" ")
                         {
-                            let range = Range<String.CharacterView.Index>(start: line.characters.startIndex, end: spaceIndex)
-                            let foo = String(line[range])
-                            print("Command: \(foo)")
+                            let commandRange = Range<String.CharacterView.Index>(start: line.characters.startIndex, end: spaceIndex)
+                            let remainderRange = Range<String.CharacterView.Index>(start: spaceIndex.advancedBy(1), end: line.characters.endIndex)
+                            let command = String(line[commandRange])
+                            let remainder = String(line[remainderRange])
+                            if let response = self.user(user, performedCommand: command, withContents: remainder) {
+                                connection.outgoing.write("\(response)\n".utf8.data)
+                            }
                         }
-                        print("line: \(line)")
                     }
                 } catch {
                     connection.outgoing.end()
                 }
             }
         }
+    }
+
+    func user(user: User, performedCommand command: String, withContents contents: String) -> String? {
+        switch command {
+        case "NICK":
+            user.nick = contents
+            print("Nick: \(user.nick)")
+            return "OK"
+        case "USER":
+            return "OK"
+        default:
+            print("Dropping command \(command) \(contents)")
+            return nil
+        }
+    }
+}
+
+extension IRCServer {
+    enum Reply(Int, String) {
+        case UserHost = (302, "RPL_USERHOST")
+        case ISON = (303, "RPL_ISON")
     }
 }

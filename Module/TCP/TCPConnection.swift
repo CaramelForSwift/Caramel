@@ -35,17 +35,25 @@ internal class TCPConnectionUVWriteCallbackClosureBox {
 	}
 }
 
-public class NetConnection<T: Pushable, U: Pushable where T.Sequence: StreamBuffer, U.Sequence: StreamBuffer> {
+private var NetConnectionHashValueAccumulator: Int = 0
+public class NetConnection<T: Pushable, U: Pushable where T.Sequence: StreamBuffer, U.Sequence: StreamBuffer>: Hashable {
 	public typealias IncomingStream = T
 	public typealias OutgoingStream = U
     public typealias Incoming = IncomingStream.Sequence
     public typealias Outgoing = OutgoingStream.Sequence
 	public let incoming: IncomingStream
 	public let outgoing: OutgoingStream
+
+    public let hashValue: Int = NetConnectionHashValueAccumulator++
 	public required init(incoming: IncomingStream, outgoing: OutgoingStream) {
 		self.incoming = incoming
 		self.outgoing = outgoing
 	}
+}
+
+extension NetConnection: Equatable {}
+public func ==<T, U>(lhs: NetConnection<T,U>, rhs: NetConnection<T,U>) -> Bool {
+    return lhs.hashValue == rhs.hashValue
 }
 
 public class TCPConnection<T: Pushable, U: Pushable where T: Writeable, U: BufferedAppendable, T.Sequence == Data, U.Sequence == Data>: NetConnection<T, U> {
@@ -75,16 +83,14 @@ public class TCPConnection<T: Pushable, U: Pushable where T: Writeable, U: Buffe
 		connection = self
 		
 		clientTCP = UnsafeMutablePointer<uv_tcp_t>.alloc(1)
-		let rc0 = uv_tcp_init(server.eventLoop.uvLoop, clientTCP)
-		let rc1 = uv_accept(server.uvStream, clientStream)
-		let rc2 = uv_read_start(clientStream, Caramel_uv_alloc_cb, TCPConnection_uv_read_cb)
-		print("accept read: \(rc0) \(rc1) \(rc2)")
+        guard uv_tcp_init(server.eventLoop.uvLoop, clientTCP) >= 0 else { return }
+        guard uv_accept(server.uvStream, clientStream) >= 0 else { return }
+        guard uv_read_start(clientStream, Caramel_uv_alloc_cb, TCPConnection_uv_read_cb) >= 0 else { return }
 		clientTCP.memory.data = unsafeBitCast(readClosure, UnsafeMutablePointer<Void>.self)
 	}
 	
 	private func didRead(stream: UnsafeMutablePointer<uv_stream_t>, size: Int, buffer buf: UnsafePointer<uv_buf_t>) {
 		guard size >= 0 else { return }
-		print("Did read: \(size)")
 		var data = IncomingStream.Sequence()
 		data.append(UnsafePointer<Void>(buf.memory.base), length: size)
 		self.incoming.write(data)
@@ -113,7 +119,6 @@ public class TCPConnection<T: Pushable, U: Pushable where T: Writeable, U: Buffe
 	}
 	
 	private func didWrite(handle: UnsafeMutablePointer<uv_write_t>, size: Int32) {
-		print("did write \(size)")
 		writeClosure = nil
 		currentWrite.dealloc(1)
 		currentWrite = nil

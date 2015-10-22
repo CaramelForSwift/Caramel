@@ -19,7 +19,9 @@ public class ServerTransformer<T: Listenable, U: Transforming, V: Transforming w
     public typealias Input = InputStream.Sequence
     public typealias Output = OutputStream.Sequence
 
-    public func listen(listenerHandler: ((NetConnection<InputStream, T.OutputStream>) -> Void)) throws {
+    public typealias Connection = NetConnection<InputStream, OutputStream>
+
+    public func listen(listenerHandler: ServerTransformer.ListenHandler) throws {
         try self.listening.listen(({ (connection: NetConnection<Listening.InputStream, Listening.OutputStream>) -> Void in
             let mappedInput = TransformingPushStream(inputStream: connection.incoming, transformer: self.inputTransformer)
 //            let mappedOutput = TransformingPushStream(inputStream: connection.outgoing, transformer: self.outputTransformer)

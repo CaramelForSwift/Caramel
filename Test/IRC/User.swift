@@ -8,7 +8,7 @@
 
 import Caramel
 
-struct User {
+class User {
     var username: String? = nil
     var nick: String? = nil
 }

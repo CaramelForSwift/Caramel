@@ -24,10 +24,14 @@ internal class TCPServerUVCallbackClosureBox {
 public protocol Listenable {
     typealias InputStream: Pushable
     typealias OutputStream: Pushable
-	typealias Input = InputStream.Sequence
+
+    typealias Connection = NetConnection<InputStream, OutputStream>
+
+    typealias Input = InputStream.Sequence
 	typealias Output = OutputStream.Sequence
-	typealias ListenHandler = (NetConnection<Self.InputStream, Self.OutputStream>) -> Void
-	func listen(listener: Self.ListenHandler) throws
+
+    typealias ListenHandler = ((Connection) -> Void)
+	func listen(listener: ListenHandler) throws
 }
 
 public class TCPServer: Listenable {
@@ -55,7 +59,6 @@ public class TCPServer: Listenable {
 		}
 		
 		connectCallback = TCPServerUVCallbackClosureBox { [weak self] (stream: UnsafeMutablePointer<uv_stream_t>, status: Int32) in
-			print("Status: \(status)")
 			self?.didConnect(UnsafeMutablePointer<uv_tcp_t>(stream), status: status)
 		}
 

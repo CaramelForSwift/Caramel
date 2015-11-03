@@ -2,6 +2,8 @@
 
 Caramel is a cross-platform module for building server applications in Swift.
 
+Caramel is **not** production-ready, use at your own discretion. Discussion about design and architecture is welcome. 
+
 # Design goals
 
 ## Design APIs to be Swifty, not around the limitations of C or Foundation.
@@ -15,10 +17,6 @@ Although development and testing of the core framework may always be easier with
 ## Always expose Swift native types. Never expose legacy data types or unsafe types.
 
 Under the hood we may need to use POSIX APIs, or import the Darwin module, etc. These APIs often expose legacy data types, or rely on `UnsafePointer` types. All public APIs should absorb these legacy types into higher-order types, and unsafety should be absorbed by the framework. (A notable exception would be the `Data` class, which may expose an `UnsafePointer` for binary data, but other APIs should return `Data` types).
-
-## Prefer value types (structs) over reference types (classes).
-
-Value types are copied every time they are passed around, which makes concurrent access easier to reason about. If a type needs to maintain access to a resource that must be freed, such as a file descriptor, then it may make sense to use a reference type. An even better idea is to make the base type (such as `File`) a value type, and encapsulate the resource access into a separate reference type (such as `FileReader`).
 
 ## Reduce interdependence between types in their base implementations, add it via extensions.
 
@@ -45,7 +43,7 @@ This code of conduct applies both within project spaces and in public spaces whe
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting one or more of the project maintainers.
 
-This Code of Conduct is adapted from the [Contributor Covenant](http://contributor-covenant.org), version 1.2.0, available at [http://contributor-covenant.org/version/1/2/0/](http://contributor-covenant.org/version/1/2/0/)
+This Code of Conduct is adapted from the [Contributor Covenant](http://contributor-covenant.org), version 1.2.0, available at [http://contributor-covenant.org/version/1/2/0/](http://contributor-covenant.org/version/1/2/0/), and is open for discussion if does not adequately protect people who want to be a member of the community.
 
 # License (MIT) 
 

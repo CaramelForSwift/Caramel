@@ -62,7 +62,7 @@ hostsFile.readPushStream.SHA512.writeTo(newFile, mode: File.Mode(user: .Read, gr
 ////
 
 do {
-	try TCPServer().listen(8080) { connection in
+    try TCPServer(port: 8080).listen { connection in
 		connection.incoming.wait({ (result: Result<Data>) -> Void in
 			do {
 				if let data = try result.result().UTF8String {

@@ -21,3 +21,27 @@ public extension Pushable where Self.Sequence.Generator.Element == String {
         })
     }
 }
+
+public extension String {
+    var stringByTrimmingSpaces: String {
+        return stringByTrimmingCharacters([" "])
+    }
+    func stringByTrimmingCharacters(charactersToFind: [Character]) -> String {
+        var characters = self.characters
+        for character in characters {
+            if charactersToFind.contains(character) {
+                characters.removeFirst()
+            } else {
+                break
+            }
+        }
+        for character in characters.reverse() {
+            if charactersToFind.contains(character) {
+                characters.removeLast()
+            } else {
+                break
+            }
+        }
+        return String(characters)
+    }
+}

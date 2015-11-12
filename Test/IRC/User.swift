@@ -24,15 +24,30 @@ class UserGenerator {
 }
 
 class User {
+    weak var connection: IRCServer.Server.Connection? = nil
+
     var username: String
     var realName: String
     var mode: Int
     var nick: String
+    var rooms = Set<String>()
 
     init(username: String, realName: String, mode: Int, nick: String) {
         self.username = username
         self.realName = realName
         self.mode = mode
         self.nick = nick
+    }
+
+    func joinRoom(room: String) {
+        rooms.insert(room)
+    }
+
+    func partRoom(room: String) {
+        rooms.remove(room)
+    }
+
+    func isInRoom(room: String) -> Bool {
+        return rooms.contains(room)
     }
 }

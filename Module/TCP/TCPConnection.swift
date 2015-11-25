@@ -122,6 +122,12 @@ public class TCPConnection<T: Pushable, U: Pushable where T: Writeable, U: Buffe
 		writeClosure = nil
 		currentWrite.dealloc(1)
 		currentWrite = nil
-	}
+
+        let buffer = self.outgoing.buffer
+        if buffer.bytes.count > 0 {
+            self.outgoing.buffer = Data()
+            self.writeResult(Result.Success(buffer))
+        }
+    }
 }
 

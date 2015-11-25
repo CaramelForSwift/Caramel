@@ -36,8 +36,14 @@ public class PushStream<T: StreamBuffer>: Pushable, Writeable, BufferedAppendabl
     }
 
     private var handlers: [PushStream.PushHandler] = []
+    private var started: Bool = false
     public func wait(handler: PushStream.PushHandler) {
         handlers.append(handler)
+
+        if started == false {
+            started = true
+            start()
+        }
     }
 
 	public func write(sequence: Sequence) {
@@ -54,9 +60,13 @@ public class PushStream<T: StreamBuffer>: Pushable, Writeable, BufferedAppendabl
 		}
 	}
 
-	private var retained: PushStream? = nil
+	internal var retained: PushStream? = nil
     public required init() {
         retained = self
+    }
+
+    internal func start() {
+        started = true
     }
 }
 

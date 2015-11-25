@@ -71,6 +71,7 @@
 		A74413271BBF477500908A62 /* uv-version.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413181BBF477500908A62 /* uv-version.h */; };
 		A74413281BBF477500908A62 /* uv-win.h in Headers */ = {isa = PBXBuildFile; fileRef = A74413191BBF477500908A62 /* uv-win.h */; };
 		A74413291BBF477500908A62 /* uv.h in Headers */ = {isa = PBXBuildFile; fileRef = A744131A1BBF477500908A62 /* uv.h */; };
+		A762FC9C1C053EEC007E0B4C /* FileDirectoryListPushStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762FC9B1C053EEC007E0B4C /* FileDirectoryListPushStream.swift */; };
 		A78FE77D1BCC42C4004A3270 /* StringSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78FE77C1BCC42C4004A3270 /* StringSupport.swift */; };
 /* End PBXBuildFile section */
 
@@ -301,6 +302,7 @@
 		A74413191BBF477500908A62 /* uv-win.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "uv-win.h"; sourceTree = "<group>"; };
 		A744131A1BBF477500908A62 /* uv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uv.h; sourceTree = "<group>"; };
 		A755D4A41BB5BD8200CE3B08 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		A762FC9B1C053EEC007E0B4C /* FileDirectoryListPushStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDirectoryListPushStream.swift; sourceTree = "<group>"; };
 		A78FE77C1BCC42C4004A3270 /* StringSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringSupport.swift; sourceTree = "<group>"; };
 		A7B52D1E1BBF148C009BA12F /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = ../../External/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		A7B52D351BBF14AA009BA12F /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = ../../External/Quick/Externals/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 				1E7E588C1B61957400F2F60C /* File.swift */,
 				1E0280FB1B6C5ACD00B2C650 /* FileMetadata.swift */,
 				1EB26C4A1BC10F85004136E9 /* FileReadPushStream.swift */,
+				A762FC9B1C053EEC007E0B4C /* FileDirectoryListPushStream.swift */,
 				1E5578641BCCC62400E10926 /* FileWritePushStream.swift */,
 				1E3F91FF1B649FED00235033 /* FileReader.swift */,
 				1E0281341B6D472200B2C650 /* FileWriter.swift */,
@@ -971,6 +974,7 @@
 				1EB26C591BC1BBDB004136E9 /* StreamTransforming.swift in Sources */,
 				1E22F8741BAE517A00B4A047 /* SHA224Hasher.swift in Sources */,
 				1E0281351B6D472200B2C650 /* FileWriter.swift in Sources */,
+				A762FC9C1C053EEC007E0B4C /* FileDirectoryListPushStream.swift in Sources */,
 				1E8EAD271B2E15EB00365A68 /* Streaming.swift in Sources */,
 				1E55784F1BCA3DED00E10926 /* StringToData.swift in Sources */,
 				1E01F5D81BAE1DAD002EA5E0 /* HashStream.swift in Sources */,

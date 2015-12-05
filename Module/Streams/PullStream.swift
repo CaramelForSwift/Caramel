@@ -20,12 +20,9 @@ public class PullableStream<T: StreamBuffer>: Pullable {
         return pull()
     }
     
-    private var _isAtEnd = false
-    public var isAtEnd: Bool {
-        return _isAtEnd
-    }
+    public private(set) var isAtEnd: Bool = false
     public func end() {
-        _isAtEnd = true
+        isAtEnd = true
     }
 }
 

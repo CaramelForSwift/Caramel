@@ -7,8 +7,5 @@ public protocol HTTPRequestType {
 public struct HTTPRequest<T>: HTTPRequestType {
 	public typealias Body = T
 	
-	private var _body: Body?
-	public var body: Body? {
-        return _body
-	}
+	public private(set) var body: Body?
 }

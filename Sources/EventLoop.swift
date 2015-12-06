@@ -6,7 +6,9 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+#if os(Linux)
 import CUv
+#endif
 
 public class EventLoop {
 	public static var defaultLoop: EventLoop = {

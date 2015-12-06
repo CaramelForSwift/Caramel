@@ -6,8 +6,10 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+#if os(Linux)
 import Glibc
 import CUv
+#endif
 
 typealias FDIRENT = uv_fs_s
 

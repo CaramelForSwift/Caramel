@@ -6,7 +6,9 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+#if os(Linux)
 import Glibc
+#endif
 
 private let characterLookupTable = [
 	UInt8(65) /* A */, 

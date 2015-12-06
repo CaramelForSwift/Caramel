@@ -6,8 +6,10 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+#if os(Linux)
 import Glibc
 import CUv
+#endif
 
 func FileReadPushStream_uv_fs_open_cb(req: UnsafeMutablePointer<uv_fs_t>) {
 	let ptr = req.memory.data

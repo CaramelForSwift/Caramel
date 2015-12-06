@@ -6,7 +6,9 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+#if os(Linux)
 import CUv
+#endif
 
 internal typealias TCPServerUVCallback = (UnsafeMutablePointer<uv_stream_t>, Int32) -> Void
 

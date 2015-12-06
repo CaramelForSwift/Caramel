@@ -42,3 +42,7 @@ profile
 Xcode/build
 Xcode/docs
 Xcode/test
+
+# Swift compiler build objects
+.build
+Packages

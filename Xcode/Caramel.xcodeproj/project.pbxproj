@@ -253,7 +253,7 @@
 		1E5578641BCCC62400E10926 /* FileWritePushStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWritePushStream.swift; sourceTree = "<group>"; usesTabs = 1; };
 		1E785BB41B2BEB6800BBC93F /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		1E785BB61B2BEB7100BBC93F /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		1E785BB81B2BEC1000BBC93F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "../Module/Bridging-Header.h"; sourceTree = "<group>"; };
+		1E785BB81B2BEC1000BBC93F /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "../Legacy/Bridging-Header.h"; sourceTree = "<group>"; };
 		1E785BB91B2BF2BD00BBC93F /* GCDAsyncSocketListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDAsyncSocketListener.swift; sourceTree = "<group>"; };
 		1E7E588C1B61957400F2F60C /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1E8EAD261B2E15EB00365A68 /* Streaming.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Streaming.swift; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 				1E22F8771BAF1F7900B4A047 /* HMACStream.swift */,
 			);
 			name = Crypto;
-			path = ../Module/Crypto;
+			path = ../Legacy/Crypto;
 			sourceTree = "<group>";
 		};
 		1E0280E81B69DB4D00B2C650 /* Process */ = {
@@ -362,7 +362,7 @@
 				1E0281261B6C6C0D00B2C650 /* RuntimeTests.swift */,
 			);
 			name = Process;
-			path = ../Module/Process;
+			path = ../Legacy/Process;
 			sourceTree = "<group>";
 		};
 		1E0281171B6C69AD00B2C650 /* Tests */ = {
@@ -510,7 +510,7 @@
 				1E1607D21B2B5A2C00A602E5 /* Network */,
 			);
 			name = Deprecated;
-			path = ../Module/Deprecated;
+			path = ../Legacy/Deprecated;
 			sourceTree = "<group>";
 		};
 		1E3F92011B65468300235033 /* Data */ = {
@@ -1192,7 +1192,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.caramelforswift.Caramel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Module/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Legacy/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1221,7 +1221,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.caramelforswift.Caramel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Module/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/../Legacy/Bridging-Header.h";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

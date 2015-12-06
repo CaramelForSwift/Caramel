@@ -7,7 +7,7 @@
 //
 
 internal func FileWritePushStream_uv_cb(req: UnsafeMutablePointer<uv_fs_t>) {
-	let ptr = req.memory.ptr
+	let ptr = req.memory.data
 	let cb = unsafeBitCast(ptr, UVCallbackClosureBox.self).callback
 	cb(req)
 }
@@ -84,7 +84,7 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible> 
 	private func open() {
 		openRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
 		uv_fs_open(eventLoop.uvLoop, openRequest, self.file.path, O_WRONLY | O_CREAT, Int32(self.mode.unixMode), FileWritePushStream_uv_cb)
-		openRequest.memory.ptr = unsafeBitCast(openBlock!, UnsafeMutablePointer<Void>.self)
+		openRequest.memory.data = unsafeBitCast(openBlock!, UnsafeMutablePointer<Void>.self)
 		attemptWrite()
 	}
 
@@ -116,7 +116,7 @@ public class FileWritePushStream<T: Pushable where T.Sequence: DataConvertible> 
 		var buffer = uv_buf_init_d(&nextData.bytes, UInt32(nextData.bytes.count))
 		self.writeRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
 		uv_fs_write(self.eventLoop.uvLoop, self.writeRequest, uv_file(fileDescriptor), &buffer, 1, self.bytesWritten, FileWritePushStream_uv_cb)
-		self.writeRequest.memory.ptr = unsafeBitCast(writeBlock!, UnsafeMutablePointer<Void>.self)
+		self.writeRequest.memory.data = unsafeBitCast(writeBlock!, UnsafeMutablePointer<Void>.self)
 	}
 	
 	public func didWrite(request: UnsafeMutablePointer<uv_fs_t>) {

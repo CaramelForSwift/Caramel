@@ -119,16 +119,13 @@ public struct File: Hashable, Equatable {
 	}
 	
 	/// The root directory for the current user's home directory.
-	public static var homeDirectory: File {
+	public static var homeDirectory: File? {
 		let passwd = getpwuid(getuid())
 		let dirPtr = passwd.memory.pw_dir
 		var data = Data()
 		data.append(UnsafePointer<Void>(dirPtr), length: Int(strlen(dirPtr)))
-		if let path = data.stringWithEncoding(.UTF8) {
-			return File(path: path)
-		} else {
-			fatalError()
-		}
+		guard let path = data.UTF8String else { return nil }
+		return File(path: path)
 	}
 	
 	/// The hash value.

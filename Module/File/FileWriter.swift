@@ -9,16 +9,19 @@
 import Darwin
 
 public class FileWriter {
-	let file: File
-	let filePointer: UnsafeMutablePointer<FILE>
+	public let file: File
+	private let filePointer: UnsafeMutablePointer<FILE>
 	
-	public init?(file: File) {
+	public enum Error: ErrorType {
+		case GenericError(Int)
+	}
+	
+	public init(file: File) throws {
 		self.file = file
 		self.filePointer = fopen(self.file.path, "w")
 		if self.filePointer == nil {
-			let wat = errno
-			print("wat: \(wat)")
-			return nil
+			let error = Int(errno)
+			throw Error.GenericError(error)
 		}
 	}
 	
@@ -34,15 +37,14 @@ public class FileWriter {
 }
 
 public extension File {
-	public func createWithData(data: Data) {
-		if let writer = FileWriter(file: self) {
-			do {
-				try writer.writeData(data)
-			} catch {
-				fatalError("Should rethrow here")
-			}
-		}  else {
-			fatalError("Throw here at some point idk")
-		}
+	public func createWithData(data: Data) throws {
+		try FileWriter(file: self).writeData(data)
 	}
 }
+
+public extension Data {
+	public func createFile(file: File) throws {
+		try FileWriter(file: file).writeData(self)
+	}
+}
+

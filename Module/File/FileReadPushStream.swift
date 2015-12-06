@@ -7,13 +7,13 @@
 //
 
 func FileReadPushStream_uv_fs_open_cb(req: UnsafeMutablePointer<uv_fs_t>) {
-	let ptr = req.memory.ptr
+	let ptr = req.memory.data
 	let foo = unsafeBitCast(ptr, FileReadPushStream.self)
 	foo.didOpen(req)
 }
 
 func FileReadPushStream_uv_fs_read_cb(req: UnsafeMutablePointer<uv_fs_t>) {
-	let ptr = req.memory.ptr
+	let ptr = req.memory.data
 	let foo = unsafeBitCast(ptr, FileReadPushStream.self)
 	foo.didRead(req)
 }
@@ -38,7 +38,7 @@ public class FileReadPushStream: PushStream<Data> {
         
 		openRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
 		uv_fs_open(eventLoop.uvLoop, openRequest, self.file.path, O_RDONLY, 0, FileReadPushStream_uv_fs_open_cb)
-		openRequest.memory.ptr = unsafeBitCast(self, UnsafeMutablePointer<Void>.self)
+		openRequest.memory.data = unsafeBitCast(self, UnsafeMutablePointer<Void>.self)
 	}
 	
 	private var fileDescriptor: File.Descriptor? = nil
@@ -54,7 +54,7 @@ public class FileReadPushStream: PushStream<Data> {
 		var buffer = uv_buf_init_d(&nextData!.bytes, UInt32(self.numberOfBytes))
 		self.readRequest = UnsafeMutablePointer<uv_fs_t>.alloc(1)
 		uv_fs_read(self.eventLoop.uvLoop, self.readRequest, uv_file(self.fileDescriptor!), &buffer, UInt32(buffer.len), self.bytesRead, FileReadPushStream_uv_fs_read_cb)
-		self.readRequest.memory.ptr = unsafeBitCast(self, UnsafeMutablePointer<Void>.self)
+		self.readRequest.memory.data = unsafeBitCast(self, UnsafeMutablePointer<Void>.self)
 	}
 	public func didRead(request: UnsafeMutablePointer<uv_fs_t>) {
 		guard request == readRequest else { return }

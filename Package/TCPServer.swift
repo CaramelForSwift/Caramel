@@ -6,6 +6,8 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+import CUv
+
 internal typealias TCPServerUVCallback = (UnsafeMutablePointer<uv_stream_t>, Int32) -> Void
 
 internal func TCPServer_uv_connection_cb(req: UnsafeMutablePointer<uv_stream_t>, status: Int32) {

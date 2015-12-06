@@ -6,7 +6,11 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+#if os(OSX) || os(iOS)
 import Darwin
+#else
+import Glibc
+#endif
 
 public class FileWriter {
 	public let file: File
@@ -26,7 +30,9 @@ public class FileWriter {
 	}
 	
 	public func writeData(data: Data) throws {
+#if os(OSX) || os(iOS)
 		assert(__error().memory == errno)
+#endif
 		let result = fwrite(data.bytes, sizeof(UInt8), data.bytes.count, self.filePointer)
 		print("Wrote \(result) of \(data.bytes.count)")
 	}

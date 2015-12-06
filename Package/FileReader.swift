@@ -6,7 +6,11 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+#if os(OSX) || os(iOS)
 import Darwin
+#else
+import Glibc
+#endif
 
 public class FileReadPullStream: PullableStream<Data> {
 	public enum FileError: ErrorType {
@@ -29,6 +33,7 @@ public class FileReadPullStream: PullableStream<Data> {
 
 	public func statFile() throws -> stat {
 		var statPointer = stat()
+#if os(OSX) || os(iOS)
 		guard fstat(Int32(self.filePointer.memory._file), &statPointer) == 0 else {
 			if let posixError = POSIXError(rawValue: errno) {
 				switch posixError {
@@ -40,7 +45,9 @@ public class FileReadPullStream: PullableStream<Data> {
 			} else {
 				throw FileError.UnknownError(self.file)
 			}
+			throw FileError.UnknownError(self.file)
 		}
+#endif
 		
 		return statPointer
 	}

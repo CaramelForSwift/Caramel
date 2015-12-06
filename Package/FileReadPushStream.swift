@@ -6,6 +6,9 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+import Glibc
+import CUv
+
 func FileReadPushStream_uv_fs_open_cb(req: UnsafeMutablePointer<uv_fs_t>) {
 	let ptr = req.memory.data
 	let foo = unsafeBitCast(ptr, FileReadPushStream.self)

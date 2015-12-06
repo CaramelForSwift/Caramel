@@ -1,4 +1,8 @@
+#if os(OSX) || os(iOS)
 import Darwin
+#else
+import Glibc
+#endif
 
 /// A `File` is an object that represents a location on a file system, and offers methods for 
 /// manipulating files and directories.

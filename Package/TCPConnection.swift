@@ -6,6 +6,8 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+import CUv
+
 internal typealias TCPConnectionUVReadCallback = (UnsafeMutablePointer<uv_stream_t>, Int, UnsafePointer<uv_buf_t>) -> Void
 internal typealias TCPConnectionUVWriteCallback = (UnsafeMutablePointer<uv_write_t>, Int32) -> Void
 

@@ -6,6 +6,9 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+import Glibc
+import CUv
+
 typealias FDIRENT = uv_fs_s
 
 func FileDirectoryListPushStream_uv_fs_scandir_cb(req: UnsafeMutablePointer<uv_fs_t>) {

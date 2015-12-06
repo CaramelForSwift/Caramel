@@ -6,6 +6,8 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+import CUv
+
 public class EventLoop {
 	public static var defaultLoop: EventLoop = {
 		let loop = EventLoop()

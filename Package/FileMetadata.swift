@@ -6,7 +6,11 @@
 //  Copyright © 2015 Lunar Guard. All rights reserved.
 //
 
+#if os(OSX) || os(iOS)
 import Darwin
+#else
+import Glibc
+#endif
 
 public struct FileMetadata {
 

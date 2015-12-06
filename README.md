@@ -22,6 +22,37 @@ Under the hood we may need to use POSIX APIs, or import the Darwin module, etc. 
 
 As much as possible, each type should not depend on other types in its base class. Instead, try to isolate interdependence into extensions. This keeps base types cleaner, easier to isolate, easier to test, and better encapsulated. But let the best API design win.
 
+# Setup
+
+## Xcode
+
+Xcode 7.1 can build the Caramel module for testing purposes. You'll need to build the `libuv` submdoule first.
+
+1. `git submodule update --init --recursive`
+2. `cd External/libuv`
+3. `sh autogen.sh
+4. `./configure`
+5. `make`
+6. `rm .libs/*.la* .libs/dylib` (for some reason Xcode doesn't like these files)
+
+Then build the Caramel scheme in Xcode, or duplicate the scheme to work on test projects. A more flexible testing harness is planned.
+
+## Swift Open Source
+
+Caramel depends on the [CUv](https://github.com/CaramelForSwift/CUv) module, which depends on libuv (v1.7.5 or higher). Follow the installation instructions to get libuv bootstrapped on your system, then `swift build`.
+
+Include Caramel as a dependency by putting this in your `Package.swift` file:
+
+```swift
+import PackageDescription
+
+let package = Package(
+    dependencies: [
+        .Package(url: "https://github.com/CaramelForSwift/Caramel.git", majorVersion: 0, minor: 1)
+    ]
+)
+```
+
 # Contributor Code of Conduct
 
 As contributors and maintainers of this project, and in the interest of fostering an open and welcoming community, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests or patches, and other activities.

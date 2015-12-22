@@ -30,7 +30,7 @@ Xcode 7.1 can build the Caramel module for testing purposes. You'll need to buil
 
 1. `git submodule update --init --recursive`
 2. `cd External/libuv`
-3. `sh autogen.sh
+3. `sh autogen.sh`
 4. `./configure`
 5. `make`
 6. `rm .libs/*.la* .libs/dylib` (for some reason Xcode doesn't like these files)
@@ -97,5 +97,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
 

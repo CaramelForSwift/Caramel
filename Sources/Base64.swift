@@ -80,53 +80,6 @@ private let characterLookupTable = [
 
 private let filler = UInt8(61)
 
-public class Base64EncoderStream<T: Pullable where T.Sequence: DataConvertible>: TransformPullable {
-	public typealias Sequence = Data
-	public typealias InputStream = T
-	
-	public let pullStream: InputStream
-
-	public func pull() -> Data? {
-		guard let data = self.pullStream.pull()?.data else { return nil }
-
-		let numberOfOutBytes = Int(ceil(Double(data.bytes.count) / 3) * 4)
-		var newData = Data(numberOfZeroes: numberOfOutBytes)
-		for i in data.bytes.startIndex.stride(to: data.bytes.endIndex, by: 3) {
-			let byte0 = (i + 0 < data.bytes.endIndex) ? data.bytes[i + 0] : 0
-			let byte1 = (i + 1 < data.bytes.endIndex) ? data.bytes[i + 1] : 0
-			let byte2 = (i + 2 < data.bytes.endIndex) ? data.bytes[i + 2] : 0
-			
-			let outByte0 = (byte0 & 0xFC) >> 2
-			let outByte1 = ((byte0 & 0x03) << 4) | ((byte1 & 0xF0) >> 4)
-			let outByte2 = ((byte1 & 0x0F) << 2) | ((byte2 & 0xC0) >> 6)
-			let outByte3 = (byte2 & 0x3F)
-
-			newData.bytes[i + 0] = characterLookupTable[characterLookupTable.startIndex.advancedBy(Int(outByte0))]
-			newData.bytes[i + 1] = characterLookupTable[characterLookupTable.startIndex.advancedBy(Int(outByte1))]
-			newData.bytes[i + 2] = characterLookupTable[characterLookupTable.startIndex.advancedBy(Int(outByte2))]
-			newData.bytes[i + 3] = characterLookupTable[characterLookupTable.startIndex.advancedBy(Int(outByte3))]
-			
-			if (i + 2 >= data.bytes.endIndex) {
-				newData.bytes[i+3] = filler
-			}
-			if (i + 1 >= data.bytes.endIndex) {
-				newData.bytes[i+2] = filler
-			}
-		}
-		return newData
-	}
-	
-	public var buffer = Data()
-	
-	public var isAtEnd: Bool { 
-        return pullStream.isAtEnd
-	}
-	
-	public init(stream: InputStream) {
-		self.pullStream = stream
-	}
-}
-
 public extension Pullable where Self.Sequence: DataConvertible {
 	var base64Encode: TransformingPullStream<Self, Data, Base64EncodeTransformer<Sequence>> {
 		return self.transformWith(Base64EncodeTransformer())

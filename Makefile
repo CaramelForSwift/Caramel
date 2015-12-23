@@ -15,3 +15,5 @@ caramel-release:
 	@echo "Building Caramel"
 	@swift build --configuration release
 
+all: caramel
+

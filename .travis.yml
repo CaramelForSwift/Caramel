@@ -1,6 +1,5 @@
 os:
 - linux
-- osx
 language: generic
 sudo: required
 dist: trusty
@@ -12,4 +11,4 @@ install:
 - curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/d1db86e02ec31e93c623d4632f8b229c8a8c1793/swiftenv-install.sh | bash
 script:
 - . ~/.swiftenv/init
-- swift build
+- make caramel 
